@@ -17,6 +17,9 @@
 		4975AAF3243E591700BF9C1C /* Cultura_VisualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AAF2243E591700BF9C1C /* Cultura_VisualTests.swift */; };
 		4975AAFE243E591700BF9C1C /* Cultura_VisualUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AAFD243E591700BF9C1C /* Cultura_VisualUITests.swift */; };
 		49EC5432243E5D3E006389D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EC5431243E5D3E006389D7 /* GoogleService-Info.plist */; };
+		49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFD4BC243EA1850044ED5E /* Utilities.swift */; };
+		49EFD4BF243EA5660044ED5E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFD4BE243EA5660044ED5E /* Constants.swift */; };
+		49EFD4C1243EAAD80044ED5E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFD4C0243EAAD80044ED5E /* MainMenu.swift */; };
 		546CAF28031ADA1B9649AFBE /* Pods_Cultura_VisualTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBB6640FF027A3C3FFCCB5A /* Pods_Cultura_VisualTests.framework */; };
 		608EC6D26FB598B36E061725 /* Pods_Cultura_Visual.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB70F247E798803D40E6DFA /* Pods_Cultura_Visual.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,9 @@
 		4975AAFD243E591700BF9C1C /* Cultura_VisualUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cultura_VisualUITests.swift; sourceTree = "<group>"; };
 		4975AAFF243E591700BF9C1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49EC5431243E5D3E006389D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49EFD4BC243EA1850044ED5E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		49EFD4BE243EA5660044ED5E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		49EFD4C0243EAAD80044ED5E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		6B49D794D94216BD01853C92 /* Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig"; sourceTree = "<group>"; };
 		97A3D260D56F8B5480B3A90F /* Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BAE051309DA74DEC17B3A101 /* Pods_Cultura_Visual_Cultura_VisualUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cultura_Visual_Cultura_VisualUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,9 +142,12 @@
 				4975AADD243E591600BF9C1C /* SceneDelegate.swift */,
 				4975AADF243E591600BF9C1C /* ViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
+				49EFD4C0243EAAD80044ED5E /* MainMenu.swift */,
 				4975AAE4243E591700BF9C1C /* Assets.xcassets */,
 				4975AAE6243E591700BF9C1C /* LaunchScreen.storyboard */,
 				4975AAE9243E591700BF9C1C /* Info.plist */,
+				49EFD4BC243EA1850044ED5E /* Utilities.swift */,
+				49EFD4BE243EA5660044ED5E /* Constants.swift */,
 			);
 			path = "Cultura-Visual";
 			sourceTree = "<group>";
@@ -411,8 +420,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49EFD4BF243EA5660044ED5E /* Constants.swift in Sources */,
+				49EFD4C1243EAAD80044ED5E /* MainMenu.swift in Sources */,
 				4975AAE0243E591600BF9C1C /* ViewController.swift in Sources */,
 				4975AADC243E591600BF9C1C /* AppDelegate.swift in Sources */,
+				49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */,
 				4975AADE243E591600BF9C1C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
