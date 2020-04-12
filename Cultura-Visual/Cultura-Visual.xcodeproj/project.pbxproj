@@ -11,6 +11,7 @@
 		494281412443C65F00419726 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281402443C65F00419726 /* ThemeTableViewCell.swift */; };
 		494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281422443C99F00419726 /* CuestionarioSelectionViewController.swift */; };
 		494281452443D17900419726 /* Pregunta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281442443D17900419726 /* Pregunta.swift */; };
+		494281472443D43C00419726 /* Cuestionario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281462443D43C00419726 /* Cuestionario.swift */; };
 		4975AADC243E591600BF9C1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AADB243E591600BF9C1C /* AppDelegate.swift */; };
 		4975AADE243E591600BF9C1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AADD243E591600BF9C1C /* SceneDelegate.swift */; };
 		4975AAE0243E591600BF9C1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AADF243E591600BF9C1C /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 		494281402443C65F00419726 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		494281422443C99F00419726 /* CuestionarioSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuestionarioSelectionViewController.swift; sourceTree = "<group>"; };
 		494281442443D17900419726 /* Pregunta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pregunta.swift; sourceTree = "<group>"; };
+		494281462443D43C00419726 /* Cuestionario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuestionario.swift; sourceTree = "<group>"; };
 		4975AAD8243E591600BF9C1C /* Cultura-Visual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cultura-Visual.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4975AADB243E591600BF9C1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4975AADD243E591600BF9C1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				494281402443C65F00419726 /* ThemeTableViewCell.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
 				494281442443D17900419726 /* Pregunta.swift */,
+				494281462443D43C00419726 /* Cuestionario.swift */,
 				494281422443C99F00419726 /* CuestionarioSelectionViewController.swift */,
 				49EFD4C0243EAAD80044ED5E /* MainMenu.swift */,
 				4975AAE4243E591700BF9C1C /* Assets.xcassets */,
@@ -437,6 +440,7 @@
 				4975AADC243E591600BF9C1C /* AppDelegate.swift in Sources */,
 				49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */,
 				494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */,
+				494281472443D43C00419726 /* Cuestionario.swift in Sources */,
 				4975AADE243E591600BF9C1C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
