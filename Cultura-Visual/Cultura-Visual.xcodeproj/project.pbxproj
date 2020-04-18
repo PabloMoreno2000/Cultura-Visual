@@ -26,6 +26,7 @@
 		49EFD4C1243EAAD80044ED5E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFD4C0243EAAD80044ED5E /* MainMenu.swift */; };
 		546CAF28031ADA1B9649AFBE /* Pods_Cultura_VisualTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBB6640FF027A3C3FFCCB5A /* Pods_Cultura_VisualTests.framework */; };
 		608EC6D26FB598B36E061725 /* Pods_Cultura_Visual.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB70F247E798803D40E6DFA /* Pods_Cultura_Visual.framework */; };
+		89AB03BD244B881D0032ABC6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		49EFD4BE243EA5660044ED5E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		49EFD4C0243EAAD80044ED5E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		6B49D794D94216BD01853C92 /* Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig"; sourceTree = "<group>"; };
+		89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		97A3D260D56F8B5480B3A90F /* Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BAE051309DA74DEC17B3A101 /* Pods_Cultura_Visual_Cultura_VisualUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cultura_Visual_Cultura_VisualUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCBB6640FF027A3C3FFCCB5A /* Pods_Cultura_VisualTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cultura_VisualTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 				4975AADD243E591600BF9C1C /* SceneDelegate.swift */,
 				4975AADF243E591600BF9C1C /* ViewController.swift */,
 				494281402443C65F00419726 /* ThemeTableViewCell.swift */,
+				89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
 				494281442443D17900419726 /* Pregunta.swift */,
 				494281462443D43C00419726 /* Cuestionario.swift */,
@@ -432,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89AB03BD244B881D0032ABC6 /* SignUpViewController.swift in Sources */,
 				49EFD4BF243EA5660044ED5E /* Constants.swift in Sources */,
 				494281412443C65F00419726 /* ThemeTableViewCell.swift in Sources */,
 				49EFD4C1243EAAD80044ED5E /* MainMenu.swift in Sources */,
