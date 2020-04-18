@@ -47,6 +47,13 @@ class SignUpViewController: UIViewController {
             return "Tu contraseña debe tener 8 caracteres, un caracter especial y un número"
         }
         
+        let cleanedConfirmation = tfConfirmPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if cleanedPassword != cleanedConfirmation {
+            
+            return "Contraseñas no coinciden"
+        }
+        
         return nil
     }
     
@@ -65,7 +72,7 @@ class SignUpViewController: UIViewController {
         
         if error != nil {
             
-            self.showError(title: "Campos Incorrectos", message: error!)
+            self.showError(title: "Error", message: error!)
         }
         else {
             
@@ -78,7 +85,7 @@ class SignUpViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 
                 if err != nil {
-                    self.showError(title: "Error", message: err!.localizedDescription)
+                    self.showError(title: "Error", message: "El registro no pudo completarse")
                 }
                 else {
                     //user created, now store the name and last name
@@ -88,7 +95,7 @@ class SignUpViewController: UIViewController {
                         
                         if error != nil {
                             
-                            self.showError(title: "Error al guardar los datos", message: error!.localizedDescription)
+                            self.showError(title: "Error", message: "Los datos no puedieron guardarse.")
                         }
                         
                     }
@@ -107,6 +114,11 @@ class SignUpViewController: UIViewController {
         self.present(alert, animated: true)
         
     }
+    
+    @IBAction func quitKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     
     /*
     // MARK: - Navigation

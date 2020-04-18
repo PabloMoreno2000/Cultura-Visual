@@ -63,5 +63,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func quitKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
 }
 

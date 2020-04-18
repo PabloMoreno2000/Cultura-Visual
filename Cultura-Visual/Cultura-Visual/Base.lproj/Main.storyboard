@@ -78,7 +78,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="pSW-7y-OHp" appends="YES" id="Mvm-eC-tcm"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="UyV-nQ-EtF"/>
                     <connections>
@@ -88,6 +92,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pSW-7y-OHp">
+                    <connections>
+                        <action selector="quitKeyboard:" destination="BYZ-38-t0r" id="Ln7-Jm-F64"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-142" y="143"/>
         </scene>
@@ -168,13 +177,13 @@
                                 <rect key="frame" x="150" y="385" width="184" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZFD-GD-OH8">
                                 <rect key="frame" x="150" y="466" width="184" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirmar contraseña:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-Cc-21j">
                                 <rect key="frame" x="39" y="446" width="171" height="21"/>
@@ -194,7 +203,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="sMV-on-Q0o"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Wm8-0z-zty" appends="YES" id="Rkj-FH-TCy"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="T7r-IH-aDh"/>
                     <connections>
@@ -207,8 +220,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uAE-vo-GRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Wm8-0z-zty">
+                    <connections>
+                        <action selector="quitKeyboard:" destination="Vgq-m8-bpc" id="Frq-qZ-wHx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="770" y="143"/>
+            <point key="canvasLocation" x="618" y="143"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="HZO-CG-ATF">
