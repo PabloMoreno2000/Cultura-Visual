@@ -14,4 +14,8 @@ class Utilities: NSObject {
         return s.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
+    //Given s second returns m minutes and s seconds
+    static func secondsToMins(s: Int) -> [Int] {
+        return [Int(s / 60), s % 60 ]
+    }
 }

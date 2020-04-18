@@ -9,14 +9,20 @@
 import UIKit
 
 class Cuestionario: NSObject {
+    //Si se está contestando uno, es la referencia al cuestionario actual
+    static var cuestionarioActual = Cuestionario(tiempoRestante: 0, preguntas: [], temas: [])
     //En segundos
     var tiempoRestante: Int!
     var preguntas: [Pregunta]!
     var temas: [String]!
+    //Index de la pregunta actual si el cuestionario en cuestión se está contestado
+    //Un -1 significa que no se ha empezado a contestar el cuestionario
+    var preguntaActual: Int!
     
     init(tiempoRestante: Int, preguntas: [Pregunta], temas: [String]) {
         self.tiempoRestante = tiempoRestante
         self.preguntas = preguntas
         self.temas = temas
+        self.preguntaActual = -1
     }
 }

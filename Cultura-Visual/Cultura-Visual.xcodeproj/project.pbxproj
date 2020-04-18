@@ -12,6 +12,7 @@
 		494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281422443C99F00419726 /* CuestionarioSelectionViewController.swift */; };
 		494281452443D17900419726 /* Pregunta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281442443D17900419726 /* Pregunta.swift */; };
 		494281472443D43C00419726 /* Cuestionario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281462443D43C00419726 /* Cuestionario.swift */; };
+		494683D3244BBD47004FE7C5 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494683D2244BBD47004FE7C5 /* QuestionViewController.swift */; };
 		4975AADC243E591600BF9C1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AADB243E591600BF9C1C /* AppDelegate.swift */; };
 		4975AADE243E591600BF9C1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AADD243E591600BF9C1C /* SceneDelegate.swift */; };
 		4975AAE0243E591600BF9C1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AADF243E591600BF9C1C /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 		494281422443C99F00419726 /* CuestionarioSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuestionarioSelectionViewController.swift; sourceTree = "<group>"; };
 		494281442443D17900419726 /* Pregunta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pregunta.swift; sourceTree = "<group>"; };
 		494281462443D43C00419726 /* Cuestionario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuestionario.swift; sourceTree = "<group>"; };
+		494683D2244BBD47004FE7C5 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		4975AAD8243E591600BF9C1C /* Cultura-Visual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cultura-Visual.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4975AADB243E591600BF9C1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4975AADD243E591600BF9C1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				4975AAE9243E591700BF9C1C /* Info.plist */,
 				49EFD4BC243EA1850044ED5E /* Utilities.swift */,
 				49EFD4BE243EA5660044ED5E /* Constants.swift */,
+				494683D2244BBD47004FE7C5 /* QuestionViewController.swift */,
 			);
 			path = "Cultura-Visual";
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 			files = (
 				89AB03BD244B881D0032ABC6 /* SignUpViewController.swift in Sources */,
 				49EFD4BF243EA5660044ED5E /* Constants.swift in Sources */,
+				494683D3244BBD47004FE7C5 /* QuestionViewController.swift in Sources */,
 				494281412443C65F00419726 /* ThemeTableViewCell.swift in Sources */,
 				49EFD4C1243EAAD80044ED5E /* MainMenu.swift in Sources */,
 				4975AAE0243E591600BF9C1C /* ViewController.swift in Sources */,
