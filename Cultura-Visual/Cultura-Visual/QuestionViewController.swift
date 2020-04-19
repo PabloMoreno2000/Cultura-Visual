@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class QuestionViewController: UIViewController {
     
@@ -20,54 +21,71 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var bResp3: UIButton!
     @IBOutlet weak var bResp4: UIButton!
     
-    
     var cuestionario: Cuestionario!
     var size: Int!
     var ansButtons: [UIButton]!
-    
-    
+    var storage: Storage!
     
     @IBAction func clickFirst(_ sender: UIButton) {
-        loadNextQuestion(indexRespDada: 0)
+        gradeCurrentQuestion(indexRespDada: 0)
+        loadNextQuestion()
     }
     
     @IBAction func clickSecond(_ sender: UIButton) {
-        loadNextQuestion(indexRespDada: 1)
+        gradeCurrentQuestion(indexRespDada: 1)
+        loadNextQuestion()
     }
     
     @IBAction func clickThird(_ sender: UIButton) {
-        loadNextQuestion(indexRespDada: 2)
+        gradeCurrentQuestion(indexRespDada: 2)
+        loadNextQuestion()
     }
     
     @IBAction func clickFourth(_ sender: UIButton) {
-        loadNextQuestion(indexRespDada: 3)
+        gradeCurrentQuestion(indexRespDada: 3)
+        loadNextQuestion()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        storage = Storage.storage()
         cuestionario = Cuestionario.cuestionarioActual
         size = cuestionario.preguntas.count
         ansButtons = [bResp1, bResp2, bResp3, bResp4]
-        loadNextQuestion(indexRespDada: 0)
+        loadNextQuestion()
     }
     
-    
-    func loadNextQuestion(indexRespDada: Int){
-        //Do something about the given answer of the user "indexRespDada" (if the next question is not the first one)
-        if(cuestionario.preguntaActual != -1){
-            
-        }
-        //If it is -1 the first question is the next
-        else {}
+    func gradeCurrentQuestion(indexRespDada: Int){
         
-        //If the answer question was not the last one
+    }
+    
+    func loadNextQuestion(){
+        //If the previus answered question was not the last one
         if(cuestionario.preguntaActual != size - 1){
             cuestionario.preguntaActual += 1
             let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
             //Show the information of the current question
             lbTema.text = pregunta.tema
             lbPreguntaTexto.text = pregunta.preguntaTexto
+            
+            //If there's an image question
+            if (pregunta.preguntaImagen != nil && pregunta.preguntaImagen != ""){
+                //Get the reference on fire storage
+                let questionPathRef = storage.reference(withPath: pregunta.preguntaImagen)
+                //Download the image of the reference
+                questionPathRef.getData(maxSize: 1 * 1024 * 1024, completion: {data, error in
+                    if error != nil {
+                        print("Error downloading photo of question")
+                    }
+                    else {
+                        //Get the data and form a UIImage with it
+                        let imageQuestion = UIImage(data: data!)
+                        //Assign the image to the UIImageView
+                        self.ivPreguntaImagen.image = imageQuestion
+                    }
+                })
+            }
+            
             //check if each answer is text or an url image
             for i in 0...3 {
                 let isText = pregunta.respSonTexto[i]
@@ -77,7 +95,23 @@ class QuestionViewController: UIViewController {
                 }
                 //Else, load the image
                 else {
-                    
+                    //Create a reference to the image
+                    let answerPathReference = storage.reference(withPath: pregunta.respuestas[i])
+                    //Get the data of the reference
+                    answerPathReference.getData(maxSize: 1 * 1024 * 1024, completion: {data, error in
+                        if error != nil {
+                            print("Error downloading photo of answer")
+                        }
+                        else {
+                            //Get the data and form a UIImage
+                            let imageAnswer = UIImage(data: data!)
+                            //get rid of the button's text
+                            self.ansButtons[i].setTitle("", for: .normal)
+                            //Put the image in the background
+                            self.ansButtons[i].setBackgroundImage(imageAnswer, for: .normal
+                            )
+                        }
+                    })
                 }
             }
         }
@@ -86,7 +120,6 @@ class QuestionViewController: UIViewController {
             
         }
     }
-    
 
     /*
     // MARK: - Navigation
@@ -97,5 +130,4 @@ class QuestionViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
