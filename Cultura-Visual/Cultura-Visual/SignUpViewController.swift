@@ -12,6 +12,8 @@ import Firebase
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var vistaRegistro: UIView!
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfLastName: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
@@ -19,11 +21,19 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var tfConfirmPassword: UITextField!
     @IBOutlet weak var btnRegister: UIButton!
     
+    //var activeField : UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        scrollView.contentSize = vistaRegistro.frame.size
+        
+        /*let tap = UITapGestureRecognizer(target: self, action: #selector(quitKeyboard))
+        self.view.addGestureRecognizer(tap)
+        self.registrarseParaNotificacionesDeTeclado()*/
     }
+    
+    //MARK: - REGISTRO
     
     func isPasswordValide(password : String) -> Bool {
     
@@ -115,19 +125,39 @@ class SignUpViewController: UIViewController {
         
     }
     
-    @IBAction func quitKeyboard(_ sender: UITapGestureRecognizer) {
+   /* //MARK: - KEYBOARD
+    
+    func registrarseParaNotificacionesDeTeclado() {
+        NotificationCenter.default.addObserver(self, selector: #selector(tecladoSeMostro(aNotification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tecladoSeOculto(aNotification:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    
+    @IBAction func quitKeyboard() {
         view.endEditing(true)
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func tecladoSeMostro(aNotification: NSNotification) {
+        
+        let kbSize = (aNotification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue.size
+        
+        let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
+        scrollView.contentInset = contentInset
+        scrollView.scrollIndicatorInsets = contentInset
+        
+        scrollView.setContentOffset(CGPoint(x: 0.0, y: activeField!.frame.origin.y - kbSize.height), animated: true)
     }
-    */
-
+    
+    @IBAction func tecladoSeOculto(aNotification: NSNotification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        activeField = nil
+    } */
 }
