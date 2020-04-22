@@ -38,9 +38,9 @@ class ViewController: UIViewController {
                 else {
 
                     //go to main menu
-                    let mainMenu = self.storyboard?.instantiateViewController(identifier: "mainMenu") as? MainMenu
+                    let navigationMenu = self.storyboard?.instantiateViewController(identifier: "navigationMenu") as? NavController
                     
-                    self.view.window?.rootViewController = mainMenu
+                    self.view.window?.rootViewController = navigationMenu
                     self.view.window?.makeKeyAndVisible()
                     
                 }
