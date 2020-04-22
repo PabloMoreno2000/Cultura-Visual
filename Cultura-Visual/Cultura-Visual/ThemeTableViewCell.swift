@@ -23,6 +23,7 @@ class ThemeTableViewCell: UITableViewCell {
         //If you want to change the appereance of the button...
         if(isThemeSelected){
             bCheckBox.backgroundColor = UIColor.systemBlue
+           
         }
         else{
             bCheckBox.backgroundColor = UIColor.systemGreen

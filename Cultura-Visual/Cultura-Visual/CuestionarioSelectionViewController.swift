@@ -13,7 +13,7 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
     
     @IBOutlet weak var tableView: UITableView!
     
-    
+    var selectedIndexPaths = [IndexPath]()
     
     @IBAction func startCuestionario(_ sender: UIButton) {
         var questions = [Pregunta]()
@@ -60,8 +60,16 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = tableView.dequeueReusableCell(withIdentifier: "idCell")! as! ThemeTableViewCell
         celda.lbTheme.text = subjects[indexPath.row]
+        if(selectedIndexPaths.contains(indexPath)){
+            celda.accessoryType = .checkmark
+        }
+        else{
+            celda.accessoryType = .none
+        }
         return celda
     }
+    
+    
     
     func getSelectedThemes() -> [String]{
         var selectedThemes:[String] = []
@@ -77,6 +85,22 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
         return selectedThemes
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if(selectedIndexPaths.contains(indexPath)){
+            selectedIndexPaths.removeAll{
+                (selectedIndexPath) -> Bool in selectedIndexPath == indexPath
+            }
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+        else{
+            selectedIndexPaths.append(indexPath)
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+        
+        tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
