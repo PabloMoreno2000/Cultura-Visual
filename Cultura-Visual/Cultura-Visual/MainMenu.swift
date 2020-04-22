@@ -14,7 +14,7 @@ class MainMenu: UIViewController {
 
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
-    
+    //hola
     var menuOut = false
     @IBAction func hambutton(_ sender: UIBarButtonItem) {
         if menuOut == false{
