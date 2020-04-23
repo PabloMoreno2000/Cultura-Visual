@@ -356,18 +356,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVk-Z5-wX0">
-                                                    <rect key="frame" x="210" y="7" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="pressCheckBox:" destination="qWq-vX-5dY" eventType="touchUpInside" id="KO1-Nk-Dkd"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="bCheckBox" destination="TVk-Z5-wX0" id="NQv-5Z-7LS"/>
                                             <outlet property="lbTheme" destination="AuH-ia-sIg" id="9Rn-OH-0Y1"/>
                                         </connections>
                                     </tableViewCell>
