@@ -69,17 +69,12 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
         return celda
     }
     
-    
-    
     func getSelectedThemes() -> [String]{
         var selectedThemes:[String] = []
         
-        //Iterate through all the visible rows of tableview
-        let cells = self.tableView.visibleCells as! Array<ThemeTableViewCell>
-        for cell in cells {
-            if(cell.isThemeSelected){
-                selectedThemes.append(cell.lbTheme.text!)
-            }
+        //Iterate through the selected rows
+        for indexPath in selectedIndexPaths{
+            selectedThemes.append(subjects[indexPath.row])
         }
         
         return selectedThemes
