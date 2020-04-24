@@ -437,16 +437,6 @@
                                     <action selector="clickThird:" destination="SFe-qR-Syq" eventType="touchUpInside" id="XYJ-KP-Pbd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1G-r2-2e9">
-                                <rect key="frame" x="209" y="-85081" width="150" height="123"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Resp4">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickFourth:" destination="SFe-qR-Syq" eventType="touchUpInside" id="bbD-v0-av6"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wW7-e7-bNO">
                                 <rect key="frame" x="21" y="343" width="150" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -464,6 +454,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRk-Cc-d1v">
+                                <rect key="frame" x="209" y="493" width="150" height="123"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Resp4">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickFourth:" destination="SFe-qR-Syq" eventType="touchUpInside" id="Oto-0h-OUD"/>
+                                    <action selector="clickSecond:" destination="SFe-qR-Syq" eventType="touchUpInside" id="Nrx-bk-5Bu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="aif-OC-Ewi"/>
@@ -472,7 +473,7 @@
                         <outlet property="bResp1" destination="wW7-e7-bNO" id="BLz-GL-FVN"/>
                         <outlet property="bResp2" destination="n2d-VZ-vw8" id="3fm-R2-Ybd"/>
                         <outlet property="bResp3" destination="HQB-E9-USk" id="b1f-JQ-17C"/>
-                        <outlet property="bResp4" destination="N1G-r2-2e9" id="Sur-fl-HMZ"/>
+                        <outlet property="bResp4" destination="PRk-Cc-d1v" id="4sr-fg-AHP"/>
                         <outlet property="ivPreguntaImagen" destination="6Sl-Uo-if5" id="Fvz-eW-gi3"/>
                         <outlet property="lbPreguntaTexto" destination="PJR-or-78a" id="y4f-lf-dkn"/>
                         <outlet property="lbTema" destination="RUf-O9-AVs" id="0gF-En-RWp"/>

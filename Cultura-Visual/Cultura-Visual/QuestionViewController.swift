@@ -21,6 +21,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var bResp3: UIButton!
     @IBOutlet weak var bResp4: UIButton!
     
+    
     var cuestionario: Cuestionario!
     var size: Int!
     var ansButtons: [UIButton]!
@@ -45,6 +46,7 @@ class QuestionViewController: UIViewController {
         gradeCurrentQuestion(indexRespDada: 3)
         loadNextQuestion()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
