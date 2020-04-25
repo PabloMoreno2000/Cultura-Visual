@@ -11,6 +11,7 @@ target 'Cultura-Visual' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
+  pod 'Charts'
 
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
