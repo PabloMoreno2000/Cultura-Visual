@@ -11,6 +11,8 @@ import UIKit
 class Cuestionario: NSObject {
     //Si se está contestando uno, es la referencia al cuestionario actual
     static var cuestionarioActual = Cuestionario(tiempoRestante: 0, preguntas: [], temas: [])
+    //identificar posibles temas
+    static let themes = ["Arquitectura", "Musica"]
     //En segundos
     var tiempoRestante: Int!
     var preguntas: [Pregunta]!

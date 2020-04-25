@@ -26,6 +26,10 @@ class QuestionViewController: UIViewController {
     var size: Int!
     var ansButtons: [UIButton]!
     var storage: Storage!
+    //counter of right answered questions per theme
+    var correctCounters: [Int]!
+    //counter of wrong answered questions per theme
+    var incorrectCounters: [Int]!
     
     @IBAction func clickFirst(_ sender: UIButton) {
         gradeCurrentQuestion(indexRespDada: 0)
@@ -54,11 +58,34 @@ class QuestionViewController: UIViewController {
         cuestionario = Cuestionario.cuestionarioActual
         size = cuestionario.preguntas.count
         ansButtons = [bResp1, bResp2, bResp3, bResp4]
+        initializeArrays()
         loadNextQuestion()
     }
     
+    //Initialize arrays according to their length
+    func initializeArrays(){
+        for _ in 0...Cuestionario.themes.count - 1{
+            correctCounters.append(0)
+            incorrectCounters.append(0)
+        }
+    }
+    
     func gradeCurrentQuestion(indexRespDada: Int){
-        
+        let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
+        //first find the theme
+        for i in 0...Cuestionario.themes.count - 1{
+            if pregunta.tema == Cuestionario.themes[i]{
+                //Now check if the answer is right or wrong
+                if indexRespDada == pregunta.indexRespCorrecta{
+                    //If it is right
+                    correctCounters[i] += 1
+                }
+                else {
+                    //If it is wrong
+                    incorrectCounters[i] += 1
+                }
+            }
+        }
     }
     
     func loadNextQuestion(){
@@ -119,7 +146,35 @@ class QuestionViewController: UIViewController {
         }
         //if that was the last question
         else{
+            //get current user uid
+            let uid = Auth.auth().currentUser?.uid
             
+            //Submit the info to the database
+            let db = Firestore.firestore()
+            
+            db.collection("estadisticas").whereField("userUidRef", isEqualTo: uid!).getDocuments{(snapshot, error) in
+                //There should be just one document per user, but anyways let's do this to avoid any future error
+                if error == nil{
+                    //if the document exists
+                    if snapshot != nil{
+                        for document in snapshot!.documents{
+                            //get its ID
+                            let documentID = document.documentID
+                            
+                            //updates data of the document
+                            db.collection("estadisticas").document(documentID).setData(["respCorrectas": self.correctCounters!, "respIncorrectas": self.incorrectCounters!], merge: true) { (error) in
+                                //after updating the data change screen
+                            }
+                        }
+                    }
+                    //if there's no document with the id of the user, create it
+                    else {
+                        db.collection("estadisticas").addDocument(data: ["respCorrectas": self.correctCounters!, "respIncorrectas": self.incorrectCounters!, "userUidRef": uid!]) {(error) in
+                            //after creating the document change screen
+                        }
+                    }
+                }
+            }
         }
     }
 
