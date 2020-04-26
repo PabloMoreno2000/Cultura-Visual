@@ -83,6 +83,13 @@ class QuestionViewController: UIViewController {
         }
     }
     
+    func loadGradeView() {
+        //go to result screen
+        let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") as? ResultViewController
+        self.view.window?.rootViewController = resultView
+        self.view.window?.makeKeyAndVisible()
+    }
+    
     func loadNextQuestion(){
         //If the previus answered question was not the last one
         if(cuestionario.preguntaActual != size - 1){
@@ -164,6 +171,7 @@ class QuestionViewController: UIViewController {
                             //updates data of the document
                             db.collection("estadisticas").document(documentID).setData(["respCorrectas": self.correctCounters!, "respIncorrectas": self.incorrectCounters!], merge: true) { (error) in
                                 //after updating the data change screen
+                                self.loadGradeView()
                             }
                         }
                     }
@@ -172,6 +180,7 @@ class QuestionViewController: UIViewController {
                         print("Snapshot is null")
                         db.collection("estadisticas").addDocument(data: ["respCorrectas": self.correctCounters!, "respIncorrectas": self.incorrectCounters!, "userUidRef": uid!]) {(error) in
                             //after creating the document change screen
+                            self.loadGradeView()
                         }
                     }
                 }

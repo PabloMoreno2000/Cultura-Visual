@@ -487,7 +487,7 @@
         <!--Result View Controller-->
         <scene sceneID="WTe-uH-hLh">
             <objects>
-                <viewController id="czw-rq-ESe" customClass="ResultViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resultView" id="czw-rq-ESe" customClass="ResultViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HZM-pj-3Y9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
