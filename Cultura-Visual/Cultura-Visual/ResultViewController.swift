@@ -13,15 +13,45 @@ import Firebase
 class ResultViewController: UIViewController {
     
     @IBOutlet weak var pieChartView: PieChartView!
+    @IBOutlet weak var lbResult: UILabel!
+ 
+    
+    @IBAction func goToMenu(_ sender: UIButton) {
+        //go to main menu
+        let navigationMenu = self.storyboard?.instantiateViewController(identifier: "navigationMenu") as? NavController
+        self.view.window?.rootViewController = navigationMenu
+        self.view.window?.makeKeyAndVisible()
+        
+    }
+    
+    var respCorrectas: Double!
+    var respIncorrectas: Double!
+    let succedTestText = "PASAS"
+    let failTestText = "NO PASAS"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let respCorrectas = Double(Utilities.sum(arr: StorageLoc.respCorrectas))
-        let respIncorrectas = Double(Utilities.sum(arr: StorageLoc.respIncorrectas))
+        respCorrectas = Double(Utilities.sum(arr: StorageLoc.respCorrectas))
+        respIncorrectas = Double(Utilities.sum(arr: StorageLoc.respIncorrectas))
         customizeChart(dataPoints: ["Correctas", "Incorrectas"], values: [respCorrectas, respIncorrectas])
         // Do any additional setup after loading the view.
+        setLabelText()
     }
 
+    func setLabelText(){
+        //porcentaje de preguntas correctas para pasar
+        let pase = 0.70
+        //porcentaje obtenido
+        let porcentaje = respCorrectas / (respCorrectas + respIncorrectas)
+        
+        if(porcentaje >= pase){
+            lbResult.text = succedTestText
+        }
+        else {
+            lbResult.text = failTestText
+        }
+    }
+    
     //Given a data set, fills the pie chart
     func customizeChart(dataPoints: [String], values: [Double]){
         //1. Set ChartDataEntry

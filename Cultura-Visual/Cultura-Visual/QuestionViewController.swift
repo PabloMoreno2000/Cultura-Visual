@@ -74,10 +74,12 @@ class QuestionViewController: UIViewController {
                 if indexRespDada == pregunta.indexRespCorrecta{
                     //If it is right
                     correctCounters[i] += 1
+                    break;
                 }
                 else {
                     //If it is wrong
                     incorrectCounters[i] += 1
+                    break;
                 }
             }
         }
