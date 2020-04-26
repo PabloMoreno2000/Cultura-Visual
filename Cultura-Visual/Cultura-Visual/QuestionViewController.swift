@@ -58,17 +58,12 @@ class QuestionViewController: UIViewController {
         cuestionario = Cuestionario.cuestionarioActual
         size = cuestionario.preguntas.count
         ansButtons = [bResp1, bResp2, bResp3, bResp4]
-        initializeArrays()
+        correctCounters = [0,0,0,0]
+        incorrectCounters = [0,0,0,0]
         loadNextQuestion()
     }
     
-    //Initialize arrays according to their length
-    func initializeArrays(){
-        for _ in 0...Cuestionario.themes.count - 1{
-            correctCounters.append(0)
-            incorrectCounters.append(0)
-        }
-    }
+
     
     func gradeCurrentQuestion(indexRespDada: Int){
         let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
@@ -160,7 +155,8 @@ class QuestionViewController: UIViewController {
                 //There should be just one document per user, but anyways let's do this to avoid any future error
                 if error == nil{
                     //if the document exists
-                    if snapshot != nil{
+                    if snapshot != nil && snapshot!.count > 0{
+                        print("Snapshot has content")
                         for document in snapshot!.documents{
                             //get its ID
                             let documentID = document.documentID
@@ -173,6 +169,7 @@ class QuestionViewController: UIViewController {
                     }
                     //if there's no document with the id of the user, create it
                     else {
+                        print("Snapshot is null")
                         db.collection("estadisticas").addDocument(data: ["respCorrectas": self.correctCounters!, "respIncorrectas": self.incorrectCounters!, "userUidRef": uid!]) {(error) in
                             //after creating the document change screen
                         }
