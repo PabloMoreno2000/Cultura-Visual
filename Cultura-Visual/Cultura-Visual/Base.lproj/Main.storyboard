@@ -484,10 +484,10 @@
             </objects>
             <point key="canvasLocation" x="39" y="2664"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="WTe-uH-hLh">
             <objects>
-                <viewController id="czw-rq-ESe" sceneMemberID="viewController">
+                <viewController id="czw-rq-ESe" customClass="ResultViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HZM-pj-3Y9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -520,6 +520,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Hya-oT-m45"/>
                     </view>
+                    <connections>
+                        <outlet property="pieChartView" destination="dsi-nK-9Wk" id="rO0-Q6-1ev"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0iS-oH-kzU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

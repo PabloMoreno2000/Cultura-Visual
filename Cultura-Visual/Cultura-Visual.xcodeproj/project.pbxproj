@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D05166C4F8926D7BE9635D7 /* Pods_Cultura_Visual_Cultura_VisualUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAE051309DA74DEC17B3A101 /* Pods_Cultura_Visual_Cultura_VisualUITests.framework */; };
+		4933BAA22455065F00DB5147 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933BAA12455065F00DB5147 /* ResultViewController.swift */; };
 		494281412443C65F00419726 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281402443C65F00419726 /* ThemeTableViewCell.swift */; };
 		494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281422443C99F00419726 /* CuestionarioSelectionViewController.swift */; };
 		494281452443D17900419726 /* Pregunta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494281442443D17900419726 /* Pregunta.swift */; };
@@ -53,6 +54,7 @@
 		1E9450516D0B17AFDC2FE718 /* Pods-Cultura-VisualTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-VisualTests.release.xcconfig"; path = "Target Support Files/Pods-Cultura-VisualTests/Pods-Cultura-VisualTests.release.xcconfig"; sourceTree = "<group>"; };
 		4218410751A87A52C4467BD0 /* Pods-Cultura-Visual.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual.debug.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual/Pods-Cultura-Visual.debug.xcconfig"; sourceTree = "<group>"; };
 		449AD4B1B85ECFF8F94A9DD8 /* Pods-Cultura-VisualTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-VisualTests.debug.xcconfig"; path = "Target Support Files/Pods-Cultura-VisualTests/Pods-Cultura-VisualTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4933BAA12455065F00DB5147 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		494281402443C65F00419726 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		494281422443C99F00419726 /* CuestionarioSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuestionarioSelectionViewController.swift; sourceTree = "<group>"; };
 		494281442443D17900419726 /* Pregunta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pregunta.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				494281402443C65F00419726 /* ThemeTableViewCell.swift */,
 				89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
+				4933BAA12455065F00DB5147 /* ResultViewController.swift */,
 				494281442443D17900419726 /* Pregunta.swift */,
 				494281462443D43C00419726 /* Cuestionario.swift */,
 				494281422443C99F00419726 /* CuestionarioSelectionViewController.swift */,
@@ -450,6 +453,7 @@
 				494281452443D17900419726 /* Pregunta.swift in Sources */,
 				4975AADC243E591600BF9C1C /* AppDelegate.swift in Sources */,
 				49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */,
+				4933BAA22455065F00DB5147 /* ResultViewController.swift in Sources */,
 				494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */,
 				494281472443D43C00419726 /* Cuestionario.swift in Sources */,
 				AB853821244FBB9900D21173 /* NavController.swift in Sources */,
