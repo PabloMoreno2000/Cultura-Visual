@@ -18,4 +18,13 @@ class Utilities: NSObject {
     static func secondsToMins(s: Int) -> [Int] {
         return [Int(s / 60), s % 60 ]
     }
+    
+    //Adds all the integer values of an array
+    static func sum(arr: [Int]) -> Int {
+        var counter = 0
+        for n in arr{
+            counter += n
+        }
+        return counter
+    }
 }

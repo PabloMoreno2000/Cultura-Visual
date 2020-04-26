@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import Firebase
 
 class ResultViewController: UIViewController {
     
@@ -15,11 +16,13 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let respCorrectas = Double(Utilities.sum(arr: StorageLoc.respCorrectas))
+        let respIncorrectas = Double(Utilities.sum(arr: StorageLoc.respIncorrectas))
+        customizeChart(dataPoints: ["Correctas", "Incorrectas"], values: [respCorrectas, respIncorrectas])
         // Do any additional setup after loading the view.
     }
-    
-    
+
+    //Given a data set, fills the pie chart
     func customizeChart(dataPoints: [String], values: [Double]){
         //1. Set ChartDataEntry
         var dataEntries: [ChartDataEntry] = []

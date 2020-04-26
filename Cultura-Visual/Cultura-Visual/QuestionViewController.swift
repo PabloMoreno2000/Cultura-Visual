@@ -152,6 +152,10 @@ class QuestionViewController: UIViewController {
             //Submit the info to the database
             let db = Firestore.firestore()
             
+            //Store the info for next act "locally"
+            StorageLoc.respCorrectas = correctCounters
+            StorageLoc.respIncorrectas = incorrectCounters
+            
             db.collection("estadisticas").whereField("userUidRef", isEqualTo: uid!).getDocuments{(snapshot, error) in
                 //There should be just one document per user, but anyways let's do this to avoid any future error
                 if error == nil{

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/user168627/Documents/Cultura-Visual/Cultura-Visual/Cultura-Visual/StorageLoc.swift">
+   </FileRef>
+   <FileRef
       location = "group:Cultura-Visual.xcodeproj">
    </FileRef>
    <FileRef
