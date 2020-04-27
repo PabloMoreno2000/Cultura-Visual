@@ -25,7 +25,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //prueba
         scrollView.contentSize = vistaRegistro.frame.size
         
         /*let tap = UITapGestureRecognizer(target: self, action: #selector(quitKeyboard))
