@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
         
         if isPasswordValide(password: cleanedPassword) == false {
             
-            return "Tu contraseña debe tener 8 caracteres, un caracter especial y un número"
+            return "Tu contraseña debe tener 8 caracteres incluyendo un caracter especial y un número"
         }
         
         let cleanedConfirmation = tfConfirmPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -95,7 +95,17 @@ class SignUpViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 
                 if err != nil {
-                    self.showError(title: "Error", message: "El registro no pudo completarse")
+                    
+                    if let errorDescription = err as NSError? {
+                        switch AuthErrorCode(rawValue: errorDescription.code) {
+                        case .emailAlreadyInUse:
+                            self.showError(title: "Error", message: "El correo ya está registrado")
+                        case .invalidEmail:
+                            self.showError(title: "Error", message: "El correo esta mal formateado")
+                        default:
+                            self.showError(title: "Error", message: "La cuenta no se ha podido registrarse")
+                        }
+                    }
                 }
                 else {
                     //user created, now store the name and last name
@@ -105,9 +115,8 @@ class SignUpViewController: UIViewController {
                         
                         if error != nil {
                             
-                            self.showError(title: "Error", message: "Los datos no puedieron guardarse.")
+                            self.showError(title: "Error", message: "Los datos no pudieron guardarse.")
                         }
-                        
                     }
                     
                     //transition to home screen
