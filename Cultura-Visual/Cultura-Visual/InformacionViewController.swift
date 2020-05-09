@@ -10,10 +10,13 @@ import UIKit
 
 class InformacionViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var vistaInfo: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        scrollView.contentSize = vistaInfo.frame.size
     }
     
 
