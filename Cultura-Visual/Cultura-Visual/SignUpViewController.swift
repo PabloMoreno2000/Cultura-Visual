@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var vistaRegistro: UIView!
@@ -21,17 +21,23 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var tfConfirmPassword: UITextField!
     @IBOutlet weak var btnRegister: UIButton!
     
-    //var activeField : UITextField!
+    var activeField : UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //prueba
+
         scrollView.contentSize = vistaRegistro.frame.size
+        registrarseParaNotificacionesDeTeclado()
         
         /*let tap = UITapGestureRecognizer(target: self, action: #selector(quitKeyboard))
         self.view.addGestureRecognizer(tap)
         self.registrarseParaNotificacionesDeTeclado()*/
     }
+    
+    @IBAction func regresarInicio(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     //MARK: - REGISTRO
     
@@ -134,7 +140,7 @@ class SignUpViewController: UIViewController {
         
     }
     
-   /* //MARK: - KEYBOARD
+    //MARK: - KEYBOARD
     
     func registrarseParaNotificacionesDeTeclado() {
         NotificationCenter.default.addObserver(self, selector: #selector(tecladoSeMostro(aNotification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -168,5 +174,5 @@ class SignUpViewController: UIViewController {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         activeField = nil
-    } */
+    }
 }

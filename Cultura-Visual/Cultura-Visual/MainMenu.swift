@@ -14,8 +14,9 @@ class MainMenu: UIViewController {
 
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
-    //hola
+    
     var menuOut = false
+    
     @IBAction func hambutton(_ sender: UIBarButtonItem) {
         if menuOut == false{
             leading.constant = 150
@@ -29,6 +30,7 @@ class MainMenu: UIViewController {
         }
         UIView.animate(withDuration: 0.2, delay : 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()})
     }
+    
     @IBAction func logoutbutton(_ sender: UIButton) {
         let firebaseAuth = Auth.auth()
         do {
@@ -45,17 +47,13 @@ class MainMenu: UIViewController {
 
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    
-    
-    
-    
-
     /*
     // MARK: - Navigation
 
