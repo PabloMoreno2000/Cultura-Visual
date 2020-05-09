@@ -106,6 +106,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="O7E-0Z-URw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uAE-vo-GRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Vgq-m8-bpc" customClass="SignUpViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pGL-BL-LoE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
@@ -230,9 +231,13 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="789" id="xkl-SG-eiP"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="w7c-7I-LKM" appends="YES" id="y4Z-PT-D1b"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -266,7 +271,11 @@
                         <outlet property="vistaRegistro" destination="p1e-ux-RHg" id="JlB-PJ-m11"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uAE-vo-GRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="w7c-7I-LKM">
+                    <connections>
+                        <action selector="quitKeyboard" destination="Vgq-m8-bpc" id="GSG-De-7qb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="585" y="394"/>
         </scene>
@@ -325,6 +334,7 @@
                                 <action selector="hambutton:" destination="ZYg-Vl-4xo" id="ufg-QQ-0Ms"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="info.circle" catalog="system" id="A7u-OV-h6O"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -335,6 +345,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOv-dA-M1I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="37.600000000000001" y="1141.9790104947526"/>
+        </scene>
+        <!--Informacion View Controller-->
+        <scene sceneID="gaT-Ec-hci">
+            <objects>
+                <viewController id="Rbx-Bb-Pqg" customClass="InformacionViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t7C-MK-Ujw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="nRu-KX-pTn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BCg-Y1-lMf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="1134"/>
         </scene>
         <!--Cuestionario Selection View Controller-->
         <scene sceneID="Eja-Ga-1Uv">
@@ -568,6 +593,7 @@
     </scenes>
     <resources>
         <image name="cuestionarios" width="256" height="256"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="paisaje1" width="284" height="177"/>
     </resources>

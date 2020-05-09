@@ -30,6 +30,7 @@
 		546CAF28031ADA1B9649AFBE /* Pods_Cultura_VisualTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBB6640FF027A3C3FFCCB5A /* Pods_Cultura_VisualTests.framework */; };
 		608EC6D26FB598B36E061725 /* Pods_Cultura_Visual.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB70F247E798803D40E6DFA /* Pods_Cultura_Visual.framework */; };
 		89AB03BD244B881D0032ABC6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */; };
+		89CB5A1A24674A480075C656 /* InformacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB5A1924674A480075C656 /* InformacionViewController.swift */; };
 		AB853821244FBB9900D21173 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB853820244FBB9900D21173 /* NavController.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		49EFD4C0243EAAD80044ED5E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		6B49D794D94216BD01853C92 /* Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig"; sourceTree = "<group>"; };
 		89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		89CB5A1924674A480075C656 /* InformacionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformacionViewController.swift; sourceTree = "<group>"; };
 		97A3D260D56F8B5480B3A90F /* Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB853820244FBB9900D21173 /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		BAE051309DA74DEC17B3A101 /* Pods_Cultura_Visual_Cultura_VisualUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cultura_Visual_Cultura_VisualUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				494281402443C65F00419726 /* ThemeTableViewCell.swift */,
 				89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
+				89CB5A1924674A480075C656 /* InformacionViewController.swift */,
 				4933BAA12455065F00DB5147 /* ResultViewController.swift */,
 				494281442443D17900419726 /* Pregunta.swift */,
 				494281462443D43C00419726 /* Cuestionario.swift */,
@@ -461,6 +464,7 @@
 				494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */,
 				494281472443D43C00419726 /* Cuestionario.swift in Sources */,
 				AB853821244FBB9900D21173 /* NavController.swift in Sources */,
+				89CB5A1A24674A480075C656 /* InformacionViewController.swift in Sources */,
 				4975AADE243E591600BF9C1C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
