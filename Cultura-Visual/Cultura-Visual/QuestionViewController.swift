@@ -74,11 +74,13 @@ class QuestionViewController: UIViewController {
                 if indexRespDada == pregunta.indexRespCorrecta{
                     //If it is right
                     correctCounters[i] += 1
+                    debugPrint("Pregunta " + String(cuestionario.preguntaActual) + " correcta")
                     break;
                 }
                 else {
                     //If it is wrong
                     incorrectCounters[i] += 1
+                    debugPrint("Pregunta " + String(cuestionario.preguntaActual) + " incorrecta")
                     break;
                 }
             }
@@ -93,8 +95,10 @@ class QuestionViewController: UIViewController {
     }
     
     func loadNextQuestion(){
+        
         //If the previus answered question was not the last one
         if(cuestionario.preguntaActual != size - 1){
+            debugPrint("Cambio de pregunta " + String(cuestionario.preguntaActual) + " --> " + String(cuestionario.preguntaActual + 1))
             cuestionario.preguntaActual += 1
             let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
             //Show the information of the current question
@@ -150,6 +154,7 @@ class QuestionViewController: UIViewController {
         }
         //if that was the last question
         else{
+            debugPrint("Last question answered. Index = " + String(cuestionario.preguntaActual))
             //get current user uid
             let uid = Auth.auth().currentUser?.uid
             

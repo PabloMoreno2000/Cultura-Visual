@@ -462,7 +462,6 @@
                                 </state>
                                 <connections>
                                     <action selector="clickFourth:" destination="SFe-qR-Syq" eventType="touchUpInside" id="Oto-0h-OUD"/>
-                                    <action selector="clickSecond:" destination="SFe-qR-Syq" eventType="touchUpInside" id="Nrx-bk-5Bu"/>
                                 </connections>
                             </button>
                         </subviews>
