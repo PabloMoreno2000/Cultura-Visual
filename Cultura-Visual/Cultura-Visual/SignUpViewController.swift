@@ -126,7 +126,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     }
                     
                     //transition to home screen
-                    self.transitionToMenu()
+                    let navigationMenu = self.storyboard?.instantiateViewController(identifier: "navigationMenu") as? NavController
+                    
+                    self.view.window?.rootViewController = navigationMenu
+                    self.view.window?.makeKeyAndVisible()
                 }
             }
         }

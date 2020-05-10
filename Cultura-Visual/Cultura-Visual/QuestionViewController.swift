@@ -11,7 +11,6 @@ import Firebase
 
 class QuestionViewController: UIViewController {
     
-    
     @IBOutlet weak var lbTiempoRestante: UILabel!
     @IBOutlet weak var lbPreguntaTexto: UILabel!
     @IBOutlet weak var lbTema: UILabel!
@@ -21,7 +20,8 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var bResp3: UIButton!
     @IBOutlet weak var bResp4: UIButton!
     
-    
+    var timer = Timer()
+    var totalTime = 90
     var cuestionario: Cuestionario!
     var size: Int!
     var ansButtons: [UIButton]!
@@ -30,6 +30,44 @@ class QuestionViewController: UIViewController {
     var correctCounters: [Int]!
     //counter of wrong answered questions per theme
     var incorrectCounters: [Int]!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(muestraTiempo), userInfo: nil, repeats: true)
+        
+        storage = Storage.storage()
+        cuestionario = Cuestionario.cuestionarioActual
+        size = cuestionario.preguntas.count
+        ansButtons = [bResp1, bResp2, bResp3, bResp4]
+        correctCounters = [0,0,0,0]
+        incorrectCounters = [0,0,0,0]
+        loadNextQuestion()
+        
+    }
+    
+    //MARK: - Timer
+    
+    @IBAction func muestraTiempo() {
+           
+           if totalTime != 0 {
+                totalTime -= 1
+                lbTiempoRestante.text = timerFormatted(total: totalTime)
+           }
+           else {
+                timer.invalidate()
+                loadGradeView()
+           }
+       }
+    
+    func timerFormatted( total : Int) -> String {
+        let seconds: Int = total % 60
+        let minutes: Int = (total / 60) % 60
+        
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    //MARK: - Respuestas
     
     @IBAction func clickFirst(_ sender: UIButton) {
         gradeCurrentQuestion(indexRespDada: 0)
@@ -50,20 +88,6 @@ class QuestionViewController: UIViewController {
         gradeCurrentQuestion(indexRespDada: 3)
         loadNextQuestion()
     }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        storage = Storage.storage()
-        cuestionario = Cuestionario.cuestionarioActual
-        size = cuestionario.preguntas.count
-        ansButtons = [bResp1, bResp2, bResp3, bResp4]
-        correctCounters = [0,0,0,0]
-        incorrectCounters = [0,0,0,0]
-        loadNextQuestion()
-    }
-    
-
     
     func gradeCurrentQuestion(indexRespDada: Int){
         let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
