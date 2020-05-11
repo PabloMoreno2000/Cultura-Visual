@@ -1,0 +1,32 @@
+dependencies: \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Login/FIRNoopAuthTokenProvider.m \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/DerivedData/Cultura-Visual/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/FirebaseDatabase.build/module.modulemap \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Login/FIRNoopAuthTokenProvider.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Login/FAuthTokenProvider.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Utilities/FTypedefs.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Api/Private/FTypedefs_Private.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Api/Private/FIRDatabaseQuery_Private.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDatabaseQuery.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDataEventType.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Public/FIRDataSnapshot.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Core/Utilities/FPath.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Core/FQueryParams.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Core/FRepo.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Core/FPersistentConnection.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Realtime/FConnection.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Realtime/FWebSocketConnection.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/third_party/SocketRocket/FSRWebSocket.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Utilities/FUtilities.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/DerivedData/Cultura-Visual/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/FirebaseCore.build/module.modulemap \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseCore/FirebaseCore/Sources/Private/FIRLogger.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseCore/FirebaseCore/Sources/Public/FIROptions.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseCore/FirebaseCore/Sources/Public/FIRLoggerLevel.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseCore/FirebaseCore/Sources/Public/FIRConfiguration.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseCore/FirebaseCore/Sources/Public/FIRApp.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Utilities/FParsedUrl.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Core/FRepoInfo.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Utilities/Tuples/FTupleUserCallback.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Core/FRepoManager.h \
+  /Users/user168641/Desktop/Cultura-Visual/Cultura-Visual/Pods/FirebaseDatabase/Firebase/Database/Api/FIRDatabaseConfig.h
