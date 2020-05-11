@@ -30,22 +30,7 @@ class QuestionViewController: UIViewController {
     var correctCounters: [Int]!
     //counter of wrong answered questions per theme
     var incorrectCounters: [Int]!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(muestraTiempo), userInfo: nil, repeats: true)
-        
-        storage = Storage.storage()
-        cuestionario = Cuestionario.cuestionarioActual
-        size = cuestionario.preguntas.count
-        ansButtons = [bResp1, bResp2, bResp3, bResp4]
-        correctCounters = [0,0,0,0]
-        incorrectCounters = [0,0,0,0]
-        loadNextQuestion()
-        
-    }
-    
+
     //MARK: - Timer
     
     @IBAction func muestraTiempo() {
@@ -68,28 +53,60 @@ class QuestionViewController: UIViewController {
     }
     
     //MARK: - Respuestas
+
+    // MARK: - Aqui se agregaria un delay para las animaciones de colores de respuestas
+    
+
     
     @IBAction func clickFirst(_ sender: UIButton) {
-        gradeCurrentQuestion(indexRespDada: 0)
+        let resp = 0
+        colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
+        //agregar un tipo de delay
         loadNextQuestion()
     }
     
     @IBAction func clickSecond(_ sender: UIButton) {
-        gradeCurrentQuestion(indexRespDada: 1)
+        let resp = 1
+        colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
+        //agregar un tipo de delay
         loadNextQuestion()
     }
     
     @IBAction func clickThird(_ sender: UIButton) {
-        gradeCurrentQuestion(indexRespDada: 2)
+        let resp = 2
+        colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
+        //agregar un tipo de delay
         loadNextQuestion()
     }
     
     @IBAction func clickFourth(_ sender: UIButton) {
-        gradeCurrentQuestion(indexRespDada: 3)
+        let resp = 3
+        colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
+        //agregar un tipo de delay
         loadNextQuestion()
     }
     
-    func gradeCurrentQuestion(indexRespDada: Int){
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(muestraTiempo), userInfo: nil, repeats: true)
+        storage = Storage.storage()
+        cuestionario = Cuestionario.cuestionarioActual
+        size = cuestionario.preguntas.count
+        ansButtons = [bResp1, bResp2, bResp3, bResp4]
+        for boton in ansButtons{
+            boton.layer.borderWidth = 1.0
+            boton.layer.cornerRadius = 5.0
+            boton.clipsToBounds = true
+            boton.layer.borderColor = UIColor.white.withAlphaComponent(0).cgColor
+        }
+        correctCounters = [0,0,0,0]
+        incorrectCounters = [0,0,0,0]
+        loadNextQuestion()
+    }
+    
+
+    
+    func gradeCurrentQuestion(indexRespDada: Int) -> Int{
         let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
         //first find the theme
         for i in 0...Cuestionario.themes.count - 1{
@@ -99,17 +116,59 @@ class QuestionViewController: UIViewController {
                     //If it is right
                     correctCounters[i] += 1
                     debugPrint("Pregunta " + String(cuestionario.preguntaActual) + " correcta")
-                    break;
+                    return pregunta.indexRespCorrecta
                 }
                 else {
                     //If it is wrong
                     incorrectCounters[i] += 1
                     debugPrint("Pregunta " + String(cuestionario.preguntaActual) + " incorrecta")
-                    break;
+                    return pregunta.indexRespCorrecta
                 }
             }
         }
+        return indexRespDada
     }
+    
+    func colorearRespuesta(indexRespDada: Int, indexRespCorrecta: Int){
+        
+        UIView.animate(withDuration: 3, animations: {
+            self.ansButtons[indexRespCorrecta]
+                .layer.borderColor = UIColor.green.withAlphaComponent(1).cgColor
+            self.ansButtons[indexRespCorrecta]
+                .backgroundColor = UIColor.green.withAlphaComponent(1)
+        })
+        UIView.animate(withDuration: 3, animations: {
+            self.ansButtons[indexRespCorrecta]
+                .layer.borderColor = UIColor.green.withAlphaComponent(0).cgColor
+            self.ansButtons[indexRespCorrecta]
+                .backgroundColor = UIColor.green.withAlphaComponent(0)
+        })
+        if(indexRespDada != indexRespCorrecta){
+            UIView.animate(withDuration: 3, animations: {
+                self.ansButtons[indexRespDada]
+                    .layer.borderColor = UIColor.red.withAlphaComponent(1).cgColor
+                self.ansButtons[indexRespDada]
+                    .backgroundColor = UIColor.red.withAlphaComponent(1)
+            })
+            
+            UIView.animate(withDuration: 3, animations: {
+                self.ansButtons[indexRespDada]
+                    .layer.borderColor = UIColor.red.withAlphaComponent(0).cgColor
+                self.ansButtons[indexRespDada]
+                    .backgroundColor = UIColor.red.withAlphaComponent(0)
+            })
+        }
+        /*
+         //por si lo vuelvo a necesitar
+         UIView.animate(withDuration: 1, animations: {
+             self.bResp1.backgroundColor = UIColor.green.withAlphaComponent(1)
+         }, completion: {finished in
+             self.bResp1.backgroundColor = UIColor.green.withAlphaComponent(0)
+         })
+         */
+    }
+    
+    
     
     func loadGradeView() {
         //go to result screen
