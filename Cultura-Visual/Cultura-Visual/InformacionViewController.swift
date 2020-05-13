@@ -8,18 +8,37 @@
 
 import UIKit
 
-class InformacionViewController: UIViewController {
+class InformacionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var vistaInfo: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var listaMateriales = [Materiales]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         scrollView.contentSize = vistaInfo.frame.size
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-
+    //MARK: - Table view
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listaMateriales.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let celda = tableView.dequeueReusableCell(withIdentifier: "celda")!
+        
+        return celda
+    }
     /*
     // MARK: - Navigation
 

@@ -29,6 +29,8 @@
 		49EFD4C1243EAAD80044ED5E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFD4C0243EAAD80044ED5E /* MainMenu.swift */; };
 		546CAF28031ADA1B9649AFBE /* Pods_Cultura_VisualTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBB6640FF027A3C3FFCCB5A /* Pods_Cultura_VisualTests.framework */; };
 		608EC6D26FB598B36E061725 /* Pods_Cultura_Visual.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB70F247E798803D40E6DFA /* Pods_Cultura_Visual.framework */; };
+		89724D2A246C8DF100A989E2 /* Materiales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89724D29246C8DF100A989E2 /* Materiales.swift */; };
+		89724D2C246C90FC00A989E2 /* AgregarMaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89724D2B246C90FC00A989E2 /* AgregarMaterialViewController.swift */; };
 		89AB03BD244B881D0032ABC6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */; };
 		89CB5A1A24674A480075C656 /* InformacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB5A1924674A480075C656 /* InformacionViewController.swift */; };
 		AB853821244FBB9900D21173 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB853820244FBB9900D21173 /* NavController.swift */; };
@@ -84,6 +86,8 @@
 		49EFD4BE243EA5660044ED5E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		49EFD4C0243EAAD80044ED5E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		6B49D794D94216BD01853C92 /* Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.release.xcconfig"; sourceTree = "<group>"; };
+		89724D29246C8DF100A989E2 /* Materiales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Materiales.swift; sourceTree = "<group>"; };
+		89724D2B246C90FC00A989E2 /* AgregarMaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarMaterialViewController.swift; sourceTree = "<group>"; };
 		89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		89CB5A1924674A480075C656 /* InformacionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformacionViewController.swift; sourceTree = "<group>"; };
 		97A3D260D56F8B5480B3A90F /* Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				494281402443C65F00419726 /* ThemeTableViewCell.swift */,
 				89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
+				89724D2B246C90FC00A989E2 /* AgregarMaterialViewController.swift */,
+				89724D29246C8DF100A989E2 /* Materiales.swift */,
 				ABAD56872467B05F0040AD03 /* contrasenaViewController.swift */,
 				ABAD56852467AC280040AD03 /* editaPerfilViewController.swift */,
 				89CB5A1924674A480075C656 /* InformacionViewController.swift */,
@@ -471,7 +477,9 @@
 				494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */,
 				494281472443D43C00419726 /* Cuestionario.swift in Sources */,
 				AB853821244FBB9900D21173 /* NavController.swift in Sources */,
+				89724D2A246C8DF100A989E2 /* Materiales.swift in Sources */,
 				ABAD56862467AC280040AD03 /* editaPerfilViewController.swift in Sources */,
+				89724D2C246C90FC00A989E2 /* AgregarMaterialViewController.swift in Sources */,
 				89CB5A1A24674A480075C656 /* InformacionViewController.swift in Sources */,
 				4975AADE243E591600BF9C1C /* SceneDelegate.swift in Sources */,
 			);
