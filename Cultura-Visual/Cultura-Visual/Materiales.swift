@@ -8,16 +8,16 @@
 
 import UIKit
 
-class Materiales: NSObject {
+class Materiales: Codable {
     
     var nombreLibro : String = ""
     var autorLibro : String = ""
-    var edicionLibro : String = ""
+    var editorLibro : String = ""
     
-    init(nombreLibro: String, autorLibro: String, edicionLibro: String) {
+    init(nombreLibro: String, autorLibro: String, editorLibro: String) {
         self.nombreLibro = nombreLibro
         self.autorLibro = autorLibro
-        self.edicionLibro = edicionLibro
+        self.editorLibro = editorLibro
     }
 
 }
