@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 protocol administraMateriales {
     func agregaMaterial (mat : Materiales) -> Void
@@ -34,7 +36,9 @@ class AgregarMaterialViewController: UIViewController {
             
             btnCambio.setTitle("Modificar", for: .normal)
             tfNombreLib.text = mat.nombreLibro
+            tfNombreLib.isUserInteractionEnabled = false
             tfAutorLib.text = mat.autorLibro
+            tfAutorLib.isUserInteractionEnabled = false
             tfEdicionLib.text = mat.editorLibro
             btnEliminar.isHidden = false
             
@@ -57,11 +61,49 @@ class AgregarMaterialViewController: UIViewController {
         
             let mater = Materiales(nombreLibro: nom, autorLibro: aut, editorLibro: ed)
             
+            let uid = Auth.auth().currentUser?.uid
+            let db = Firestore.firestore()
+            
             if acceder {
+                
                 delegado.agregaMaterial(mat: mater)
+                
+                db.collection("materiales").addDocument(data: ["nombre": nom, "autor": aut, "edicion/link": ed, "userID": uid!]) {(error) in
+                    
+                    if error != nil {
+                        
+                        self.showError(title: "Error", message: "Los datos no pudieron guardarse.")
+                    }
+                }
+                
                 navigationController?.popViewController(animated: true)
+            
             }
             else {
+                
+                db.collection("materiales").whereField("nombre", isEqualTo: nom).getDocuments{(snapshot, error) in
+                    
+                    if error == nil {
+                        //if the document exists
+                        if snapshot != nil && snapshot!.count > 0 {
+                           
+                            for document in snapshot!.documents {
+                                //get its ID
+                                let documentID = document.documentID
+                                
+                                //updates data of the document
+                                db.collection("materiales").document(documentID).setData(["edicion/link": ed], merge: true) { (error) in
+                                    
+                                    if error != nil {
+                                        
+                                        self.showError(title: "Error", message: "Los datos no pudieron actualizarse.")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
                 delegado.modificaMaterial(mat: mater)
                 navigationController?.popViewController(animated: true)
             }
@@ -84,7 +126,21 @@ class AgregarMaterialViewController: UIViewController {
         let alerta = UIAlertController(title: "Aviso", message: "¿Estás seguro de que deseas eliminar este material?", preferredStyle: .alert)
         
         let accionE =  UIAlertAction(title: "Eliminar", style: .default, handler: {(action) in
+            
             self.delegado.eliminaMaterial()
+            
+            let db = Firestore.firestore()
+            
+            db.collection("materiales").whereField("nombre", isEqualTo: self.tfNombreLib.text!).getDocuments{(snapshot, error) in
+                
+                    if error == nil && snapshot != nil {
+                        for document in snapshot!.documents {
+                            document.reference.delete()
+                    }
+
+                }
+            }
+            
             self.navigationController?.popViewController(animated: true)
         })
         let accionC = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
@@ -97,6 +153,14 @@ class AgregarMaterialViewController: UIViewController {
     
     @IBAction func quitKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    func showError(title:String, message:String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+        
     }
 
 }

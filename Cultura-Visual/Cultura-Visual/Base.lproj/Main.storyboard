@@ -531,6 +531,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barBtn" destination="xT1-AM-MGU" id="Kuu-0x-m7r"/>
                         <outlet property="scrollView" destination="MuY-KO-nUG" id="zM2-vN-MdP"/>
                         <outlet property="tableView" destination="A8T-KM-9Zl" id="jAe-Ct-Phq"/>
                         <outlet property="vistaInfo" destination="EKK-yq-V7t" id="MBA-vD-hm7"/>

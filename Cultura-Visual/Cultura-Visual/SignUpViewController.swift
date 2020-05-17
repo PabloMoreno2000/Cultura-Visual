@@ -114,7 +114,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
                 else {
-                    //user created, now store the name and last name
+                    //user created, now store the name, last name and email
                     let db = Firestore.firestore()
                     
                     db.collection("usuarios").addDocument(data: ["nombre":firstName, "apellido":lastName, "esAdmin": false, "correo": email, "contrasena":password, "uid": result!.user.uid]) { (error) in

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class CustomTableViewCell: UITableViewCell {
     
@@ -20,26 +22,52 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var vistaInfo: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var barBtn: UIBarButtonItem!
     
     var listaMateriales = [Materiales]()
     var celdaMod : Int!
+    var admin : Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         scrollView.contentSize = vistaInfo.frame.size
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        let user = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
         
-        listaMateriales = []
-               
-        let app = UIApplication.shared
-               
-        NotificationCenter.default.addObserver(self, selector: #selector(guardarMateriales), name: UIApplication.didEnterBackgroundNotification, object: app)
-               
-        if FileManager.default.fileExists(atPath: dataFileURL().path) {
-            obtenerMateriales()
+        db.collection("usuarios").whereField("uid", isEqualTo: user!).getDocuments{(snapshot, error) in
+            
+            if error == nil && snapshot != nil {
+                
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    self.admin = documentData["esAdmin"] as? Bool ?? false
+                }
+            }
+            
+            if !self.admin {
+                self.tableView.isUserInteractionEnabled = false
+                self.navigationItem.rightBarButtonItem = nil
+            }
+            else {
+                    
+                self.tableView.isUserInteractionEnabled = true
+                self.barBtn.isEnabled = true
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+                       
+                self.listaMateriales = []
+                              
+                let app = UIApplication.shared
+                              
+                NotificationCenter.default.addObserver(self, selector: #selector(self.guardarMateriales), name: UIApplication.didEnterBackgroundNotification, object: app)
+                              
+                if FileManager.default.fileExists(atPath: self.dataFileURL().path) {
+                    self.obtenerMateriales()
+                }
+                    
+            }
         }
     }
     
