@@ -47,17 +47,14 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
             
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+            
             if !self.admin {
-                self.tableView.isUserInteractionEnabled = false
                 self.navigationItem.rightBarButtonItem = nil
             }
             else {
-                    
-                self.tableView.isUserInteractionEnabled = true
-                self.barBtn.isEnabled = true
-                self.tableView.delegate = self
-                self.tableView.dataSource = self
-                       
+                                          
                 self.listaMateriales = []
                               
                 let app = UIApplication.shared
@@ -98,50 +95,56 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
-            let indexPath = tableView.indexPathForSelectedRow!
-            celdaMod = indexPath.row
-            
+            if admin {
+                
+                let indexPath = tableView.indexPathForSelectedRow!
+                celdaMod = indexPath.row
+            }
         }
         
         // MARK: - Navigation
 
-    func llenarTabla() -> Void {
+        func llenarTabla() -> Void {
         
-         let db = Firestore.firestore()
+            let db = Firestore.firestore()
                    
-         db.collection("materiales").getDocuments{(snapshot, error) in
+            db.collection("materiales").getDocuments{(snapshot, error) in
                               
-         if error == nil && snapshot != nil {
+                if error == nil && snapshot != nil {
                                   
-                for document in snapshot!.documents {
-                    let documentData = document.data()
-                    let nombre = documentData["nombre"] as! String
-                    let autor = documentData["autor"] as! String
-                    let edit = documentData["edicion/link"] as! String
-                                   
-                    let mat = Materiales(nombreLibro: nombre, autorLibro: autor, editorLibro: edit)
-                    self.listaMateriales.append(mat)
-                    self.tableView.reloadData()
+                    for document in snapshot!.documents {
+                        let documentData = document.data()
+                        let nombre = documentData["nombre"] as! String
+                        let autor = documentData["autor"] as! String
+                        let edit = documentData["edicion/link"] as! String
+                                       
+                        let mat = Materiales(nombreLibro: nombre, autorLibro: autor, editorLibro: edit)
+                        self.listaMateriales.append(mat)
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
-    }
             
          override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-             
-             let vistaMat = segue.destination as! AgregarMaterialViewController
-             
-             if segue.identifier == "agregar" {
-                 
-                 vistaMat.delegado = self
-             }
-             else {
-                 let indexPath = tableView.indexPathForSelectedRow!
-                 vistaMat.mat = listaMateriales[indexPath.row]
-                 vistaMat.acceder = false
-                 vistaMat.delegado = self
-             }
-
+                
+            if admin == true {
+                    
+                let vistaMat = segue.destination as! AgregarMaterialViewController
+                     
+                if segue.identifier == "agregar" {
+                         
+                    vistaMat.delegado = self
+                }
+                else {
+                        
+                    let indexPath = self.tableView.indexPathForSelectedRow!
+                    vistaMat.mat = self.listaMateriales[indexPath.row]
+                    vistaMat.acceder = false
+                    vistaMat.delegado = self
+                    
+                }
+            }
          }
         
         // MARK: - Protocolos
