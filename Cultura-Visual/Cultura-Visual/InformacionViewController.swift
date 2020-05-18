@@ -32,6 +32,7 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         scrollView.contentSize = vistaInfo.frame.size
+        llenarTabla()
         
         let user = Auth.auth().currentUser?.uid
         let db = Firestore.firestore()
@@ -87,7 +88,7 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
             let celda = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath) as! CustomTableViewCell
-        
+            
             celda.lbNom.text = listaMateriales[indexPath.row].nombreLibro
             celda.lbAutor.text = listaMateriales[indexPath.row].autorLibro
             celda.lbEdit.text = listaMateriales[indexPath.row].editorLibro
@@ -104,6 +105,28 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
         
         // MARK: - Navigation
 
+    func llenarTabla() -> Void {
+        
+         let db = Firestore.firestore()
+                   
+         db.collection("materiales").getDocuments{(snapshot, error) in
+                              
+         if error == nil && snapshot != nil {
+                                  
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    let nombre = documentData["nombre"] as! String
+                    let autor = documentData["autor"] as! String
+                    let edit = documentData["edicion/link"] as! String
+                                   
+                    let mat = Materiales(nombreLibro: nombre, autorLibro: autor, editorLibro: edit)
+                    self.listaMateriales.append(mat)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+            
          override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
              
              let vistaMat = segue.destination as! AgregarMaterialViewController
