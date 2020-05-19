@@ -61,6 +61,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tfCorreo.text = "a00823402@itesm.mx"
+        tfContrasena.text = "123456"
         // Do any additional setup after loading the view.
     }
     
