@@ -90,6 +90,10 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
             celda.lbAutor.text = listaMateriales[indexPath.row].autorLibro
             celda.lbEdit.text = listaMateriales[indexPath.row].editorLibro
             
+            if !admin {
+                celda.isUserInteractionEnabled = false
+            }
+            
             return celda
         }
         
