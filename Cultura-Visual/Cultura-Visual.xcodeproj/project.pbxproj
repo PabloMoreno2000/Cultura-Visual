@@ -24,6 +24,8 @@
 		4975AAFE243E591700BF9C1C /* Cultura_VisualUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AAFD243E591700BF9C1C /* Cultura_VisualUITests.swift */; };
 		49D2AA0E24699123006E5B99 /* StorageLoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D2AA0D24699123006E5B99 /* StorageLoc.swift */; };
 		49EC5432243E5D3E006389D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EC5431243E5D3E006389D7 /* GoogleService-Info.plist */; };
+		49EE91352473535E00B1A27E /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE91342473535E00B1A27E /* QuestionTableViewCell.swift */; };
+		49EE9137247353FA00B1A27E /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE9136247353FA00B1A27E /* QuestionTableViewController.swift */; };
 		49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFD4BC243EA1850044ED5E /* Utilities.swift */; };
 		49EFD4BF243EA5660044ED5E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFD4BE243EA5660044ED5E /* Constants.swift */; };
 		49EFD4C1243EAAD80044ED5E /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFD4C0243EAAD80044ED5E /* MainMenu.swift */; };
@@ -82,6 +84,8 @@
 		4975AAFF243E591700BF9C1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49D2AA0D24699123006E5B99 /* StorageLoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StorageLoc.swift; path = "/Users/user168627/Documents/Cultura-Visual/Cultura-Visual/Cultura-Visual/StorageLoc.swift"; sourceTree = "<absolute>"; };
 		49EC5431243E5D3E006389D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49EE91342473535E00B1A27E /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		49EE9136247353FA00B1A27E /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
 		49EFD4BC243EA1850044ED5E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		49EFD4BE243EA5660044ED5E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		49EFD4C0243EAAD80044ED5E /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				494281402443C65F00419726 /* ThemeTableViewCell.swift */,
 				89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
+				49EE91342473535E00B1A27E /* QuestionTableViewCell.swift */,
+				49EE9136247353FA00B1A27E /* QuestionTableViewController.swift */,
 				89724D2B246C90FC00A989E2 /* AgregarMaterialViewController.swift */,
 				89724D29246C8DF100A989E2 /* Materiales.swift */,
 				ABAD56872467B05F0040AD03 /* contrasenaViewController.swift */,
@@ -468,8 +474,10 @@
 				494281412443C65F00419726 /* ThemeTableViewCell.swift in Sources */,
 				ABAD56882467B05F0040AD03 /* contrasenaViewController.swift in Sources */,
 				49D2AA0E24699123006E5B99 /* StorageLoc.swift in Sources */,
+				49EE91352473535E00B1A27E /* QuestionTableViewCell.swift in Sources */,
 				49EFD4C1243EAAD80044ED5E /* MainMenu.swift in Sources */,
 				4975AAE0243E591600BF9C1C /* ViewController.swift in Sources */,
+				49EE9137247353FA00B1A27E /* QuestionTableViewController.swift in Sources */,
 				494281452443D17900419726 /* Pregunta.swift in Sources */,
 				4975AADC243E591600BF9C1C /* AppDelegate.swift in Sources */,
 				49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */,

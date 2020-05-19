@@ -15,8 +15,8 @@ class MainMenu: UIViewController {
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var menuHam: UIView!
-    
     var menuOut = false
+    
     
     //boton hamburguesa, que despliega un mini menu donde el usuario puede editar su perfil, o terminar sesion
     @IBAction func hambutton(_ sender: UIBarButtonItem) {
