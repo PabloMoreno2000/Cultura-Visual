@@ -128,7 +128,7 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
             
          override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
                 
-            if admin == true {
+            if admin {
                     
                 let vistaMat = segue.destination as! AgregarMaterialViewController
                      

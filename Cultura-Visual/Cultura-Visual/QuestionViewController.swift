@@ -21,7 +21,8 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var bResp4: UIButton!
     
     var timer = Timer()
-    var totalTime = 90
+    var totalTime : Int!
+    var tema : String!
     var cuestionario: Cuestionario!
     var size: Int!
     var ansButtons: [UIButton]!
@@ -33,17 +34,45 @@ class QuestionViewController: UIViewController {
 
     //MARK: - Timer
     
+    //Cambia el tiempo dependiendo de que cuestionario se contestara
+    func setTime() -> Void {
+        
+        let db = Firestore.firestore()
+               
+        db.collection("preguntas").getDocuments{(snapshot, error) in
+                          
+            if error == nil && snapshot != nil {
+                              
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    self.tema = documentData["tema"] as? String
+                }
+                
+                if self.tema == "Arquitectura" {
+                    self.totalTime = 40
+                }
+                else if self.tema == "Mùsica" {
+                    self.totalTime = 50
+                }
+                else {
+                    self.totalTime = 60
+                }
+            }
+        }
+    }
+    
     @IBAction func muestraTiempo() {
            
-           if totalTime != 0 {
-                totalTime -= 1
-                lbTiempoRestante.text = timerFormatted(total: totalTime)
-           }
-           else {
-                timer.invalidate()
-                loadGradeView()
-           }
-       }
+        if totalTime != 0 {
+            totalTime -= 1
+            lbTiempoRestante.text = timerFormatted(total: totalTime)
+        }
+        else {
+            timer.invalidate()
+            loadGradeView()
+        }
+    
+    }
     
     func timerFormatted( total : Int) -> String {
         let seconds: Int = total % 60
@@ -55,8 +84,6 @@ class QuestionViewController: UIViewController {
     //MARK: - Respuestas
 
     // MARK: - Aqui se agregaria un delay para las animaciones de colores de respuestas
-    
-
     
     @IBAction func clickFirst(_ sender: UIButton) {
         let resp = 0
@@ -88,6 +115,7 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTime()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(muestraTiempo), userInfo: nil, repeats: true)
         storage = Storage.storage()
         cuestionario = Cuestionario.cuestionarioActual
