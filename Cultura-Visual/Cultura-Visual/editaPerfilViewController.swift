@@ -19,6 +19,7 @@ class editaPerfilViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cargarDatos()
         /*
         
         let user = Auth.auth().currentUser
@@ -47,10 +48,55 @@ class editaPerfilViewController: UIViewController {
     }
     
     @IBAction func btEditar(_ sender: UIButton) {
+        let user = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+        
+        db.collection("usuarios").whereField("uid", isEqualTo: user!).getDocuments{(snapshot, error) in
+        
+            if error == nil && snapshot != nil {
+                for document in snapshot!.documents {
+                    let documentID = document.documentID
+                    
+                    //updates data of the document
+                    db.collection("usuarios").document(documentID).setData(["nombre": self.tfNombre.text, "apellido": self.tfApellido.text], merge: true) { (error) in
+                        
+                        if error != nil {
+                            
+                            self.showError(title: "Error", message: "El nombre no pudo actualizarse.")
+                        }
+                    }                }
+            }
+        }
     }
     @IBAction func btContra(_ sender: UIButton) {
     }
     
+    
+    func cargarDatos(){
+        let user = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+        
+        db.collection("usuarios").whereField("uid", isEqualTo: user!).getDocuments{(snapshot, error) in
+        
+            if error == nil && snapshot != nil {
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    let nombre = documentData["nombre"] as? String ?? ""
+                    let apellido = documentData["apellido"] as? String ?? ""
+                    self.tfNombre.text = nombre
+                    self.tfApellido.text = apellido
+                }
+            }
+        }
+    }
+    
+    func showError(title:String, message:String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+        
+    }
     /*
     // MARK: - Navigation
 
