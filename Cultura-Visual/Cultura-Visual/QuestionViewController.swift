@@ -22,7 +22,7 @@ class QuestionViewController: UIViewController {
     
     var timer = Timer()
     var totalTime : Int!
-    var timeLeft: Int!
+    var timeLeft: Int! = 0
     var tema : String!
     var cuestionario: Cuestionario!
     var size: Int!
@@ -32,7 +32,30 @@ class QuestionViewController: UIViewController {
     var correctCounters: [Int]!
     //counter of wrong answered questions per theme
     var incorrectCounters: [Int]!
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setTime()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(muestraTiempo), userInfo: nil, repeats: true)
+        
+        storage = Storage.storage()
+        cuestionario = Cuestionario.cuestionarioActual
+        size = cuestionario.preguntas.count
+        ansButtons = [bResp1, bResp2, bResp3, bResp4]
+        
+        for boton in ansButtons{
+            boton.layer.borderWidth = 1.0
+            boton.layer.cornerRadius = 5.0
+            boton.clipsToBounds = true
+            boton.layer.borderColor = UIColor.white.withAlphaComponent(0).cgColor
+        }
+        
+        correctCounters = [0,0,0,0]
+        incorrectCounters = [0,0,0,0]
+        loadNextQuestion()
+    }
+    
     //MARK: - Timer
     
     //Cambia el tiempo dependiendo de que cuestionario se contestara
@@ -76,6 +99,7 @@ class QuestionViewController: UIViewController {
     }
     
     func timerFormatted( total : Int) -> String {
+        
         let seconds: Int = total % 60
         let minutes: Int = (total / 60) % 60
         
@@ -93,19 +117,10 @@ class QuestionViewController: UIViewController {
         
         let accionE =  UIAlertAction(title: "Salir", style: .default, handler: {(action) in
             
-            /*self.delegado.eliminaMaterial()
-            
-            let db = Firestore.firestore()
-            
-            db.collection("materiales").whereField("nombre", isEqualTo: self.tfNombreLib.text!).getDocuments{(snapshot, error) in
-                
-                    if error == nil && snapshot != nil {
-                        for document in snapshot!.documents {
-                            document.reference.delete()
-                    }
-
-                }
-            } */
+             let defaults = UserDefaults.standard
+             
+            defaults.set(self.timeLeft, forKey: "time")
+            defaults.set(self.cuestionario.preguntaActual, forKey: "numPregunta")
             
             let mainMenu = self.storyboard?.instantiateViewController(identifier: "mainMenu") as? MainMenu
             self.view.window?.rootViewController = mainMenu
@@ -114,6 +129,7 @@ class QuestionViewController: UIViewController {
         let accionC = UIAlertAction(title: "Cancelar", style: .cancel, handler: {(action) in
             
             self.totalTime = self.timeLeft
+            self.timeLeft = 0
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.muestraTiempo), userInfo: nil, repeats: true)
         })
         
@@ -124,10 +140,9 @@ class QuestionViewController: UIViewController {
         
     }
     
-    
     //MARK: - Respuestas
 
-    // MARK: - Aqui se agregaria un delay para las animaciones de colores de respuestas
+    // Aqui se agregaria un delay para las animaciones de colores de respuestas
     
     @IBAction func clickFirst(_ sender: UIButton) {
         let resp = 0
@@ -157,28 +172,8 @@ class QuestionViewController: UIViewController {
         loadNextQuestion()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setTime()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(muestraTiempo), userInfo: nil, repeats: true)
-        storage = Storage.storage()
-        cuestionario = Cuestionario.cuestionarioActual
-        size = cuestionario.preguntas.count
-        ansButtons = [bResp1, bResp2, bResp3, bResp4]
-        for boton in ansButtons{
-            boton.layer.borderWidth = 1.0
-            boton.layer.cornerRadius = 5.0
-            boton.clipsToBounds = true
-            boton.layer.borderColor = UIColor.white.withAlphaComponent(0).cgColor
-        }
-        correctCounters = [0,0,0,0]
-        incorrectCounters = [0,0,0,0]
-        loadNextQuestion()
-    }
-    
-
-    
-    func gradeCurrentQuestion(indexRespDada: Int) -> Int{
+    func gradeCurrentQuestion(indexRespDada: Int) -> Int {
+        
         let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
         //first find the theme
         for i in 0...Cuestionario.themes.count - 1{
@@ -198,10 +193,11 @@ class QuestionViewController: UIViewController {
                 }
             }
         }
+        
         return indexRespDada
     }
     
-    func colorearRespuesta(indexRespDada: Int, indexRespCorrecta: Int){
+    func colorearRespuesta(indexRespDada: Int, indexRespCorrecta: Int) {
         
         UIView.animate(withDuration: 3, animations: {
             self.ansButtons[indexRespCorrecta]
@@ -209,13 +205,16 @@ class QuestionViewController: UIViewController {
             self.ansButtons[indexRespCorrecta]
                 .backgroundColor = UIColor.green.withAlphaComponent(1)
         })
+        
         UIView.animate(withDuration: 3, animations: {
             self.ansButtons[indexRespCorrecta]
                 .layer.borderColor = UIColor.green.withAlphaComponent(0).cgColor
             self.ansButtons[indexRespCorrecta]
                 .backgroundColor = UIColor.green.withAlphaComponent(0)
         })
-        if(indexRespDada != indexRespCorrecta){
+        
+        if(indexRespDada != indexRespCorrecta) {
+            
             UIView.animate(withDuration: 3, animations: {
                 self.ansButtons[indexRespDada]
                     .layer.borderColor = UIColor.red.withAlphaComponent(1).cgColor
@@ -240,8 +239,6 @@ class QuestionViewController: UIViewController {
          */
     }
     
-    
-    
     func loadGradeView() {
         //go to result screen
         let resultView = self.storyboard?.instantiateViewController(identifier: "resultView") as? ResultViewController
@@ -249,12 +246,14 @@ class QuestionViewController: UIViewController {
         self.view.window?.makeKeyAndVisible()
     }
     
-    func loadNextQuestion(){
+    func loadNextQuestion() {
         
         //If the previus answered question was not the last one
-        if(cuestionario.preguntaActual != size - 1){
+        if(cuestionario.preguntaActual != size - 1) {
+            
             debugPrint("Cambio de pregunta " + String(cuestionario.preguntaActual) + " --> " + String(cuestionario.preguntaActual + 1))
             cuestionario.preguntaActual += 1
+            
             let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
             //Show the information of the current question
             lbTema.text = pregunta.tema
@@ -280,9 +279,10 @@ class QuestionViewController: UIViewController {
             
             //check if each answer is text or an url image
             for i in 0...3 {
+                
                 let isText = pregunta.respSonTexto[i]
                 //if it is text just add the text
-                if(isText){
+                if(isText) {
                     ansButtons[i].setTitle(pregunta.respuestas[i], for: .normal)
                 }
                 //Else, load the image
@@ -308,7 +308,8 @@ class QuestionViewController: UIViewController {
             }
         }
         //if that was the last question
-        else{
+        else {
+            
             debugPrint("Last question answered. Index = " + String(cuestionario.preguntaActual))
             //get current user uid
             let uid = Auth.auth().currentUser?.uid
@@ -349,14 +350,4 @@ class QuestionViewController: UIViewController {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

@@ -44,30 +44,81 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
         }
         //Si selecciono al menos un tema
         else {
-            //get the questions of the selected themes
-            db.collection("preguntas").whereField("tema", in: temasSeleccionados).getDocuments{(snapshot, error) in
-                if error == nil && snapshot != nil {
-                    //Add each document fetched to the list
-                    for document in snapshot!.documents{
-                        let documentData = document.data()
-                        let tema = documentData["tema"] as! String
-                        let preguntaTexto = documentData["preguntaTexto"] as? String ?? ""
-                        let preguntaImagen = documentData["preguntaImagenUrl"] as? String ?? ""
-                        let indexRespCorrecta = documentData["indexRespCorrecta"] as! Int
-                        let respSonTexto = documentData["respSonTexto"] as? [Bool] ?? defaultBoolArr
-                        let respuestas = documentData["respuestas"] as? [String] ?? defaultStringArr
-                        //Form question and add it
-                        questions.append(Pregunta(tema: tema, preguntaTexto: preguntaTexto, preguntaImagen: preguntaImagen, respuestas: respuestas, respSonTexto: respSonTexto, indexRespCorrecta: indexRespCorrecta))
-                    }
-                    //Después de obtener las preguntas, crea el cuestionario
-                    let cuestionario = Cuestionario(tiempoRestante: self.segundosCuestionario, preguntas: questions, temas: temasSeleccionados)
-                    //Guarda el cuestionario
-                    Cuestionario.cuestionarioActual = cuestionario
+            
+            let defaults = UserDefaults.standard
+            let time = defaults.integer(forKey: "time")
+            //si tiene un cuestionario sin terminar con el/los temas seleccionados
+            if time > 10 {
+                
+                let alerta = UIAlertController(title: "Aviso", message: "Tienes un cuestionario sin terminar con los temas seleccionados", preferredStyle: .alert)
+                
+                let accionE =  UIAlertAction(title: "Continuar cuestionario", style: .default, handler: {(action) in
                     
-                    //Go to the questionaire view
-                    let mainMenu = self.storyboard?.instantiateViewController(identifier: "QuestionNavController") as? QuestionNavigationController
-                    self.view.window?.rootViewController = mainMenu
-                    self.view.window?.makeKeyAndVisible()
+                   
+                })
+                let accionC = UIAlertAction(title: "Empezar de nuevo", style: .default, handler: {(action) in
+                    
+                    //get the questions of the selected themes
+                    self.db.collection("preguntas").whereField("tema", in: temasSeleccionados).getDocuments{(snapshot, error) in
+                        if error == nil && snapshot != nil {
+                            //Add each document fetched to the list
+                            for document in snapshot!.documents{
+                                let documentData = document.data()
+                                let tema = documentData["tema"] as! String
+                                let preguntaTexto = documentData["preguntaTexto"] as? String ?? ""
+                                let preguntaImagen = documentData["preguntaImagenUrl"] as? String ?? ""
+                                let indexRespCorrecta = documentData["indexRespCorrecta"] as! Int
+                                let respSonTexto = documentData["respSonTexto"] as? [Bool] ?? defaultBoolArr
+                                let respuestas = documentData["respuestas"] as? [String] ?? defaultStringArr
+                                //Form question and add it
+                                questions.append(Pregunta(tema: tema, preguntaTexto: preguntaTexto, preguntaImagen: preguntaImagen, respuestas: respuestas, respSonTexto: respSonTexto, indexRespCorrecta: indexRespCorrecta))
+                            }
+                            //Después de obtener las preguntas, crea el cuestionario
+                            let cuestionario = Cuestionario(tiempoRestante: self.segundosCuestionario, preguntas: questions, temas: temasSeleccionados)
+                            //Guarda el cuestionario
+                            Cuestionario.cuestionarioActual = cuestionario
+                            
+                            //Go to the questionaire view
+                            let mainMenu = self.storyboard?.instantiateViewController(identifier: "QuestionNavController") as? QuestionNavigationController
+                            self.view.window?.rootViewController = mainMenu
+                            self.view.window?.makeKeyAndVisible()
+                        }
+                    }
+                    
+                })
+                
+                alerta.addAction(accionE)
+                alerta.addAction(accionC)
+                
+                present(alerta, animated: true, completion: nil)
+            }
+            else {
+               
+                //get the questions of the selected themes
+                db.collection("preguntas").whereField("tema", in: temasSeleccionados).getDocuments{(snapshot, error) in
+                    if error == nil && snapshot != nil {
+                        //Add each document fetched to the list
+                        for document in snapshot!.documents{
+                            let documentData = document.data()
+                            let tema = documentData["tema"] as! String
+                            let preguntaTexto = documentData["preguntaTexto"] as? String ?? ""
+                            let preguntaImagen = documentData["preguntaImagenUrl"] as? String ?? ""
+                            let indexRespCorrecta = documentData["indexRespCorrecta"] as! Int
+                            let respSonTexto = documentData["respSonTexto"] as? [Bool] ?? defaultBoolArr
+                            let respuestas = documentData["respuestas"] as? [String] ?? defaultStringArr
+                            //Form question and add it
+                            questions.append(Pregunta(tema: tema, preguntaTexto: preguntaTexto, preguntaImagen: preguntaImagen, respuestas: respuestas, respSonTexto: respSonTexto, indexRespCorrecta: indexRespCorrecta))
+                        }
+                        //Después de obtener las preguntas, crea el cuestionario
+                        let cuestionario = Cuestionario(tiempoRestante: self.segundosCuestionario, preguntas: questions, temas: temasSeleccionados)
+                        //Guarda el cuestionario
+                        Cuestionario.cuestionarioActual = cuestionario
+                        
+                        //Go to the questionaire view
+                        let mainMenu = self.storyboard?.instantiateViewController(identifier: "QuestionNavController") as? QuestionNavigationController
+                        self.view.window?.rootViewController = mainMenu
+                        self.view.window?.makeKeyAndVisible()
+                    }
                 }
             }
         }
