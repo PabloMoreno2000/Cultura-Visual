@@ -33,6 +33,7 @@
 		89724D2A246C8DF100A989E2 /* Materiales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89724D29246C8DF100A989E2 /* Materiales.swift */; };
 		89724D2C246C90FC00A989E2 /* AgregarMaterialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89724D2B246C90FC00A989E2 /* AgregarMaterialViewController.swift */; };
 		89AB03BD244B881D0032ABC6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */; };
+		89AE39332476F07A00C93E83 /* QuestionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE39322476F07A00C93E83 /* QuestionNavigationController.swift */; };
 		89CB5A1A24674A480075C656 /* InformacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB5A1924674A480075C656 /* InformacionViewController.swift */; };
 		AB5B4D542476DBFF00D6BB3A /* StorageLoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B4D532476DBFF00D6BB3A /* StorageLoc.swift */; };
 		AB5B4D552476DBFF00D6BB3A /* StorageLoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B4D532476DBFF00D6BB3A /* StorageLoc.swift */; };
@@ -94,6 +95,7 @@
 		89724D29246C8DF100A989E2 /* Materiales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Materiales.swift; sourceTree = "<group>"; };
 		89724D2B246C90FC00A989E2 /* AgregarMaterialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarMaterialViewController.swift; sourceTree = "<group>"; };
 		89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		89AE39322476F07A00C93E83 /* QuestionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionNavigationController.swift; sourceTree = "<group>"; };
 		89CB5A1924674A480075C656 /* InformacionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformacionViewController.swift; sourceTree = "<group>"; };
 		97A3D260D56F8B5480B3A90F /* Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB5B4D532476DBFF00D6BB3A /* StorageLoc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageLoc.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				494281402443C65F00419726 /* ThemeTableViewCell.swift */,
 				89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
+				89AE39322476F07A00C93E83 /* QuestionNavigationController.swift */,
 				49EE91342473535E00B1A27E /* QuestionTableViewCell.swift */,
 				49EE9136247353FA00B1A27E /* QuestionTableViewController.swift */,
 				89724D2B246C90FC00A989E2 /* AgregarMaterialViewController.swift */,
@@ -482,6 +485,7 @@
 				49EE9137247353FA00B1A27E /* QuestionTableViewController.swift in Sources */,
 				494281452443D17900419726 /* Pregunta.swift in Sources */,
 				4975AADC243E591600BF9C1C /* AppDelegate.swift in Sources */,
+				89AE39332476F07A00C93E83 /* QuestionNavigationController.swift in Sources */,
 				49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */,
 				4933BAA22455065F00DB5147 /* ResultViewController.swift in Sources */,
 				494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */,
