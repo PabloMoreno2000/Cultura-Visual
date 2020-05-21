@@ -1029,7 +1029,11 @@
                         <viewLayoutGuide key="safeArea" id="aif-OC-Ewi"/>
                     </view>
                     <navigationItem key="navigationItem" id="Q20-o8-VHp">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0V0-Rb-FDR"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0V0-Rb-FDR">
+                            <connections>
+                                <action selector="cancel:" destination="SFe-qR-Syq" id="vv8-gd-bA1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bResp1" destination="wW7-e7-bNO" id="BLz-GL-FVN"/>

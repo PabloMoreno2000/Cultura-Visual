@@ -22,6 +22,7 @@ class QuestionViewController: UIViewController {
     
     var timer = Timer()
     var totalTime : Int!
+    var timeLeft: Int!
     var tema : String!
     var cuestionario: Cuestionario!
     var size: Int!
@@ -80,6 +81,49 @@ class QuestionViewController: UIViewController {
         
         return String(format: "%02d:%02d", minutes, seconds)
     }
+    
+    //MARK: - Cancelar cuestionario
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        
+        timeLeft = totalTime
+        timer.invalidate()
+        
+        let alerta = UIAlertController(title: "Aviso", message: "¿Estás seguro que deseas salir del cuestionario?", preferredStyle: .alert)
+        
+        let accionE =  UIAlertAction(title: "Salir", style: .default, handler: {(action) in
+            
+            /*self.delegado.eliminaMaterial()
+            
+            let db = Firestore.firestore()
+            
+            db.collection("materiales").whereField("nombre", isEqualTo: self.tfNombreLib.text!).getDocuments{(snapshot, error) in
+                
+                    if error == nil && snapshot != nil {
+                        for document in snapshot!.documents {
+                            document.reference.delete()
+                    }
+
+                }
+            } */
+            
+            let mainMenu = self.storyboard?.instantiateViewController(identifier: "mainMenu") as? MainMenu
+            self.view.window?.rootViewController = mainMenu
+            self.view.window?.makeKeyAndVisible()
+        })
+        let accionC = UIAlertAction(title: "Cancelar", style: .cancel, handler: {(action) in
+            
+            self.totalTime = self.timeLeft
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.muestraTiempo), userInfo: nil, repeats: true)
+        })
+        
+        alerta.addAction(accionE)
+        alerta.addAction(accionC)
+        
+        present(alerta, animated: true, completion: nil)
+        
+    }
+    
     
     //MARK: - Respuestas
 

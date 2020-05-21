@@ -31,8 +31,10 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
         let defaultStringArr = [noData, noData, noData, noData]
         let temasSeleccionados = getSelectedThemes()
         
+        //Si no ha seleccionado ningun tema para empezar el cuestionario
         if temasSeleccionados.count == 0 {
-            let alerta = UIAlertController(title: "Aviso", message: "Deebes seleccionar mìnimo un tema", preferredStyle: .alert)
+            
+            let alerta = UIAlertController(title: "Aviso", message: "Debes seleccionar mìnimo un tema", preferredStyle: .alert)
             
             let accion = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             
@@ -40,7 +42,7 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
             
             present(alerta, animated: true, completion: nil)
         }
-            
+        //Si selecciono al menos un tema
         else {
             //get the questions of the selected themes
             db.collection("preguntas").whereField("tema", in: temasSeleccionados).getDocuments{(snapshot, error) in
