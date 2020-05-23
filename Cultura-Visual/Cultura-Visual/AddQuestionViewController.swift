@@ -18,19 +18,64 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate{
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var lbRespuesta: UILabel!
     
     
     var questionPlaceHolder = "Escriba aquí su pregunta"
     var answerPlaceHolder = "Escriba aquí la respuesta"
     //Array of possible images for the four answers
-    var imageAnswers = [UIImage(), UIImage(), UIImage(), UIImage()]
+    var imageAnswers: [UIImage] = []
     //Array of possible texts for the four answers
     var textAnswers = [String(), String(), String(), String()]
     //Current index of answer from 0 to 3
     var currentAnswer = 0
+    let placeHolderImage = UIImage(systemName: "photo.on.rectangle")
     
     @IBAction func indexAnswerChanged(_ sender: UISegmentedControl) {
         changeTextImage(index: segmentedControl.selectedSegmentIndex)
+    }
+    
+    @IBAction func leftArrowTap(_ sender: UIButton) {
+        moveAnswerPos(delta: -1)
+    }
+    
+    @IBAction func rightArrowTap(_ sender: UIButton) {
+        moveAnswerPos(delta: 1)
+    }
+    
+    //Delta should always be -1(left) or 1(right)
+    func moveAnswerPos(delta: Int){
+        let newIndex = delta + currentAnswer
+        //We just have two answers
+        if(newIndex >= 0 && newIndex <= 3){
+            //Save the data of the current answer
+            saveCurrentInfo()
+            //Update the reference variable
+            currentAnswer = newIndex
+            
+            //Update the info for the user
+            lbRespuesta.text = "Respuesta " + String(currentAnswer + 1)
+            ivRespuesta.image = imageAnswers[currentAnswer]
+            tvRespuesta.text = textAnswers[currentAnswer]
+            
+            //Update the segmentedControl, remember that just one (text or image) has content, and there's a placeholder image
+            if(areImagesEqual(image1: placeHolderImage!, isEqualTo: ivRespuesta.image!)){
+                segmentedControl.selectedSegmentIndex = 0
+                //hide the image
+                changeTextImage(index: 0)
+            }
+            else{
+                segmentedControl.selectedSegmentIndex = 1
+                //hide the text
+                changeTextImage(index: 1)
+            }
+        }
+    }
+    
+    //Saves info of current question
+    func saveCurrentInfo() {
+        textAnswers[currentAnswer] = tvRespuesta.text
+        imageAnswers[currentAnswer] = ivRespuesta.image ?? UIImage()
     }
     
     func changeTextImage(index: Int){
@@ -43,8 +88,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate{
             ivRespuesta.isHidden = true
             ivRespuesta.isUserInteractionEnabled = false
             //Erase whatever could be inside the image for current answer
-            imageAnswers[currentAnswer] = UIImage()
-            ivRespuesta.image = UIImage(systemName: "photo.on.rectangle")
+            imageAnswers[currentAnswer] = placeHolderImage!
+            ivRespuesta.image = placeHolderImage
         //If it is an image
         case 1:
             //Show the image, hide the text view
@@ -56,15 +101,23 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate{
             textAnswers[currentAnswer] = String()
             //Needed to stop editing the text view
             tvRespuesta.resignFirstResponder()
-            putPlaceHolder(placeHolder: answerPlaceHolder)
+            //putPlaceHolder(placeHolder: answerPlaceHolder)
         default:
             break
         }
     }
     
     
+func areImagesEqual(image1: UIImage, isEqualTo image2: UIImage) -> Bool {
+    let data1: NSData = image1.pngData()! as NSData
+    let data2: NSData = image2.pngData()! as NSData
+    return data1.isEqual(data2)
+}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Initialize variables
+        imageAnswers = [placeHolderImage!, placeHolderImage!, placeHolderImage!, placeHolderImage!]
         //The scroll view should cover all the addView
         scrollView.contentSize = addView.frame.size
         //We need a delegate to edit text views
@@ -74,17 +127,17 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate{
         putPlaceHolder(placeHolder: questionPlaceHolder)
         //Hide the image at the beginning
         changeTextImage(index: 0)
-        // Do any additional setup after loading the view.
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         //Empty any textview if it has placeholder
-        if textView.textColor == UIColor.lightGray{
-            textView.text = ""
+        if textView.text == answerPlaceHolder || textView.text == questionPlaceHolder{
             textView.textColor = UIColor.black
+            textView.text = ""
         }
     }
     
+    /*
     func textViewDidEndEditing(_ textView: UITextView) {
         //Just place placeholders if there's no text
         if textView.text.isEmpty{
@@ -100,7 +153,7 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate{
             //Put the text gray for any textview
             textView.textColor = UIColor.lightGray
         }
-    }
+    }*/
     
     func putPlaceHolder(placeHolder : String){
         if placeHolder == questionPlaceHolder{
