@@ -19,6 +19,7 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     @IBOutlet weak var addView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var lbRespuesta: UILabel!
+    @IBOutlet weak var tfRespCorrecta: UITextField!
     
     var questionPlaceHolder = "Escriba aquí su pregunta"
     var answerPlaceHolder = "Escriba aquí la respuesta"
@@ -33,6 +34,10 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     var lastImage = 0
     //Data for the picker view
     let pickerData = Cuestionario.themes
+    //To check if the question image was inserted
+    var hasQuestionImage = false
+    //Just the first time the text of the answer textview will be removed(placeholder)
+    var removeTextAnswer = true
     
     //MARK: PickerView methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -74,11 +79,13 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         //If it was the question image
         if lastImage == 0{
             ivQuestion.image = foto
-            
+            hasQuestionImage = true
         }
         //If it was the question
         else if lastImage == 1{
             ivRespuesta.image = foto
+            //Add the photo to the array
+            imageAnswers[currentAnswer] = foto
         }
         //dismiss the picker controller
         dismiss(animated: true, completion: nil)
@@ -91,9 +98,101 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     
     //Button that must be clicked to add image
     @IBAction func addImage(_ sender: UIButton) {
+        //Counter of answers with image
+        var imageAnsCount = 0
+        //Counter of answers with text
+        var textAnsCount = 0
+        var errorMessage = "Falta: "
+        var thereIsError = false
+        
+        //Variables to store question info
+        var indexRespCorrecta = 0
+        var preguntaImagenUrl = ""
+        var preguntaTexto = ""
+        var tema = ""
+        var respSonTexto = [true, true, true, true]
+        var respuestas = ["", "", "", ""]
+        var hasImageQuestion = false
+        
+        //Save info of current question (text could be possibly not saved)
+        saveCurrentInfo()
+        
+        //check for a question image
+        //For a certain reason it's not enough with areImagesEqual
+        if(!areImagesEqual(image1: ivQuestion.image!, isEqualTo: placeHolderImage!) && hasQuestionImage){
+            hasImageQuestion = true
+        }
+        
+        //check for a question text
+        if(tvPregunta.text != nil && (tvPregunta.text != questionPlaceHolder && Utilities.cleanString(s: tvPregunta.text) != "")){
+            preguntaTexto = tvPregunta.text
+        }
+        
+        //There is an error if no question image and/or text are given
+        if(preguntaTexto == "" && !hasImageQuestion){
+            thereIsError = true
+            errorMessage += "pregunta imagen/texto, "
+        }
+        
+        //check that there's data for each question
+        //count the imaged-answers
+        for i in 0...imageAnswers.count-1{
+            let image = imageAnswers[i]
+            if(!areImagesEqual(image1: image, isEqualTo: placeHolderImage!)){
+                imageAnsCount += 1
+                respSonTexto[i] = false
+            }
+        }
+        
+        //count the textual answers
+        for i in 0...textAnswers.count-1{
+            let text = textAnswers[i]
+            if (text != "" && text != answerPlaceHolder){
+                textAnsCount += 1
+                respuestas[i] = text
+            }
+        }
+        
+        if(textAnsCount + imageAnsCount < 4){
+            thereIsError = true
+            errorMessage += String(4 - textAnsCount - imageAnsCount) + " respuestas, "
+        }
+        
+        //Check if an index for the right answer is right and given
+        if let givenAns = tfRespCorrecta.text{
+            if let givenIndex = Int(givenAns){
+                if givenIndex >= 1 && givenIndex <= 4{
+                    //Count from 0
+                    indexRespCorrecta = givenIndex - 1
+                }
+                else {
+                    thereIsError = true
+                    errorMessage += "índice numérico de resp. entre 1 y 4, "
+                }
+
+            }
+            else {
+                thereIsError = true
+                errorMessage += "índice numérico de resp. correcta, "
+            }
+        }
+        else {
+            thereIsError = true
+            errorMessage += "resp. correcta, "
+        }
+        
+        //If there's no error submit the question to database
+        if(!thereIsError){
+            
+        }
+        //Else display the error message
+        else {
+            //Delete the last ", " part
+            errorMessage = (errorMessage as NSString).substring(to: errorMessage.count - 2)
+            showAlertMessage(title: "Datos faltantes", message: errorMessage)
+        }
+    
     }
-    
-    
     
     @IBAction func indexAnswerChanged(_ sender: UISegmentedControl) {
         changeTextImage(index: segmentedControl.selectedSegmentIndex)
@@ -163,6 +262,7 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
             tvRespuesta.isUserInteractionEnabled = false
             //Erase whatever could be inside the text for current answer
             textAnswers[currentAnswer] = String()
+            tvRespuesta.text = ""
             //Needed to stop editing the text view
             tvRespuesta.resignFirstResponder()
             //putPlaceHolder(placeHolder: answerPlaceHolder)
@@ -197,11 +297,25 @@ func areImagesEqual(image1: UIImage, isEqualTo image2: UIImage) -> Bool {
         changeTextImage(index: 0)
     }
     
+    //Function to show an error message
+    func showAlertMessage(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
-        //Empty any textview if it has placeholder
-        if textView.text == answerPlaceHolder || textView.text == questionPlaceHolder{
+        if textView.text == questionPlaceHolder{
             textView.textColor = UIColor.black
             textView.text = ""
+        }
+        //Empty any textview if it has placeholder
+        else if removeTextAnswer{
+            textView.textColor = UIColor.black
+            textView.text = ""
+            textAnswers[currentAnswer] = ""
+            //Don't remove text after removing placeholder
+            removeTextAnswer = false
         }
     }
     

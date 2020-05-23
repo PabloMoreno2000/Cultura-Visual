@@ -944,7 +944,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiX-bo-2HC">
-                                        <rect key="frame" x="-8" y="8" width="375" height="1019"/>
+                                        <rect key="frame" x="0.0" y="-9" width="375" height="1019"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selecciona un tema:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dR-la-9aE">
@@ -1046,13 +1046,26 @@
                                                 </connections>
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ydh-i8-Q9X">
-                                                <rect key="frame" x="127" y="851" width="121" height="30"/>
+                                                <rect key="frame" x="127" y="933" width="121" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Agregar pregunta"/>
                                                 <connections>
                                                     <action selector="addImage:" destination="1Ph-nZ-yYG" eventType="touchUpInside" id="NVE-DL-Ego"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¿Cuál es la respuesta correcta?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Z1-ne-eMI">
+                                                <rect key="frame" x="75" y="810" width="240" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1-4" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhp-Pa-Bqh">
+                                                <rect key="frame" x="152" y="839" width="70" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
@@ -1072,6 +1085,7 @@
                         <outlet property="lbRespuesta" destination="dFt-J6-Ywn" id="VUH-Pa-BHS"/>
                         <outlet property="scrollView" destination="RFW-yF-GwP" id="XF7-Ub-0Sm"/>
                         <outlet property="segmentedControl" destination="nI4-40-6ay" id="lZI-5C-dsc"/>
+                        <outlet property="tfRespCorrecta" destination="nhp-Pa-Bqh" id="Rw6-fA-USn"/>
                         <outlet property="themePicker" destination="dxL-Ur-6dY" id="XWH-3V-Et8"/>
                         <outlet property="tvPregunta" destination="Ro3-yq-NZL" id="YYa-6J-WZ7"/>
                         <outlet property="tvRespuesta" destination="tFx-g3-mYt" id="I1N-43-DHT"/>
