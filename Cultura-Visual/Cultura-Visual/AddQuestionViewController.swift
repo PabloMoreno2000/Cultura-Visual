@@ -8,13 +8,14 @@
 
 import UIKit
 
-class AddQuestionViewController: UIViewController, UITextViewDelegate{
+class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     
     @IBOutlet weak var tvPregunta: UITextView!
     @IBOutlet weak var themePicker: UIPickerView!
     @IBOutlet weak var tvRespuesta: UITextView!
     @IBOutlet weak var ivRespuesta: UIImageView!
+    @IBOutlet weak var ivQuestion: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var addView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -30,6 +31,50 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate{
     //Current index of answer from 0 to 3
     var currentAnswer = 0
     let placeHolderImage = UIImage(systemName: "photo.on.rectangle")
+    //0 if last image clicked was question, 1 if answer
+    var lastImage = 0
+    
+    // MARK: Camera methods
+    @IBAction func tapQuestionImage(_ sender: UITapGestureRecognizer) {
+        lastImage = 0
+        addPhoto()
+    }
+    
+    @IBAction func tapAnswerImage(_ sender: UITapGestureRecognizer) {
+        lastImage = 1
+        addPhoto()
+    }
+    
+    func addPhoto(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
+    //Si el usuario eligió una foto
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let foto = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        
+        //If it was the question image
+        if lastImage == 0{
+            ivQuestion.image = foto
+            
+        }
+        //If it was the question
+        else if lastImage == 1{
+            ivRespuesta.image = foto
+        }
+        //dismiss the picker controller
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //If the user cancels the image selection just dismiss picker controller
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func indexAnswerChanged(_ sender: UISegmentedControl) {
         changeTextImage(index: segmentedControl.selectedSegmentIndex)
