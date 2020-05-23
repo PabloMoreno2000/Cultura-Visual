@@ -116,5 +116,84 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "78998065-DD4D-473F-BC03-7212E28D3A1D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cultura-Visual/AddQuestionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "AddQuestionViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "78998065-DD4D-473F-BC03-7212E28D3A1D - 5a8ded666f253c66"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cultura_Visual.AddQuestionViewController.pickerData.getter : Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "Cultura-Visual"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user168627/Documents/Cultura-Visual/Cultura-Visual/Cultura-Visual/AddQuestionViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "78998065-DD4D-473F-BC03-7212E28D3A1D - bd680361d3417f7b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cultura_Visual.AddQuestionViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Cultura_Visual.AddQuestionViewController"
+                  moduleName = "Cultura-Visual"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user168627/Documents/Cultura-Visual/Cultura-Visual/Cultura-Visual/AddQuestionViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "2565">
+               </Location>
+               <Location
+                  uuid = "78998065-DD4D-473F-BC03-7212E28D3A1D - 73c4b04c6f7df36c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cultura_Visual.AddQuestionViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Cultura_Visual.AddQuestionViewController&gt;"
+                  moduleName = "Cultura-Visual"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user168627/Documents/Cultura-Visual/Cultura-Visual/Cultura-Visual/AddQuestionViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "2500">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D34973B0-FAE4-4E10-A370-E4D164546A31"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cultura-Visual/AddQuestionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "pickerView(_:numberOfRowsInComponent:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

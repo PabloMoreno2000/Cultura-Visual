@@ -8,8 +8,7 @@
 
 import UIKit
 
-class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-
+class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
     @IBOutlet weak var tvPregunta: UITextView!
     @IBOutlet weak var themePicker: UIPickerView!
@@ -20,7 +19,6 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     @IBOutlet weak var addView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var lbRespuesta: UILabel!
-    
     
     var questionPlaceHolder = "Escriba aquí su pregunta"
     var answerPlaceHolder = "Escriba aquí la respuesta"
@@ -33,6 +31,22 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     let placeHolderImage = UIImage(systemName: "photo.on.rectangle")
     //0 if last image clicked was question, 1 if answer
     var lastImage = 0
+    //Data for the picker view
+    let pickerData = Cuestionario.themes
+    
+    //MARK: PickerView methods
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
     
     // MARK: Camera methods
     @IBAction func tapQuestionImage(_ sender: UITapGestureRecognizer) {
@@ -74,6 +88,11 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    //Button that must be clicked to add image
+    @IBAction func addImage(_ sender: UIButton) {
+    }
+    
     
     
     @IBAction func indexAnswerChanged(_ sender: UISegmentedControl) {
@@ -159,10 +178,14 @@ func areImagesEqual(image1: UIImage, isEqualTo image2: UIImage) -> Bool {
     return data1.isEqual(data2)
 }
     
+    //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize variables
         imageAnswers = [placeHolderImage!, placeHolderImage!, placeHolderImage!, placeHolderImage!]
+        //Connecting data of picker view
+        self.themePicker.delegate = self
+        self.themePicker.dataSource = self
         //The scroll view should cover all the addView
         scrollView.contentSize = addView.frame.size
         //We need a delegate to edit text views
