@@ -83,34 +83,30 @@ class QuestionViewController: UIViewController {
     
     //MARK: - Respuestas
 
-    // MARK: - Aqui se agregaria un delay para las animaciones de colores de respuestas
+    // MARK: - SE AGREGO un delay, con un default de 2 segundos. Si se desea modificar *(ya sea que tarde mucho o algo) cambia el AfterDelay del metodo perform
     
     @IBAction func clickFirst(_ sender: UIButton) {
         let resp = 0
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
-        //agregar un tipo de delay
-        loadNextQuestion()
+        perform(#selector(self.loadNextQuestion), with: nil, afterDelay: 2)
     }
     
     @IBAction func clickSecond(_ sender: UIButton) {
         let resp = 1
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
-        //agregar un tipo de delay
-        loadNextQuestion()
+        perform(#selector(self.loadNextQuestion), with: nil, afterDelay: 2)
     }
     
     @IBAction func clickThird(_ sender: UIButton) {
         let resp = 2
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
-        //agregar un tipo de delay
-        loadNextQuestion()
+        perform(#selector(self.loadNextQuestion), with: nil, afterDelay: 2)
     }
     
     @IBAction func clickFourth(_ sender: UIButton) {
         let resp = 3
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
-        //agregar un tipo de delay
-        loadNextQuestion()
+        perform(#selector(self.loadNextQuestion), with: nil, afterDelay: 2)
     }
     
     override func viewDidLoad() {
@@ -205,7 +201,7 @@ class QuestionViewController: UIViewController {
         self.view.window?.makeKeyAndVisible()
     }
     
-    func loadNextQuestion(){
+    @objc func loadNextQuestion(){
         
         //If the previus answered question was not the last one
         if(cuestionario.preguntaActual != size - 1){
