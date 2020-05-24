@@ -39,6 +39,7 @@
 		AB5B4D552476DBFF00D6BB3A /* StorageLoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B4D532476DBFF00D6BB3A /* StorageLoc.swift */; };
 		AB5B4D562476DBFF00D6BB3A /* StorageLoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B4D532476DBFF00D6BB3A /* StorageLoc.swift */; };
 		AB853821244FBB9900D21173 /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB853820244FBB9900D21173 /* NavController.swift */; };
+		AB935C14247A398C0030E05A /* estadisticasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB935C13247A398C0030E05A /* estadisticasViewController.swift */; };
 		ABAD56862467AC280040AD03 /* editaPerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD56852467AC280040AD03 /* editaPerfilViewController.swift */; };
 		ABAD56882467B05F0040AD03 /* contrasenaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAD56872467B05F0040AD03 /* contrasenaViewController.swift */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		97A3D260D56F8B5480B3A90F /* Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cultura-Visual-Cultura-VisualUITests/Pods-Cultura-Visual-Cultura-VisualUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB5B4D532476DBFF00D6BB3A /* StorageLoc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageLoc.swift; sourceTree = "<group>"; };
 		AB853820244FBB9900D21173 /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
+		AB935C13247A398C0030E05A /* estadisticasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = estadisticasViewController.swift; sourceTree = "<group>"; };
 		ABAD56852467AC280040AD03 /* editaPerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editaPerfilViewController.swift; sourceTree = "<group>"; };
 		ABAD56872467B05F0040AD03 /* contrasenaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contrasenaViewController.swift; sourceTree = "<group>"; };
 		BAE051309DA74DEC17B3A101 /* Pods_Cultura_Visual_Cultura_VisualUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cultura_Visual_Cultura_VisualUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,7 @@
 				494281402443C65F00419726 /* ThemeTableViewCell.swift */,
 				89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
+				AB935C13247A398C0030E05A /* estadisticasViewController.swift */,
 				499D722524788FA60085F8AF /* AddQuestionViewController.swift */,
 				49EE91342473535E00B1A27E /* QuestionTableViewCell.swift */,
 				49EE9136247353FA00B1A27E /* QuestionTableViewController.swift */,
@@ -487,6 +490,7 @@
 				4975AADC243E591600BF9C1C /* AppDelegate.swift in Sources */,
 				49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */,
 				4933BAA22455065F00DB5147 /* ResultViewController.swift in Sources */,
+				AB935C14247A398C0030E05A /* estadisticasViewController.swift in Sources */,
 				499D722624788FA60085F8AF /* AddQuestionViewController.swift in Sources */,
 				494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */,
 				494281472443D43C00419726 /* Cuestionario.swift in Sources */,
