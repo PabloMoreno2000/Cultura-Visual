@@ -13,6 +13,8 @@ class editaPerfilViewController: UIViewController {
 
     @IBOutlet weak var tfNombre: UITextField!
     @IBOutlet weak var tfApellido: UITextField!
+    var nombreCurrent: String!
+    var apellidoCurrent: String!
 
     
     
@@ -48,25 +50,41 @@ class editaPerfilViewController: UIViewController {
     }
     
     @IBAction func btEditar(_ sender: UIButton) {
-        let user = Auth.auth().currentUser?.uid
-        let db = Firestore.firestore()
-        
-        db.collection("usuarios").whereField("uid", isEqualTo: user!).getDocuments{(snapshot, error) in
-        
-            if error == nil && snapshot != nil {
-                for document in snapshot!.documents {
-                    let documentID = document.documentID
-                    
-                    //updates data of the document
-                    db.collection("usuarios").document(documentID).setData(["nombre": self.tfNombre.text, "apellido": self.tfApellido.text], merge: true) { (error) in
+        if (nombreCurrent != tfNombre.text || apellidoCurrent != tfApellido.text){
+            let user = Auth.auth().currentUser?.uid
+            let db = Firestore.firestore()
+            
+            db.collection("usuarios").whereField("uid", isEqualTo: user!).getDocuments{(snapshot, error) in
+            
+                if error == nil && snapshot != nil {
+                    for document in snapshot!.documents {
+                        let documentID = document.documentID
                         
-                        if error != nil {
+                        //updates data of the document
+                        db.collection("usuarios").document(documentID).setData(["nombre": self.tfNombre.text, "apellido": self.tfApellido.text], merge: true) { (error) in
                             
-                            self.showError(title: "Error", message: "El nombre no pudo actualizarse.")
-                        }
-                    }                }
+                            if error != nil {
+                                
+                                self.showError(title: "Error", message: "El nombre no pudo actualizarse.")
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Hecho!", message: "Se han guardado los cambios", preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
+                                self.nombreCurrent = self.tfNombre.text
+                                self.apellidoCurrent = self.tfApellido.text
+                            }
+                        }                }
+                }
             }
+
         }
+        else{
+            let alert = UIAlertController(title: "Sin cambios", message: "No hay cambios que registrar", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     @IBAction func btContra(_ sender: UIButton) {
     }
@@ -85,6 +103,8 @@ class editaPerfilViewController: UIViewController {
                     let apellido = documentData["apellido"] as? String ?? ""
                     self.tfNombre.text = nombre
                     self.tfApellido.text = apellido
+                    self.nombreCurrent = nombre
+                    self.apellidoCurrent = apellido
                 }
             }
         }
