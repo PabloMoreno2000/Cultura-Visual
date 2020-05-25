@@ -68,12 +68,21 @@ class QuestionViewController: UIViewController {
         incorrectCounters = [0,0,0,0]
         
         let finish = defaults.bool(forKey: "terminoCuestionario")
-                   
+        
+        //Si es un cuestionario nuevo
         if finish {
             loadNextQuestion(n: 1)
         }
+        //Si esta continuando con un cuestionario lo empezara en la pregunta siguiente
         else {
+            
             let nUltimaPregunta = defaults.integer(forKey: "numPregunta")
+            let respConts = defaults.value(forKey: "respuestasContestadas") as! [Int]
+            
+            for i in 0...nUltimaPregunta-1 {
+                gradeQuestion(indexRespDada: respConts[i], index: i)
+            } 
+            
             loadNextQuestion(n: nUltimaPregunta+1)
         }
     }
@@ -177,6 +186,32 @@ class QuestionViewController: UIViewController {
         
     }
     
+    //MARK: - Continuar cuestionario
+    
+    func gradeQuestion(indexRespDada: Int, index: Int) {
+            
+        let pregunta = cuestionario.preguntas[index]
+        respDadas.append(indexRespDada) //se guarda la respuesta que dio para la persistencia
+            
+        //first find the theme
+        for i in 0...Cuestionario.themes.count - 1 {
+            if pregunta.tema == Cuestionario.themes[i] {
+                //Now check if the answer is right or wrong
+                if indexRespDada == pregunta.indexRespCorrecta {
+                    //If it is right
+                    correctCounters[i] += 1
+                    debugPrint("Pregunta " + String(cuestionario.preguntaActual) + " correcta")
+                }
+                else {
+                    //If it is wrong
+                    incorrectCounters[i] += 1
+                    debugPrint("Pregunta " + String(cuestionario.preguntaActual) + " incorrecta")
+                }
+            }
+        }
+    }
+    
+    
     //MARK: - Respuestas
 
     /* Aqui se agregaria un delay para las animaciones de colores de respuestas*/
@@ -211,8 +246,6 @@ class QuestionViewController: UIViewController {
     
     func gradeCurrentQuestion(indexRespDada: Int) -> Int {
         
-        print("Actual " + String(cuestionario.preguntaActual))
-        print("Tamaño " + String(cuestionario.preguntas.count))
         let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]
         respDadas.append(indexRespDada) //se guarda la respuesta que dio para la persistencia
         
