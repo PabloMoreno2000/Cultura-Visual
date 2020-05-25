@@ -303,7 +303,7 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         //Else currentIndex is less than 0(images are uploaded), create the colection on firestore
         else {
             let db = Firestore.firestore()
-            db.collection("preguntas").addDocument(data: ["indexRespCorrecta": respCorrecta, "preguntaImagenUrl": preguntaImagenUrl, "preguntaTexto": preguntaTexto, "respSonTexto": hasText, "respuesta": respuestas, "tema":theme]) {(error) in
+            db.collection("preguntas").addDocument(data: ["indexRespCorrecta": respCorrecta, "preguntaImagenUrl": preguntaImagenUrl, "preguntaTexto": preguntaTexto, "respSonTexto": hasText, "respuestas": respuestas, "tema":theme]) {(error) in
                 //After uploading the info, if there is no error
                 if error == nil {
                     //Go to question-list screen
