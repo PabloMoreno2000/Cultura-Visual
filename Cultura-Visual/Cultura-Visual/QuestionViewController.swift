@@ -27,7 +27,7 @@ class QuestionViewController: UIViewController {
     //Variables para continuar un cuestionario sin finalizar
     let defaults = UserDefaults.standard
     var timeLeft: Int! = 0
-    var isFinish: Bool! = false
+    var isFinish: Bool! = true
     var respDadas: [Int] = []
     var ultimaPregunta: Int! = 0
     var temaSinTerminar: [String] = []

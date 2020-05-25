@@ -17,9 +17,10 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.dataSource = self
         tableView.delegate = self
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "terminoCuestionario")
         
     }
     
