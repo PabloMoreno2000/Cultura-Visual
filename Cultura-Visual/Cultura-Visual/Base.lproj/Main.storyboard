@@ -919,8 +919,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMA-2N-m5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="194" y="1561"/>
-
+            <point key="canvasLocation" x="1324" y="1576"/>
         </scene>
         <!--Contrasena View Controller-->
         <scene sceneID="sSP-EW-jTt">
