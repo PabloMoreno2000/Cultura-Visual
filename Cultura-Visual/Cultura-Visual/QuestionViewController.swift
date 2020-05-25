@@ -379,6 +379,8 @@ class QuestionViewController: UIViewController {
                 //if it is text just add the text
                 if(isText) {
                     ansButtons[i].setTitle(pregunta.respuestas[i], for: .normal)
+                    //And clear the image for an image could have been there
+                    self.ansButtons[i].setBackgroundImage(UIImage(), for: .normal)
                 }
                 //Else, load the image
                 else {
