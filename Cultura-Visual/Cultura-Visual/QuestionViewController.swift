@@ -385,9 +385,9 @@ class QuestionViewController: UIViewController {
                     //Create a reference to the image
                     let answerPathReference = storage.reference(withPath: pregunta.respuestas[i])
                     //Get the data of the reference
-                    answerPathReference.getData(maxSize: 1 * 1024 * 1024, completion: {data, error in
+                    answerPathReference.getData(maxSize: 1 * 10000 * 10000, completion: {data, error in
                         if error != nil {
-                            print("Error downloading photo of answer")
+                            print("Error downloading photo of answer: " + answerPathReference.fullPath)
                         }
                         else {
                             //Get the data and form a UIImage
