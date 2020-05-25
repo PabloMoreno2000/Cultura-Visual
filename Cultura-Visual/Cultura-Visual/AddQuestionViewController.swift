@@ -194,7 +194,10 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
                 let data = ivQuestion.image?.jpegData(compressionQuality: 0.4)
 
                 // Create a reference to the file you want to upload
-                let imageRef = storageRef.child("images/test.jpg")
+                //Just to generate a unique string
+                let time = String(Int(100000*NSDate().timeIntervalSince1970))
+                let imagePath = tema + "/" + time + ".jpg"
+                let imageRef = storageRef.child(imagePath)
 
                 // Upload the file to the path "images/rivers.jpg"
                 let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
@@ -214,8 +217,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
                       // Uh-oh, an error occurred!
                       return
                     }
-                    //save the url
-                    preguntaImagenUrl = downloadURL.absoluteString
+                    //save the url. I could use downloadURL if I wanted an https link
+                    preguntaImagenUrl = imagePath
                     
                     //upload the question after getting the question image
                     self.uploadQuestion(hasText: respSonTexto, currentIndex: respSonTexto.count - 1, theme: tema, respuestas: respuestas, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: indexRespCorrecta, preguntaTexto: preguntaTexto)
@@ -256,7 +259,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
             // Create a reference to the file you want to upload
             //Just to generate a unique string
             let time = String(Int(100000*NSDate().timeIntervalSince1970))
-            let imageRef = storageRef.child(theme + "/" + time + ".jpg")
+            let imagePath = theme + "/" + time + ".jpg"
+            let imageRef = storageRef.child(imagePath)
 
             // Upload the file to the path "images/rivers.jpg"
             let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
@@ -275,8 +279,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
                 self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la respuesta " + String(currentIndex + 1) + ". Intente más tarde")                  // Uh-oh, an error occurred!
                   return
                 }
-                //save the url
-                newResp[currentIndex] = downloadURL.absoluteString
+                //save the url, I could use downloadURL.absoluteString if I needed a https link
+                newResp[currentIndex] = imagePath
                 //go to the next recursive call
                 self.uploadQuestion(hasText: hasText, currentIndex: currentIndex - 1, theme: theme, respuestas: newResp, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: respCorrecta, preguntaTexto: preguntaTexto)
               }
@@ -413,37 +417,19 @@ func areImagesEqual(image1: UIImage, isEqualTo image2: UIImage) -> Bool {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == questionPlaceHolder{
-            textView.textColor = UIColor.black
-            textView.text = ""
+            tvPregunta.textColor = UIColor.black
+            tvPregunta.text = ""
         }
         //Empty any textview if it has placeholder
         else if removeTextAnswer{
-            textView.textColor = UIColor.black
-            textView.text = ""
+            tvRespuesta.textColor = UIColor.black
+            tvRespuesta.text = ""
             textAnswers[currentAnswer] = ""
             //Don't remove text after removing placeholder
             removeTextAnswer = false
         }
     }
-    
-    /*
-    func textViewDidEndEditing(_ textView: UITextView) {
-        //Just place placeholders if there's no text
-        if textView.text.isEmpty{
-            //If it is the text view of question text
-            if textView == tvPregunta{
-                textView.text = questionPlaceHolder
-            }
-            //if it is the text of the answer
-            else {
-                textView.text = answerPlaceHolder
-            }
-            
-            //Put the text gray for any textview
-            textView.textColor = UIColor.lightGray
-        }
-    }*/
-    
+
     func putPlaceHolder(placeHolder : String){
         if placeHolder == questionPlaceHolder{
             tvPregunta.text = questionPlaceHolder
@@ -455,15 +441,4 @@ func areImagesEqual(image1: UIImage, isEqualTo image2: UIImage) -> Bool {
             tvRespuesta.textColor = UIColor.lightGray
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
