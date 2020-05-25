@@ -306,6 +306,22 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
             db.collection("preguntas").addDocument(data: ["indexRespCorrecta": respCorrecta, "preguntaImagenUrl": preguntaImagenUrl, "preguntaTexto": preguntaTexto, "respSonTexto": hasText, "respuestas": respuestas, "tema":theme]) {(error) in
                 //After uploading the info, if there is no error
                 if error == nil {
+                    //Create a Pregunta object
+                    let pregunta = Pregunta(tema: theme, preguntaTexto: preguntaTexto, preguntaImagen: preguntaImagenUrl, respuestas: respuestas, respSonTexto: hasText, indexRespCorrecta: respCorrecta)
+                    //Get a reference of the previous view controller
+                    let rootViewController = self.navigationController?.viewControllers.first as! QuestionTableViewController
+                    //Add the question to the view controller
+                    rootViewController.questions.append(pregunta)
+                    //Add the image if the question has one
+                    if(!self.areImagesEqual(image1: self.ivQuestion.image!, isEqualTo: self.placeHolderImage!) && self.hasQuestionImage){
+                        rootViewController.pregImg[pregunta] = self.ivQuestion.image
+                    }
+                    else {
+                        rootViewController.pregImg[pregunta] = UIImage()
+                    }
+                    //Refresh the table view before getting back to it
+                    rootViewController.tableView.reloadData()
+                    
                     //Go to question-list screen
                     self.navigationController?.popViewController(animated: true)
                 }
