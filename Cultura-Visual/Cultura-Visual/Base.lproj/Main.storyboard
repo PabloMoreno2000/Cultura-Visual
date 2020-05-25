@@ -1080,6 +1080,7 @@
                     <navigationItem key="navigationItem" id="H3C-jX-8yH"/>
                     <connections>
                         <outlet property="addView" destination="xiX-bo-2HC" id="xL8-ah-eB3"/>
+                        <outlet property="bAddQuestion" destination="Ydh-i8-Q9X" id="kj3-JP-y66"/>
                         <outlet property="ivQuestion" destination="yxW-7J-hrc" id="Lvc-NU-kDJ"/>
                         <outlet property="ivRespuesta" destination="BhK-Fo-X0O" id="zGL-dj-aeA"/>
                         <outlet property="lbRespuesta" destination="dFt-J6-Ywn" id="VUH-Pa-BHS"/>

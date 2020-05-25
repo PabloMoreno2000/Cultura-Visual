@@ -21,6 +21,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var lbRespuesta: UILabel!
     @IBOutlet weak var tfRespCorrecta: UITextField!
+    @IBOutlet weak var bAddQuestion: UIButton!
+    
     
     var questionPlaceHolder = "Escriba aquí su pregunta"
     var answerPlaceHolder = "Escriba aquí la respuesta"
@@ -102,6 +104,9 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     //MARK: Check & upload question
     //Button that must be clicked to add question (not just an image)
         @IBAction func addImage(_ sender: UIButton) {
+        //Deactive user interaction with this button
+        bAddQuestion.isUserInteractionEnabled = false
+            
         //Counter of answers with image
         var imageAnsCount = 0
         //Counter of answers with text
@@ -204,6 +209,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
                   guard let metadata = metadata else {
                     //Send error message to user
                     self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la pregunta. Intente más tarde")
+                    //Allow the user to make other try
+                    self.bAddQuestion.isUserInteractionEnabled = true
                     // Uh-oh, an error occurred!
                     return
                   }
@@ -214,6 +221,7 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
                     guard let downloadURL = url else {
                         //Send error message to user
                         self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la pregunta. Intente más tarde")
+                        self.bAddQuestion.isUserInteractionEnabled = true
                       // Uh-oh, an error occurred!
                       return
                     }
@@ -234,11 +242,12 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         }
         //Else display the error message
         else {
+            //Allow user interaction with add question button
+            bAddQuestion.isUserInteractionEnabled = true
             //Delete the last ", " part
             errorMessage = (errorMessage as NSString).substring(to: errorMessage.count - 2)
             showAlertMessage(title: "Datos faltantes", message: errorMessage)
         }
-        
     }
     
     //Recursive function that uploads the images of imageAnswer given a true/false array of the same length
@@ -248,11 +257,11 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     func uploadQuestion(hasText: [Bool], currentIndex: Int, theme: String, respuestas:[String], preguntaImagenUrl: String, respCorrecta: Int, preguntaTexto: String){
         var newResp = respuestas
         //If current index hasn't an image, check the rest
-        if currentIndex > 0 && hasText[currentIndex] {
+        if currentIndex >= 0 && hasText[currentIndex] {
             uploadQuestion(hasText: hasText, currentIndex: currentIndex - 1, theme: theme, respuestas: newResp, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: respCorrecta, preguntaTexto: preguntaTexto)
         }
         //If current index has image
-        else if currentIndex > 0 && !hasText[currentIndex] {
+        else if currentIndex >= 0 && !hasText[currentIndex] {
             // Data in memory
             let data = imageAnswers[currentIndex].jpegData(compressionQuality: 0.4)
 
@@ -267,6 +276,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
               guard let metadata = metadata else {
                 //Send error message to user
                 self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la respuesta " + String(currentIndex + 1) + ". Intente más tarde")
+                //Allow user interaction again
+                self.bAddQuestion.isUserInteractionEnabled = true
                 // Uh-oh, an error occurred!
                 return
               }
@@ -276,7 +287,10 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
               imageRef.downloadURL { (url, error) in
                 guard let downloadURL = url else {
                     //Send error message to user
-                self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la respuesta " + String(currentIndex + 1) + ". Intente más tarde")                  // Uh-oh, an error occurred!
+                self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la respuesta " + String(currentIndex + 1) + ". Intente más tarde")
+                //Allow user interaction again
+                self.bAddQuestion.isUserInteractionEnabled = true
+                // Uh-oh, an error occurred!
                   return
                 }
                 //save the url, I could use downloadURL.absoluteString if I needed a https link
@@ -299,6 +313,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
                 else {
                     //report to the user
                     self.showAlertMessage(title: "Error", message: "No se pudo crear la pregunta. Intente más tarde.")
+                    //Allow user interaction again
+                    self.bAddQuestion.isUserInteractionEnabled = true
                 }
             }
         }
