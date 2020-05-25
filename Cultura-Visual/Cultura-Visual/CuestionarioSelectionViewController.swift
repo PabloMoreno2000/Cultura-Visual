@@ -46,22 +46,20 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
         else {
             
             let defaults = UserDefaults.standard
-            let time = defaults.integer(forKey: "time")
-            //si tiene un cuestionario sin terminar con el/los temas seleccionados
-            if time > 10 {
+            let finish = defaults.bool(forKey: "terminoCuestionario")
+            
+            //si tiene un cuestionario sin terminar no puede empezar otro
+            if !finish {
                 
-                let alerta = UIAlertController(title: "Aviso", message: "Tienes un cuestionario sin terminar con los temas seleccionados", preferredStyle: .alert)
+                let temasContinuar = defaults.value(forKey: "temasCuestionario") as! [String]
                 
-                let accionE =  UIAlertAction(title: "Continuar cuestionario", style: .default, handler: {(action) in
+                let alerta = UIAlertController(title: "Aviso", message: "Tienes un cuestionario sin terminar. Si empiezas un nuevo cuestionario se perderán los datos del pasado.", preferredStyle: .alert)
+                
+                let accionC =  UIAlertAction(title: "Continuar cuestionario", style: .default, handler: {(action) in
                     
-                   
-                })
-                let accionC = UIAlertAction(title: "Empezar de nuevo", style: .default, handler: {(action) in
-                    
-                    //get the questions of the selected themes
-                    self.db.collection("preguntas").whereField("tema", in: temasSeleccionados).getDocuments{(snapshot, error) in
+                    self.db.collection("preguntas").whereField("tema", in: temasContinuar).getDocuments{(snapshot, error) in
                         if error == nil && snapshot != nil {
-                            //Add each document fetched to the list
+                        //Add each document fetched to the list
                             for document in snapshot!.documents{
                                 let documentData = document.data()
                                 let tema = documentData["tema"] as! String
@@ -77,18 +75,68 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
                             let cuestionario = Cuestionario(tiempoRestante: self.segundosCuestionario, preguntas: questions, temas: temasSeleccionados)
                             //Guarda el cuestionario
                             Cuestionario.cuestionarioActual = cuestionario
-                            
+                                             
                             //Go to the questionaire view
                             let mainMenu = self.storyboard?.instantiateViewController(identifier: "QuestionNavController") as? QuestionNavigationController
                             self.view.window?.rootViewController = mainMenu
                             self.view.window?.makeKeyAndVisible()
                         }
                     }
-                    
                 })
                 
-                alerta.addAction(accionE)
+                let accionF =  UIAlertAction(title: "Empezar nuevo cuestionario", style: .default, handler: {(action) in
+                    
+                    //user default settearlos en cero
+                    let timeLeft: Int! = 0
+                    let isFinish: Bool! = true
+                    let ultimaPregunta: Int! = 0
+                    var temaSinTerminar = defaults.value(forKey: "temasCuestionario") as! [String]
+                    var respDadas = defaults.value(forKey: "respuestasContestadas") as! [Int]
+                               
+                    for i in 0...respDadas.count-1 {
+                        respDadas[i] = 0
+                    }
+                               
+                    for i in 0...temasContinuar.count-1 {
+                        temaSinTerminar[i] = ""
+                    }
+                               
+                    defaults.set(timeLeft, forKey: "time")
+                    defaults.set(isFinish, forKey: "terminoCuestionario")
+                    defaults.set(ultimaPregunta, forKey: "numPregunta")
+                    defaults.set(respDadas, forKey: "respuestasContestadas")
+                    defaults.set(temaSinTerminar, forKey: "temasCuestionario")
+                    
+                    //traer el cuestionario nuevo
+                    self.db.collection("preguntas").whereField("tema", in: temasSeleccionados).getDocuments{(snapshot, error) in
+                       if error == nil && snapshot != nil {
+                           //Add each document fetched to the list
+                           for document in snapshot!.documents{
+                               let documentData = document.data()
+                               let tema = documentData["tema"] as! String
+                               let preguntaTexto = documentData["preguntaTexto"] as? String ?? ""
+                               let preguntaImagen = documentData["preguntaImagenUrl"] as? String ?? ""
+                                let indexRespCorrecta = documentData["indexRespCorrecta"] as! Int
+                               let respSonTexto = documentData["respSonTexto"] as? [Bool] ?? defaultBoolArr
+                               let respuestas = documentData["respuestas"] as? [String] ?? defaultStringArr
+                               //Form question and add it
+                               questions.append(Pregunta(tema: tema, preguntaTexto: preguntaTexto, preguntaImagen: preguntaImagen, respuestas: respuestas, respSonTexto: respSonTexto, indexRespCorrecta: indexRespCorrecta))
+                           }
+                           //Después de obtener las preguntas, crea el cuestionario
+                           let cuestionario = Cuestionario(tiempoRestante: self.segundosCuestionario, preguntas: questions, temas: temasSeleccionados)
+                           //Guarda el cuestionario
+                           Cuestionario.cuestionarioActual = cuestionario
+                        
+                           //Go to the questionaire view
+                           let mainMenu = self.storyboard?.instantiateViewController(identifier: "QuestionNavController") as? QuestionNavigationController
+                           self.view.window?.rootViewController = mainMenu
+                           self.view.window?.makeKeyAndVisible()
+                       }
+                   }
+                })
+                
                 alerta.addAction(accionC)
+                alerta.addAction(accionF)
                 
                 present(alerta, animated: true, completion: nil)
             }
@@ -113,6 +161,7 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
                         let cuestionario = Cuestionario(tiempoRestante: self.segundosCuestionario, preguntas: questions, temas: temasSeleccionados)
                         //Guarda el cuestionario
                         Cuestionario.cuestionarioActual = cuestionario
+                        print("TIEMPO " + String( Cuestionario.cuestionarioActual.tiempoRestante))
                         
                         //Go to the questionaire view
                         let mainMenu = self.storyboard?.instantiateViewController(identifier: "QuestionNavController") as? QuestionNavigationController

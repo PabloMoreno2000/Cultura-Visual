@@ -699,7 +699,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afb-jC-xO0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-156" y="2017"/>
+            <point key="canvasLocation" x="-175" y="2003"/>
         </scene>
         <!--Edita Perfil View Controller-->
         <scene sceneID="S3U-Ev-6uq">
@@ -1029,7 +1029,7 @@
                         <viewLayoutGuide key="safeArea" id="aif-OC-Ewi"/>
                     </view>
                     <navigationItem key="navigationItem" id="Q20-o8-VHp">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0V0-Rb-FDR">
+                        <barButtonItem key="leftBarButtonItem" title="Salir" id="0V0-Rb-FDR">
                             <connections>
                                 <action selector="cancel:" destination="SFe-qR-Syq" id="vv8-gd-bA1"/>
                             </connections>
@@ -1048,7 +1048,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0S-Pj-zKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191.19999999999999" y="2754.872563718141"/>
+            <point key="canvasLocation" x="-175" y="2755"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="WTe-uH-hLh">
