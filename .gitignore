@@ -23,6 +23,7 @@ build/
 *~
 *.dat
 *.dep
+<<<<<<< HEAD
 *.pbxproj binary merge=union
 https://thoughtbot.com/blog/xcode-and-git-bridging-the-gap
 ".gitattributes"
@@ -53,4 +54,6 @@ build/
 *~
 *.dat
 *.dep
+=======
+>>>>>>> af537e56a664d7c05f3ae716909adfc751e2de69
 
