@@ -121,6 +121,21 @@ class QuestionViewController: UIViewController {
         }
         else {
             timer.invalidate()
+            
+            //first find the theme
+            for j in cuestionario.preguntaActual...cuestionario.preguntas.count-1{
+                let pregunta = cuestionario.preguntas[j]
+                for i in 0...Cuestionario.themes.count - 1 {
+                    if pregunta.tema == Cuestionario.themes[i] {
+                        incorrectCounters[i] += 1
+                        break
+                    }
+                }
+            }
+            
+            //Store the info for next act "locally"
+            StorageLoc.respCorrectas = correctCounters
+            StorageLoc.respIncorrectas = incorrectCounters
             loadGradeView()
         }
     
