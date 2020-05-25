@@ -61,7 +61,7 @@ class MainMenu: UIViewController {
     
     //el boton invoca la alerta antes de salir de sesion
     @IBAction func logoutbutton(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Confirmacion", message: "Estas a punto de cerrar sesion", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Aviso", message: "Estas a punto de cerrar sesion", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Salir", style: .destructive, handler: { action in
             self.logout()

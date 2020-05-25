@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
@@ -20,6 +21,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var lbRespuesta: UILabel!
     @IBOutlet weak var tfRespCorrecta: UITextField!
+    @IBOutlet weak var bAddQuestion: UIButton!
+    
     
     var questionPlaceHolder = "Escriba aquí su pregunta"
     var answerPlaceHolder = "Escriba aquí la respuesta"
@@ -38,6 +41,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     var hasQuestionImage = false
     //Just the first time the text of the answer textview will be removed(placeholder)
     var removeTextAnswer = true
+    //Reference to firebase storage
+    let storageRef = Storage.storage().reference()
     
     //MARK: PickerView methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -96,8 +101,12 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     
-    //Button that must be clicked to add image
-    @IBAction func addImage(_ sender: UIButton) {
+    //MARK: Check & upload question
+    //Button that must be clicked to add question (not just an image)
+        @IBAction func addImage(_ sender: UIButton) {
+        //Deactive user interaction with this button
+        bAddQuestion.isUserInteractionEnabled = false
+            
         //Counter of answers with image
         var imageAnsCount = 0
         //Counter of answers with text
@@ -109,10 +118,12 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         var indexRespCorrecta = 0
         var preguntaImagenUrl = ""
         var preguntaTexto = ""
-        var tema = ""
+        //Pickerview always have something selected
+        var tema = pickerData[themePicker.selectedRow(inComponent: 0)]
         var respSonTexto = [true, true, true, true]
         var respuestas = ["", "", "", ""]
         var hasImageQuestion = false
+    
         
         //Save info of current question (text could be possibly not saved)
         saveCurrentInfo()
@@ -169,7 +180,6 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
                     thereIsError = true
                     errorMessage += "índice numérico de resp. entre 1 y 4, "
                 }
-
             }
             else {
                 thereIsError = true
@@ -183,15 +193,148 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         
         //If there's no error submit the question to database
         if(!thereIsError){
-            
+            //If there is an image
+            if hasImageQuestion{
+                // Data in memory
+                let data = ivQuestion.image?.jpegData(compressionQuality: 0.4)
+
+                // Create a reference to the file you want to upload
+                //Just to generate a unique string
+                let time = String(Int(100000*NSDate().timeIntervalSince1970))
+                let imagePath = tema + "/" + time + ".jpg"
+                let imageRef = storageRef.child(imagePath)
+
+                // Upload the file to the path "images/rivers.jpg"
+                let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
+                  guard let metadata = metadata else {
+                    //Send error message to user
+                    self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la pregunta. Intente más tarde")
+                    //Allow the user to make other try
+                    self.bAddQuestion.isUserInteractionEnabled = true
+                    // Uh-oh, an error occurred!
+                    return
+                  }
+                  // Metadata contains file metadata such as size, content-type.
+                  let size = metadata.size
+                  // You can also access to download URL after upload.
+                  imageRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        //Send error message to user
+                        self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la pregunta. Intente más tarde")
+                        self.bAddQuestion.isUserInteractionEnabled = true
+                      // Uh-oh, an error occurred!
+                      return
+                    }
+                    //save the url. I could use downloadURL if I wanted an https link
+                    preguntaImagenUrl = imagePath
+                    
+                    //upload the question after getting the question image
+                    self.uploadQuestion(hasText: respSonTexto, currentIndex: respSonTexto.count - 1, theme: tema, respuestas: respuestas, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: indexRespCorrecta, preguntaTexto: preguntaTexto)
+                  }
+                }
+            }
+            //If it doesn't has a question image
+            else {
+                //Just upload the question
+                //upload the question after getting the question image
+                self.uploadQuestion(hasText: respSonTexto, currentIndex: respSonTexto.count - 1, theme: tema, respuestas: respuestas, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: indexRespCorrecta, preguntaTexto: preguntaTexto)
+            }
         }
         //Else display the error message
         else {
+            //Allow user interaction with add question button
+            bAddQuestion.isUserInteractionEnabled = true
             //Delete the last ", " part
             errorMessage = (errorMessage as NSString).substring(to: errorMessage.count - 2)
             showAlertMessage(title: "Datos faltantes", message: errorMessage)
         }
+    }
     
+    //Recursive function that uploads the images of imageAnswer given a true/false array of the same length
+    //Current index is judge.count-1 in the first call
+    //Theme is the theme of the question being upload
+    //respuestas -> string array of answers
+    func uploadQuestion(hasText: [Bool], currentIndex: Int, theme: String, respuestas:[String], preguntaImagenUrl: String, respCorrecta: Int, preguntaTexto: String){
+        var newResp = respuestas
+        //If current index hasn't an image, check the rest
+        if currentIndex >= 0 && hasText[currentIndex] {
+            uploadQuestion(hasText: hasText, currentIndex: currentIndex - 1, theme: theme, respuestas: newResp, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: respCorrecta, preguntaTexto: preguntaTexto)
+        }
+        //If current index has image
+        else if currentIndex >= 0 && !hasText[currentIndex] {
+            // Data in memory
+            let data = imageAnswers[currentIndex].jpegData(compressionQuality: 0.4)
+
+            // Create a reference to the file you want to upload
+            //Just to generate a unique string
+            let time = String(Int(100000*NSDate().timeIntervalSince1970))
+            let imagePath = theme + "/" + time + ".jpg"
+            let imageRef = storageRef.child(imagePath)
+
+            // Upload the file to the path "images/rivers.jpg"
+            let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
+              guard let metadata = metadata else {
+                //Send error message to user
+                self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la respuesta " + String(currentIndex + 1) + ". Intente más tarde")
+                //Allow user interaction again
+                self.bAddQuestion.isUserInteractionEnabled = true
+                // Uh-oh, an error occurred!
+                return
+              }
+              // Metadata contains file metadata such as size, content-type.
+              let size = metadata.size
+              // You can also access to download URL after upload.
+              imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    //Send error message to user
+                self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la respuesta " + String(currentIndex + 1) + ". Intente más tarde")
+                //Allow user interaction again
+                self.bAddQuestion.isUserInteractionEnabled = true
+                // Uh-oh, an error occurred!
+                  return
+                }
+                //save the url, I could use downloadURL.absoluteString if I needed a https link
+                newResp[currentIndex] = imagePath
+                //go to the next recursive call
+                self.uploadQuestion(hasText: hasText, currentIndex: currentIndex - 1, theme: theme, respuestas: newResp, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: respCorrecta, preguntaTexto: preguntaTexto)
+              }
+            }
+        }
+        //Else currentIndex is less than 0(images are uploaded), create the colection on firestore
+        else {
+            let db = Firestore.firestore()
+            db.collection("preguntas").addDocument(data: ["indexRespCorrecta": respCorrecta, "preguntaImagenUrl": preguntaImagenUrl, "preguntaTexto": preguntaTexto, "respSonTexto": hasText, "respuestas": respuestas, "tema":theme]) {(error) in
+                //After uploading the info, if there is no error
+                if error == nil {
+                    //Create a Pregunta object
+                    let pregunta = Pregunta(tema: theme, preguntaTexto: preguntaTexto, preguntaImagen: preguntaImagenUrl, respuestas: respuestas, respSonTexto: hasText, indexRespCorrecta: respCorrecta)
+                    //Get a reference of the previous view controller
+                    let rootViewController = self.navigationController?.viewControllers.first as! QuestionTableViewController
+                    //Add the question to the view controller
+                    rootViewController.questions.append(pregunta)
+                    //Add the image if the question has one
+                    if(!self.areImagesEqual(image1: self.ivQuestion.image!, isEqualTo: self.placeHolderImage!) && self.hasQuestionImage){
+                        rootViewController.pregImg[pregunta] = self.ivQuestion.image
+                    }
+                    else {
+                        rootViewController.pregImg[pregunta] = UIImage()
+                    }
+                    //Refresh the table view before getting back to it
+                    rootViewController.tableView.reloadData()
+                    
+                    //Go to question-list screen
+                    self.navigationController?.popViewController(animated: true)
+                }
+                //If there is error
+                else {
+                    //report to the user
+                    self.showAlertMessage(title: "Error", message: "No se pudo crear la pregunta. Intente más tarde.")
+                    //Allow user interaction again
+                    self.bAddQuestion.isUserInteractionEnabled = true
+                }
+            }
+        }
+        
     }
     
     @IBAction func indexAnswerChanged(_ sender: UISegmentedControl) {
@@ -306,37 +449,19 @@ func areImagesEqual(image1: UIImage, isEqualTo image2: UIImage) -> Bool {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == questionPlaceHolder{
-            textView.textColor = UIColor.black
-            textView.text = ""
+            tvPregunta.textColor = UIColor.black
+            tvPregunta.text = ""
         }
         //Empty any textview if it has placeholder
         else if removeTextAnswer{
-            textView.textColor = UIColor.black
-            textView.text = ""
+            tvRespuesta.textColor = UIColor.black
+            tvRespuesta.text = ""
             textAnswers[currentAnswer] = ""
             //Don't remove text after removing placeholder
             removeTextAnswer = false
         }
     }
-    
-    /*
-    func textViewDidEndEditing(_ textView: UITextView) {
-        //Just place placeholders if there's no text
-        if textView.text.isEmpty{
-            //If it is the text view of question text
-            if textView == tvPregunta{
-                textView.text = questionPlaceHolder
-            }
-            //if it is the text of the answer
-            else {
-                textView.text = answerPlaceHolder
-            }
-            
-            //Put the text gray for any textview
-            textView.textColor = UIColor.lightGray
-        }
-    }*/
-    
+
     func putPlaceHolder(placeHolder : String){
         if placeHolder == questionPlaceHolder{
             tvPregunta.text = questionPlaceHolder
@@ -348,15 +473,4 @@ func areImagesEqual(image1: UIImage, isEqualTo image2: UIImage) -> Bool {
             tvRespuesta.textColor = UIColor.lightGray
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
