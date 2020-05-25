@@ -22,6 +22,7 @@
 		4975AAE8243E591700BF9C1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4975AAE6243E591700BF9C1C /* LaunchScreen.storyboard */; };
 		4975AAF3243E591700BF9C1C /* Cultura_VisualTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AAF2243E591700BF9C1C /* Cultura_VisualTests.swift */; };
 		4975AAFE243E591700BF9C1C /* Cultura_VisualUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975AAFD243E591700BF9C1C /* Cultura_VisualUITests.swift */; };
+		499D722624788FA60085F8AF /* AddQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D722524788FA60085F8AF /* AddQuestionViewController.swift */; };
 		49EC5432243E5D3E006389D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49EC5431243E5D3E006389D7 /* GoogleService-Info.plist */; };
 		49EE91352473535E00B1A27E /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE91342473535E00B1A27E /* QuestionTableViewCell.swift */; };
 		49EE9137247353FA00B1A27E /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE9136247353FA00B1A27E /* QuestionTableViewController.swift */; };
@@ -85,6 +86,7 @@
 		4975AAF9243E591700BF9C1C /* Cultura-VisualUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cultura-VisualUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4975AAFD243E591700BF9C1C /* Cultura_VisualUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cultura_VisualUITests.swift; sourceTree = "<group>"; };
 		4975AAFF243E591700BF9C1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		499D722524788FA60085F8AF /* AddQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestionViewController.swift; sourceTree = "<group>"; };
 		49EC5431243E5D3E006389D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49EE91342473535E00B1A27E /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		49EE9136247353FA00B1A27E /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				89AB03BC244B881D0032ABC6 /* SignUpViewController.swift */,
 				4975AAE1243E591600BF9C1C /* Main.storyboard */,
 				89AE39322476F07A00C93E83 /* QuestionNavigationController.swift */,
+				499D722524788FA60085F8AF /* AddQuestionViewController.swift */,
 				49EE91342473535E00B1A27E /* QuestionTableViewCell.swift */,
 				49EE9136247353FA00B1A27E /* QuestionTableViewController.swift */,
 				89724D2B246C90FC00A989E2 /* AgregarMaterialViewController.swift */,
@@ -488,6 +491,7 @@
 				89AE39332476F07A00C93E83 /* QuestionNavigationController.swift in Sources */,
 				49EFD4BD243EA1850044ED5E /* Utilities.swift in Sources */,
 				4933BAA22455065F00DB5147 /* ResultViewController.swift in Sources */,
+				499D722624788FA60085F8AF /* AddQuestionViewController.swift in Sources */,
 				494281432443C99F00419726 /* CuestionarioSelectionViewController.swift in Sources */,
 				494281472443D43C00419726 /* Cuestionario.swift in Sources */,
 				AB853821244FBB9900D21173 /* NavController.swift in Sources */,

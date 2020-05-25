@@ -34,6 +34,8 @@ class QuestionTableViewController: UITableViewController {
     }
     
     
+    
+    
     //Queries questions info
     func queryQuestions(){
         
