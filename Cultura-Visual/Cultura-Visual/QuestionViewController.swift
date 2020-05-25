@@ -350,6 +350,10 @@ class QuestionViewController: UIViewController {
                     }
                 })
             }
+            //Else clear the image view (there could be an image of previous question)
+            else {
+                ivPreguntaImagen.image = UIImage()
+            }
             
             //check if each answer is text or an url image
             for i in 0...3 {

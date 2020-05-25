@@ -174,7 +174,7 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
     }
     
     let db = Firestore.firestore()
-    var subjects = ["Arquitectura", "Música", "Tema 3", "Tema 4"]
+    var subjects = Cuestionario.themes
     //Segundos que durará un cuestionario
     let segundosCuestionario = 10 * 60
     
