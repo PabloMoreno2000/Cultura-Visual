@@ -45,13 +45,13 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setTime()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(muestraTiempo), userInfo: nil, repeats: true)
-        
         storage = Storage.storage()
         cuestionario = Cuestionario.cuestionarioActual
         size = cuestionario.preguntas.count
         ansButtons = [bResp1, bResp2, bResp3, bResp4]
+        
+        setTime()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(muestraTiempo), userInfo: nil, repeats: true)
         
         for boton in ansButtons {
             boton.layer.borderWidth = 1.0
@@ -83,28 +83,24 @@ class QuestionViewController: UIViewController {
     //Cambia el tiempo dependiendo de que cuestionario se contestara
     func setTime() -> Void {
         
-        let db = Firestore.firestore()
-               
-        db.collection("preguntas").getDocuments{(snapshot, error) in
-                          
-            if error == nil && snapshot != nil {
-                              
-                for document in snapshot!.documents {
-                    let documentData = document.data()
-                    self.tema = documentData["tema"] as? String
-                }
-                
-                if self.tema == "Arquitectura" {
-                    self.totalTime = 40
-                }
-                else if self.tema == "Mùsica" {
-                    self.totalTime = 50
-                }
-                else {
-                    self.totalTime = 60
-                }
+        let finish = defaults.bool(forKey: "terminoCuestionario")
+                   
+        if finish {
+            
+            if cuestionario.preguntas.count < 10 {
+                totalTime = 90
+            }
+            else if cuestionario.preguntas.count >= 10 && cuestionario.preguntas.count < 20  {
+                totalTime = 120
             }
         }
+        else {
+            
+            let continueTime = defaults.integer(forKey: "time")
+            totalTime = continueTime
+            
+        }
+
     }
     
     //Va contanto el tiempo disminuyendo de uno en uno
