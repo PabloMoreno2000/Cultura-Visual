@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
@@ -38,6 +39,8 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     var hasQuestionImage = false
     //Just the first time the text of the answer textview will be removed(placeholder)
     var removeTextAnswer = true
+    //Reference to firebase storage
+    let storageRef = Storage.storage().reference()
     
     //MARK: PickerView methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -96,8 +99,9 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     
-    //Button that must be clicked to add image
-    @IBAction func addImage(_ sender: UIButton) {
+    //MARK: Check & upload question
+    //Button that must be clicked to add question (not just an image)
+        @IBAction func addImage(_ sender: UIButton) {
         //Counter of answers with image
         var imageAnsCount = 0
         //Counter of answers with text
@@ -109,10 +113,12 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         var indexRespCorrecta = 0
         var preguntaImagenUrl = ""
         var preguntaTexto = ""
-        var tema = ""
+        //Pickerview always have something selected
+        var tema = pickerData[themePicker.selectedRow(inComponent: 0)]
         var respSonTexto = [true, true, true, true]
         var respuestas = ["", "", "", ""]
         var hasImageQuestion = false
+    
         
         //Save info of current question (text could be possibly not saved)
         saveCurrentInfo()
@@ -169,7 +175,6 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
                     thereIsError = true
                     errorMessage += "índice numérico de resp. entre 1 y 4, "
                 }
-
             }
             else {
                 thereIsError = true
@@ -183,7 +188,46 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
         
         //If there's no error submit the question to database
         if(!thereIsError){
-            
+            //If there is an image
+            if hasImageQuestion{
+                // Data in memory
+                let data = ivQuestion.image?.jpegData(compressionQuality: 0.4)
+
+                // Create a reference to the file you want to upload
+                let imageRef = storageRef.child("images/test.jpg")
+
+                // Upload the file to the path "images/rivers.jpg"
+                let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
+                  guard let metadata = metadata else {
+                    //Send error message to user
+                    self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la pregunta. Intente más tarde")
+                    // Uh-oh, an error occurred!
+                    return
+                  }
+                  // Metadata contains file metadata such as size, content-type.
+                  let size = metadata.size
+                  // You can also access to download URL after upload.
+                  imageRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        //Send error message to user
+                        self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la pregunta. Intente más tarde")
+                      // Uh-oh, an error occurred!
+                      return
+                    }
+                    //save the url
+                    preguntaImagenUrl = downloadURL.absoluteString
+                    
+                    //upload the question after getting the question image
+                    self.uploadQuestion(hasText: respSonTexto, currentIndex: respSonTexto.count - 1, theme: tema, respuestas: respuestas, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: indexRespCorrecta, preguntaTexto: preguntaTexto)
+                  }
+                }
+            }
+            //If it doesn't has a question image
+            else {
+                //Just upload the question
+                //upload the question after getting the question image
+                self.uploadQuestion(hasText: respSonTexto, currentIndex: respSonTexto.count - 1, theme: tema, respuestas: respuestas, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: indexRespCorrecta, preguntaTexto: preguntaTexto)
+            }
         }
         //Else display the error message
         else {
@@ -191,7 +235,70 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
             errorMessage = (errorMessage as NSString).substring(to: errorMessage.count - 2)
             showAlertMessage(title: "Datos faltantes", message: errorMessage)
         }
+        
+    }
     
+    //Recursive function that uploads the images of imageAnswer given a true/false array of the same length
+    //Current index is judge.count-1 in the first call
+    //Theme is the theme of the question being upload
+    //respuestas -> string array of answers
+    func uploadQuestion(hasText: [Bool], currentIndex: Int, theme: String, respuestas:[String], preguntaImagenUrl: String, respCorrecta: Int, preguntaTexto: String){
+        var newResp = respuestas
+        //If current index hasn't an image, check the rest
+        if currentIndex > 0 && hasText[currentIndex] {
+            uploadQuestion(hasText: hasText, currentIndex: currentIndex - 1, theme: theme, respuestas: newResp, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: respCorrecta, preguntaTexto: preguntaTexto)
+        }
+        //If current index has image
+        else if currentIndex > 0 && !hasText[currentIndex] {
+            // Data in memory
+            let data = imageAnswers[currentIndex].jpegData(compressionQuality: 0.4)
+
+            // Create a reference to the file you want to upload
+            //Just to generate a unique string
+            let time = String(Int(100000*NSDate().timeIntervalSince1970))
+            let imageRef = storageRef.child(theme + "/" + time + ".jpg")
+
+            // Upload the file to the path "images/rivers.jpg"
+            let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
+              guard let metadata = metadata else {
+                //Send error message to user
+                self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la respuesta " + String(currentIndex + 1) + ". Intente más tarde")
+                // Uh-oh, an error occurred!
+                return
+              }
+              // Metadata contains file metadata such as size, content-type.
+              let size = metadata.size
+              // You can also access to download URL after upload.
+              imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    //Send error message to user
+                self.showAlertMessage(title: "Error", message: "No se pudo subir la imagen de la respuesta " + String(currentIndex + 1) + ". Intente más tarde")                  // Uh-oh, an error occurred!
+                  return
+                }
+                //save the url
+                newResp[currentIndex] = downloadURL.absoluteString
+                //go to the next recursive call
+                self.uploadQuestion(hasText: hasText, currentIndex: currentIndex - 1, theme: theme, respuestas: newResp, preguntaImagenUrl: preguntaImagenUrl, respCorrecta: respCorrecta, preguntaTexto: preguntaTexto)
+              }
+            }
+        }
+        //Else currentIndex is less than 0(images are uploaded), create the colection on firestore
+        else {
+            let db = Firestore.firestore()
+            db.collection("preguntas").addDocument(data: ["indexRespCorrecta": respCorrecta, "preguntaImagenUrl": preguntaImagenUrl, "preguntaTexto": preguntaTexto, "respSonTexto": hasText, "respuesta": respuestas, "tema":theme]) {(error) in
+                //After uploading the info, if there is no error
+                if error == nil {
+                    //Go to question-list screen
+                    self.navigationController?.popViewController(animated: true)
+                }
+                //If there is error
+                else {
+                    //report to the user
+                    self.showAlertMessage(title: "Error", message: "No se pudo crear la pregunta. Intente más tarde.")
+                }
+            }
+        }
+        
     }
     
     @IBAction func indexAnswerChanged(_ sender: UISegmentedControl) {
