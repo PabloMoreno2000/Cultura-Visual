@@ -16,6 +16,7 @@ class QuestionTableViewController: UITableViewController {
     var questions = [Pregunta]()
     var images = [UIImage]()
     var pregImg:[Pregunta:UIImage] = [:]
+    var documentsIds: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +24,7 @@ class QuestionTableViewController: UITableViewController {
         queryQuestions()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     
@@ -46,12 +45,17 @@ class QuestionTableViewController: UITableViewController {
             if error == nil && snapshot != nil {
                 //Add each document fetched to the list
                 for document in snapshot!.documents{
+                    //save its ID for future elimination if needed
+                    self.documentsIds.append(document.documentID)
                     let documentData = document.data()
                     let tema = documentData["tema"] as! String
                     let preguntaTexto = documentData["preguntaTexto"] as? String ?? ""
                     let preguntaImagen = documentData["preguntaImagenUrl"] as? String ?? ""
+                    let indexRespCorrecta = documentData["indexRespCorrecta"] as! Int
+                    let respSonTexto = documentData["respSonTexto"] as? [Bool] ?? defaultBoolArr
+                    let respuestas = documentData["respuestas"] as? [String] ?? defaultStringArr
                     //Form question and add it
-                    let pregunta = Pregunta(tema: tema, preguntaTexto: preguntaTexto, preguntaImagen: preguntaImagen, respuestas: defaultStringArr, respSonTexto: defaultBoolArr, indexRespCorrecta: 0)
+                    let pregunta = Pregunta(tema: tema, preguntaTexto: preguntaTexto, preguntaImagen: preguntaImagen, respuestas: respuestas, respSonTexto: respSonTexto, indexRespCorrecta: indexRespCorrecta)
                     self.questions.append(pregunta)
                     //We are not fetching images right now
                     //Important not to put null because it will be as not adding anything
@@ -89,6 +93,12 @@ class QuestionTableViewController: UITableViewController {
         }
     }
     
+    //Function to show a message
+    func showAlertMessage(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
 
     // MARK: - Table view data source
 
@@ -125,25 +135,57 @@ class QuestionTableViewController: UITableViewController {
     }
     
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        //Get the question to delete
+        let question = self.questions[index]
+        let image = self.pregImg[question]
+        // Delete the row from the data source, cannot put this inside the query since this happens in another thread
+        //and swift needs something to be modified when something is ".delete"
+        self.pregImg[question] = nil
+        self.questions.remove(at: index)
+        
         if editingStyle == .delete {
-            // Delete the row from the data source
+            //remove it from the database with its document id
+            db.collection("preguntas").document(documentsIds[index]).delete() { err in
+                //If there's an error
+                if let _ = err {
+                    //Inform the user
+                    self.showAlertMessage(title: "Error", message: "No se pudo eliminar, revise su conexión a internet.")
+                    //Add the data again the same position
+                    self.questions.insert(question, at: index)
+                    self.pregImg[question] = image
+                }
+                //If it was removed successfully from database
+                else {
+                    //Remove the reference of the document
+                    self.documentsIds.remove(at: index)
+                    //Remove image of question if it has
+                    if(question.preguntaImagen != nil && question.preguntaImagen != ""){
+                        self.storage.reference().child(question.preguntaImagen).delete(completion: nil)
+                    }
+                    //Remove the images of answers if there are
+                    for i in 0...question.respSonTexto.count - 1 {
+                        if !question.respSonTexto[i] {
+                            self.storage.reference().child(question.respuestas[i]).delete(completion: nil)
+                        }
+                    }
+                }
+            }
+            //Remove it with a fade animation
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
