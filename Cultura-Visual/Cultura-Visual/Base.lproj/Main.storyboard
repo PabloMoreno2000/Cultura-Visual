@@ -1322,8 +1322,8 @@
                                     <action selector="clickFirst:" destination="SFe-qR-Syq" eventType="touchUpInside" id="LHR-dr-276"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1/x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-xa-BO8">
-                                <rect key="frame" x="175" y="626" width="24" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1/x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-xa-BO8">
+                                <rect key="frame" x="139" y="626" width="94" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
@@ -1360,6 +1360,7 @@
                         <outlet property="bResp3" destination="HQB-E9-USk" id="b1f-JQ-17C"/>
                         <outlet property="bResp4" destination="PRk-Cc-d1v" id="4sr-fg-AHP"/>
                         <outlet property="ivPreguntaImagen" destination="6Sl-Uo-if5" id="Fvz-eW-gi3"/>
+                        <outlet property="lbNumPregunta" destination="9fo-xa-BO8" id="GUr-f3-KPd"/>
                         <outlet property="lbPreguntaTexto" destination="PJR-or-78a" id="y4f-lf-dkn"/>
                         <outlet property="lbTema" destination="RUf-O9-AVs" id="0gF-En-RWp"/>
                         <outlet property="lbTiempoRestante" destination="bzE-aY-MFv" id="KZ4-aS-gdt"/>
@@ -1367,7 +1368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0S-Pj-zKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="2755"/>
+            <point key="canvasLocation" x="-175.19999999999999" y="2754.872563718141"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="WTe-uH-hLh">

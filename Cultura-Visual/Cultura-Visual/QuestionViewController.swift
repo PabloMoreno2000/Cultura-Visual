@@ -19,6 +19,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var bResp2: UIButton!
     @IBOutlet weak var bResp3: UIButton!
     @IBOutlet weak var bResp4: UIButton!
+    @IBOutlet weak var lbNumPregunta: UILabel!
     
     //Variables para el timer
     var timer = Timer()
@@ -229,8 +230,6 @@ class QuestionViewController: UIViewController {
     
     //MARK: - Respuestas
 
-    // MARK: - SE AGREGO un delay, con un default de 2 segundos. Si se desea modificar *(ya sea que tarde mucho o algo) cambia el AfterDelay del metodo perform
-
     @objc func loadSig(){
         loadNextQuestion(n: 1)
     }
@@ -239,26 +238,26 @@ class QuestionViewController: UIViewController {
         let resp = 0
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
 
-        perform(#selector(self.loadSig), with: nil, afterDelay: 2)
+        perform(#selector(self.loadSig), with: nil, afterDelay: 0.6)
 
     }
     
     @IBAction func clickSecond(_ sender: UIButton) {
         let resp = 1
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
-        perform(#selector(self.loadSig), with: nil, afterDelay: 2)
+        perform(#selector(self.loadSig), with: nil, afterDelay: 0.6)
     }
     
     @IBAction func clickThird(_ sender: UIButton) {
         let resp = 2
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
-        perform(#selector(self.loadSig), with: nil, afterDelay: 2)
+        perform(#selector(self.loadSig), with: nil, afterDelay: 0.6)
     }
     
     @IBAction func clickFourth(_ sender: UIButton) {
         let resp = 3
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
-        perform(#selector(self.loadSig), with: nil, afterDelay: 2)
+        perform(#selector(self.loadSig), with: nil, afterDelay: 0.6)
     }
     
     func gradeCurrentQuestion(indexRespDada: Int) -> Int {
@@ -338,6 +337,8 @@ class QuestionViewController: UIViewController {
     }
 
     func loadNextQuestion(n: Int) {
+        
+        lbNumPregunta.text = String(cuestionario.preguntaActual+2) + "/" + String(cuestionario.preguntas.count)
         
         //If the previus answered question was not the last one
         if(cuestionario.preguntaActual != size - 1) {
