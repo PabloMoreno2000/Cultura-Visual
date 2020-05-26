@@ -80,9 +80,11 @@ class QuestionViewController: UIViewController {
             let nUltimaPregunta = defaults.integer(forKey: "numPregunta")
             let respConts = defaults.value(forKey: "respuestasContestadas") as! [Int]
             
-            for i in 0...nUltimaPregunta-1 {
-                gradeQuestion(indexRespDada: respConts[i], index: i)
-            } 
+            if respConts.count > 0 {
+                for i in 0...nUltimaPregunta-1 {
+                    gradeQuestion(indexRespDada: respConts[i], index: i)
+                }
+            }
             
             loadNextQuestion(n: nUltimaPregunta+1)
         }
