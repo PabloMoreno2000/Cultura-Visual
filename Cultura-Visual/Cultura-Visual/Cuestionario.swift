@@ -12,7 +12,7 @@ class Cuestionario: NSObject {
     //Si se está contestando uno, es la referencia al cuestionario actual
     static var cuestionarioActual = Cuestionario(tiempoRestante: 0, preguntas: [], temas: [])
     //identificar posibles temas
-    static let themes = ["Arquitectura", "Musica"]
+    static let themes = ["Arte", "Arquitectura", "Diseño", "Música"]
     //En segundos
     var tiempoRestante: Int!
     var preguntas: [Pregunta]!

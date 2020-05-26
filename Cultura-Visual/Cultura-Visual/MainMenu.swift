@@ -15,6 +15,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var menuHam: UIView!
+    @IBOutlet weak var adminButton: UIButton!
     var menuOut = false
     
     
@@ -88,6 +89,29 @@ class MainMenu: UIViewController {
               }
     }
     
+    func manageAdminButton() {
+        //Hide the admin button
+        adminButton.isUserInteractionEnabled = false
+        adminButton.isHidden = true
+        
+        let user = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+        //And just show it if user is an admin
+        db.collection("usuarios").whereField("uid", isEqualTo: user!).getDocuments{(snapshot, error) in
+            if error == nil && snapshot != nil {
+                
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    let isAdmin = documentData["esAdmin"] as? Bool ?? false
+                    if isAdmin {
+                        self.adminButton.isUserInteractionEnabled = true
+                        self.adminButton.isHidden = false
+                    }
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Lineas para esconder, y dar sombra a la view de hamburguesa
@@ -99,9 +123,7 @@ class MainMenu: UIViewController {
         menuHam.layer.shadowRadius = 10
         //Linea para que no se haga render de la sombra cada vez
         menuHam.layer.shadowPath = UIBezierPath(rect: menuHam.bounds).cgPath
-        
-
-        // Do any additional setup after loading the view.
+        manageAdminButton()
     }
     
     /*

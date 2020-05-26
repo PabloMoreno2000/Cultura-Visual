@@ -88,6 +88,14 @@ class QuestionViewController: UIViewController {
         }
     }
     
+    //If turnOn if true activates all the answer buttons
+    //If it is false it deactivates all the buttons
+    func switchAnswerButtons(turnOn: Bool){
+        for button in ansButtons {
+            button.isUserInteractionEnabled = turnOn
+        }
+    }
+    
     //MARK: - Timer
     
     //Cambia el tiempo dependiendo de que cuestionario se contestara
@@ -236,26 +244,30 @@ class QuestionViewController: UIViewController {
     
     @IBAction func clickFirst(_ sender: UIButton) {
         let resp = 0
+        switchAnswerButtons(turnOn: false)
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
-
         perform(#selector(self.loadSig), with: nil, afterDelay: 0.6)
+
 
     }
     
     @IBAction func clickSecond(_ sender: UIButton) {
         let resp = 1
+        switchAnswerButtons(turnOn: false)
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
         perform(#selector(self.loadSig), with: nil, afterDelay: 0.6)
     }
     
     @IBAction func clickThird(_ sender: UIButton) {
         let resp = 2
+        switchAnswerButtons(turnOn: false)
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
         perform(#selector(self.loadSig), with: nil, afterDelay: 0.6)
     }
     
     @IBAction func clickFourth(_ sender: UIButton) {
         let resp = 3
+        switchAnswerButtons(turnOn: false)
         colorearRespuesta(indexRespDada: resp, indexRespCorrecta: gradeCurrentQuestion(indexRespDada: resp))
         perform(#selector(self.loadSig), with: nil, afterDelay: 0.6)
     }
@@ -380,15 +392,20 @@ class QuestionViewController: UIViewController {
                 //if it is text just add the text
                 if(isText) {
                     ansButtons[i].setTitle(pregunta.respuestas[i], for: .normal)
+                    //And clear the image for an image could have been there
+                    self.ansButtons[i].setBackgroundImage(UIImage(), for: .normal)
+                    
+                    //The last question turns on the buttons for user interaction
+                    switchAnswerButtons(turnOn: true)
                 }
                 //Else, load the image
                 else {
                     //Create a reference to the image
                     let answerPathReference = storage.reference(withPath: pregunta.respuestas[i])
                     //Get the data of the reference
-                    answerPathReference.getData(maxSize: 1 * 1024 * 1024, completion: {data, error in
+                    answerPathReference.getData(maxSize: 1 * 10000 * 10000, completion: {data, error in
                         if error != nil {
-                            print("Error downloading photo of answer")
+                            print("Error downloading photo of answer: " + answerPathReference.fullPath)
                         }
                         else {
                             //Get the data and form a UIImage
@@ -399,6 +416,9 @@ class QuestionViewController: UIViewController {
                             self.ansButtons[i].setBackgroundImage(imageAnswer, for: .normal
                             )
                         }
+                        
+                        //The last question turns on the buttons for user interaction
+                        self.switchAnswerButtons(turnOn: true)
                     })
                 }
             }
