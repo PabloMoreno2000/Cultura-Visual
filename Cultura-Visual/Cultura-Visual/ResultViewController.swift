@@ -26,8 +26,8 @@ class ResultViewController: UIViewController {
     
     var respCorrectas: Double!
     var respIncorrectas: Double!
-    let succedTestText = "PASAS"
-    let failTestText = "NO PASAS"
+    let succedTestText = "¡FELICIDADES!"
+    let failTestText = "Casi lo logras"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +62,8 @@ class ResultViewController: UIViewController {
         }
         //2. Set ChartDataSet
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
+        //This is suppose to help with increasing size
+        pieChartDataSet.selectionShift = 0
         pieChartDataSet.colors = [UIColor.systemGreen, UIColor.systemRed]
         
         //3. Set ChartData
