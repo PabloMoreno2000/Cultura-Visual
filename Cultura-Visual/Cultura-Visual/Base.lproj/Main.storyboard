@@ -1209,6 +1209,10 @@
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="tOc-b9-Q27" appends="YES" id="Poc-Dx-vke"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Fc0-wo-Ihp"/>
@@ -1242,6 +1246,11 @@
                 <tapGestureRecognizer id="vtY-q2-ooq">
                     <connections>
                         <action selector="tapAnswerImage:" destination="1Ph-nZ-yYG" id="az3-Ro-Wgo"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="tOc-b9-Q27">
+                    <connections>
+                        <action selector="exitScreen:" destination="1Ph-nZ-yYG" id="yX5-2Y-YCm"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

@@ -44,6 +44,11 @@ class AddQuestionViewController: UIViewController, UITextViewDelegate, UIImagePi
     //Reference to firebase storage
     let storageRef = Storage.storage().reference()
     
+    //Exit keyboard when screen is touched
+    @IBAction func exitScreen(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
     //MARK: PickerView methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
