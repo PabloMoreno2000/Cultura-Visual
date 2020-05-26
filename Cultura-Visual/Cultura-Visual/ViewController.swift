@@ -66,6 +66,13 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func goToRegister(_ sender: Any) {
+        
+        let viewRegister = self.storyboard?.instantiateViewController(identifier: "signUp") as? SignUpViewController
+        
+        self.view.window?.rootViewController = viewRegister
+        self.view.window?.makeKeyAndVisible()
+    }
     
     func showAlertMessage(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

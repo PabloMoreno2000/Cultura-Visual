@@ -41,7 +41,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func regresarInicio(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        
+        let viewSign = self.storyboard?.instantiateViewController(identifier: "signIn") as? ViewController
+        
+        self.view.window?.rootViewController = viewSign
+        self.view.window?.makeKeyAndVisible()
     }
     
     
