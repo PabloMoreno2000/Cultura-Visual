@@ -377,6 +377,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="adminButton" destination="vTn-Jk-p2d" id="cS5-NP-8UR"/>
                         <outlet property="leading" destination="q7F-Zr-COD" id="dH9-LV-DGg"/>
                         <outlet property="menuHam" destination="7bb-MD-9Uw" id="ERz-re-V5a"/>
                         <outlet property="trailing" destination="2fK-UX-ddK" id="fcO-qE-KtP"/>
