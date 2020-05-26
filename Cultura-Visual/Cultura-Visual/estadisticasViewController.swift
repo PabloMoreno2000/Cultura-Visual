@@ -11,7 +11,7 @@ import Firebase
 
 class estadisticasViewController: UIViewController {
 
-    var subjects = ["Arquitectura", "Música", "Tema 3", "Tema 4"]
+    var subjects = Cuestionario.themes
     
     @IBOutlet var lbSubjects: [UILabel]!
     
@@ -22,7 +22,7 @@ class estadisticasViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in 0...3{
+        for i in 0...subjects.count - 1{
             lbSubjects[i].text = subjects[i]
         }
 
