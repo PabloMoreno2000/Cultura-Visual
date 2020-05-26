@@ -16,7 +16,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var tfContrasena: UITextField!
     @IBOutlet weak var bEntrar: UIButton!
     
-    @IBAction func iniciarSesion(_ sender: UIButton) {
+    override func viewDidLoad() {
+           super.viewDidLoad()
+           
+           UIGraphicsBeginImageContext(self.view.frame.size)
+           UIImage(named: "Unknown")?.draw(in: self.view.bounds)
+           let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+           UIGraphicsEndImageContext()
+           self.view.backgroundColor = UIColor(patternImage: image)
+           
+           tfCorreo.text = "a00823402@itesm.mx"
+           tfContrasena.text = "123456"
+           // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func iniciarSesion(_ sender: Any) {
         
         //If there is text
         if let correo = tfCorreo.text, let contrasena = tfContrasena.text {
@@ -52,18 +66,11 @@ class ViewController: UIViewController {
         }
     }
     
+    
     func showAlertMessage(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tfCorreo.text = "a00823402@itesm.mx"
-        tfContrasena.text = "123456"
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func quitKeyboard(_ sender: UITapGestureRecognizer) {

@@ -29,6 +29,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         scrollView.contentSize = vistaRegistro.frame.size
         registrarseParaNotificacionesDeTeclado()
         
+        UIGraphicsBeginImageContext(self.vistaRegistro.frame.size)
+        UIImage(named: "Unknown")?.draw(in: self.vistaRegistro.bounds)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        self.vistaRegistro.backgroundColor = UIColor(patternImage: image)
+        
         /*let tap = UITapGestureRecognizer(target: self, action: #selector(quitKeyboard))
         self.view.addGestureRecognizer(tap)
         self.registrarseParaNotificacionesDeTeclado()*/
