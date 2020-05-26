@@ -68,7 +68,7 @@ class QuestionViewController: UIViewController {
         correctCounters = [0,0,0,0]
         incorrectCounters = [0,0,0,0]
         
-        let finish = defaults.bool(forKey: "terminoCuestionario")
+        let finish = defaults.value(forKey: "terminoCuestionario") as? Bool ?? true
         
         //Si es un cuestionario nuevo
         if finish {
@@ -93,7 +93,7 @@ class QuestionViewController: UIViewController {
     //Cambia el tiempo dependiendo de que cuestionario se contestara
     func setTime() -> Void {
         
-        let finish = defaults.bool(forKey: "terminoCuestionario")
+        let finish = defaults.value(forKey: "terminoCuestionario") as? Bool ?? true
                    
         if finish {
             
@@ -338,12 +338,12 @@ class QuestionViewController: UIViewController {
 
     func loadNextQuestion(n: Int) {
         
-        lbNumPregunta.text = String(cuestionario.preguntaActual+2) + "/" + String(cuestionario.preguntas.count)
+        lbNumPregunta.text = String(cuestionario.preguntaActual + 2) + "/" + String(cuestionario.preguntas.count)
         
         //If the previus answered question was not the last one
         if(cuestionario.preguntaActual != size - 1) {
             
-            debugPrint("Cambio de pregunta " + String(cuestionario.preguntaActual) + " --> " + String(cuestionario.preguntaActual + 1))
+            debugPrint("Cambio de pregunta " + String(cuestionario.preguntaActual) + " --> " + String(cuestionario.preguntaActual + n))
             cuestionario.preguntaActual += n
             
             let pregunta = cuestionario.preguntas[cuestionario.preguntaActual]

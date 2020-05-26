@@ -21,9 +21,6 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
         tableView.dataSource = self
         tableView.delegate = self
         
-        let defaults = UserDefaults.standard
-        defaults.set(true, forKey: "terminoCuestionario")
-        
     }
     
     @IBAction func startCuestionario(_ sender: UIButton) {
@@ -49,7 +46,7 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
         else {
             
             let defaults = UserDefaults.standard
-            let finish = defaults.bool(forKey: "terminoCuestionario")
+            let finish = defaults.value(forKey: "terminoCuestionario") as? Bool ?? true
             
             //si tiene un cuestionario sin terminar no puede empezar otro
             if !finish {
@@ -90,9 +87,6 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
                 let accionF =  UIAlertAction(title: "Empezar nuevo cuestionario", style: .default, handler: {(action) in
                     
                     //user default settearlos en cero
-                    let timeLeft: Int! = 0
-                    let isFinish: Bool! = true
-                    let ultimaPregunta: Int! = 0
                     var temaSinTerminar = defaults.value(forKey: "temasCuestionario") as! [String]
                     var respDadas = defaults.value(forKey: "respuestasContestadas") as! [Int]
                                
@@ -104,9 +98,9 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
                         temaSinTerminar[i] = ""
                     }
                                
-                    defaults.set(timeLeft, forKey: "time")
-                    defaults.set(isFinish, forKey: "terminoCuestionario")
-                    defaults.set(ultimaPregunta, forKey: "numPregunta")
+                    defaults.set(0, forKey: "time")
+                    defaults.set(true, forKey: "terminoCuestionario")
+                    defaults.set(0, forKey: "numPregunta")
                     defaults.set(respDadas, forKey: "respuestasContestadas")
                     defaults.set(temaSinTerminar, forKey: "temasCuestionario")
                     
@@ -164,7 +158,6 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
                         let cuestionario = Cuestionario(tiempoRestante: self.segundosCuestionario, preguntas: questions, temas: temasSeleccionados)
                         //Guarda el cuestionario
                         Cuestionario.cuestionarioActual = cuestionario
-                        print("TIEMPO " + String( Cuestionario.cuestionarioActual.tiempoRestante))
                         
                         //Go to the questionaire view
                         let mainMenu = self.storyboard?.instantiateViewController(identifier: "QuestionNavController") as? QuestionNavigationController
