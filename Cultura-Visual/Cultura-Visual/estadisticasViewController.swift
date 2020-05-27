@@ -17,6 +17,10 @@ class estadisticasViewController: UIViewController {
     
     @IBOutlet var vwBarritas: [UIView]!
     
+    var defaultIntArr = [0,99,0,0]
+    
+    @IBOutlet weak var lbFaltan: UILabel!
+    
     //MARK: Falta cargar los datos, y pasar todos los labels a traves de la funcion de "barraprogress" con las respuestas correctas e incorrectas
     
     
@@ -25,29 +29,53 @@ class estadisticasViewController: UIViewController {
         for i in 0...subjects.count - 1{
             lbSubjects[i].text = subjects[i]
         }
-
-        // Do any additional setup after loading the view.
-    }
-    
-    func cargarDatos(){
+        cargarDatos()
         
     }
     
     func barraProgress(correctas: Int, incorrectas: Int) -> Double{
-        let total = Double(correctas + incorrectas)
-        let newWidth = Double(correctas) / total
+        var total = Double(correctas + incorrectas)
+        var newWidth = 0.0
+        if (total == 0) { newWidth = 0 }
+        else{
+            newWidth = Double(correctas) / total
+        }
         return Double(163 * newWidth)
     }
-    
+    func cargarDatos(){
+        let uid = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+        
+        print(uid)
+        db.collection("estadisticas").whereField("userUidRef", isEqualTo: uid!).getDocuments{(snapshot, error) in
+            //There should be just one document per user, but anyways let's do this to avoid any future error
+            if error == nil{
+                //if the document exists
+                if snapshot != nil && snapshot!.count > 0{
+                    print("Snapshot has content")
+                    for document in snapshot!.documents{
 
-    /*
-    // MARK: - Navigation
+                        let documentData = document.data()
+                        let correctas = documentData["respCorrectas"] as? [Int] ?? self.defaultIntArr
+                        let incorrectas = documentData["respIncorrectas"] as? [Int] ?? self.defaultIntArr
+                        
+                        for i in 0...correctas.count - 1{
+                            self.vwBarritas[i].frame = CGRect(x: 8, y: 7, width: self.barraProgress(correctas: correctas[i], incorrectas: incorrectas[i]), height: 28)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+                        }
+
+                        
+                    }
+                }
+                //if there's no document with the id of the user
+                else {
+                    print("Snapshot is null")
+                    self.lbFaltan.text = "Faltan datos!"
+                    
+                }
+                }
+            }
+        }
+        
     }
-    */
-
-}
+    

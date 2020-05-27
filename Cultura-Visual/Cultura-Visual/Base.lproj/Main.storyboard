@@ -511,7 +511,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Información" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNt-au-gCj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Informacion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNt-au-gCj">
                                                 <rect key="frame" x="121" y="39" width="133" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -736,7 +736,7 @@
             </objects>
             <point key="canvasLocation" x="1330" y="666"/>
         </scene>
-        <!--Estadisticas View Controller-->
+        <!--Estadisticas-->
         <scene sceneID="SaS-ej-vD5">
             <objects>
                 <viewController id="hTM-ve-oto" customClass="estadisticasViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
@@ -848,12 +848,20 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLf-gh-Gga">
+                                <rect key="frame" x="166" y="119" width="5" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hbM-dD-Cpp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RdJ-Xe-QnF"/>
+                    <navigationItem key="navigationItem" title="Estadisticas" id="RdJ-Xe-QnF"/>
                     <connections>
+                        <outlet property="lbFaltan" destination="YLf-gh-Gga" id="S4Y-bG-1hG"/>
                         <outletCollection property="lbSubjects" destination="3qh-dU-aSY" collectionClass="NSMutableArray" id="yDT-vW-FVn"/>
                         <outletCollection property="lbSubjects" destination="ymJ-Zg-5XI" collectionClass="NSMutableArray" id="5T6-PS-AJn"/>
                         <outletCollection property="lbSubjects" destination="Kls-7J-HWh" collectionClass="NSMutableArray" id="IA5-dE-p5a"/>
@@ -866,9 +874,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UO9-0b-cig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2718" y="1809"/>
+            <point key="canvasLocation" x="-2361" y="1836"/>
         </scene>
-        <!--Cuestionario Selection View Controller-->
+        <!--Cuestionarios-->
         <scene sceneID="Eja-Ga-1Uv">
             <objects>
                 <viewController id="1Ib-0B-KyN" customClass="CuestionarioSelectionViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
@@ -937,7 +945,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="LLH-G3-ElT"/>
                     </view>
-                    <navigationItem key="navigationItem" id="aa9-qy-e7N"/>
+                    <navigationItem key="navigationItem" title="Cuestionarios" id="aa9-qy-e7N"/>
                     <connections>
                         <outlet property="tableView" destination="Pi7-oJ-zI4" id="kbK-1e-sWo"/>
                     </connections>
@@ -946,7 +954,7 @@
             </objects>
             <point key="canvasLocation" x="-1353" y="1837"/>
         </scene>
-        <!--Edita Perfil View Controller-->
+        <!--Perfil-->
         <scene sceneID="S3U-Ev-6uq">
             <objects>
                 <viewController id="sin-SD-3xc" customClass="editaPerfilViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
@@ -954,13 +962,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Perfil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2r-oh-4cd">
-                                <rect key="frame" x="159" y="85" width="57" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qL3-vE-vrR">
                                 <rect key="frame" x="52" y="222" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1038,7 +1039,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="scT-rv-snF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LVp-Qc-nFM"/>
+                    <navigationItem key="navigationItem" title="Perfil" id="LVp-Qc-nFM"/>
                     <connections>
                         <outlet property="tfApellido" destination="KR9-xl-hI4" id="5ah-HL-CIq"/>
                         <outlet property="tfNombre" destination="vRp-3G-NVM" id="k7I-6t-BLp"/>
@@ -1048,7 +1049,7 @@
             </objects>
             <point key="canvasLocation" x="144.80000000000001" y="1408.2458770614694"/>
         </scene>
-        <!--Contrasena View Controller-->
+        <!--Contrasena-->
         <scene sceneID="sSP-EW-jTt">
             <objects>
                 <viewController id="XeC-fF-mMh" customClass="contrasenaViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
@@ -1056,13 +1057,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contraseña" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihR-W0-3Z9">
-                                <rect key="frame" x="122" y="86" width="130" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tO3-XV-tE0" customClass="RoundButton" customModule="Cultura_Visual" customModuleProvider="target">
                                 <rect key="frame" x="62" y="458" width="250" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1130,7 +1124,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="YHF-yw-a3r"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wbr-6Y-jm8"/>
+                    <navigationItem key="navigationItem" title="Contrasena" id="wbr-6Y-jm8"/>
                     <connections>
                         <outlet property="tfActual" destination="j3Q-W5-OcK" id="CKd-FF-te7"/>
                         <outlet property="tfConfirma" destination="0qU-jK-jhW" id="5WA-aI-T9F"/>
