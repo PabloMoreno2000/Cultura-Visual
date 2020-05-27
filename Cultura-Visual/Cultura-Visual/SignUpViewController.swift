@@ -172,7 +172,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         scrollView.contentInset = contentInset
         scrollView.scrollIndicatorInsets = contentInset
         
-        scrollView.setContentOffset(CGPoint(x: 0.0, y: activeField!.frame.origin.y - kbSize.height), animated: true)
+        scrollView.setContentOffset(CGPoint(x: 0.0, y: activeField.frame.origin.y - kbSize.height), animated: true)
     }
     
     @IBAction func tecladoSeOculto(aNotification: NSNotification) {

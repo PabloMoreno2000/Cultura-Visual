@@ -16,8 +16,39 @@ class MainMenu: UIViewController {
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var menuHam: UIView!
     @IBOutlet weak var adminButton: UIButton!
+    @IBOutlet weak var lbNombre: UILabel!
+    
     var menuOut = false
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Lineas para esconder, y dar sombra a la view de hamburguesa
+        menuHam.isHidden = true
+        menuHam.alpha = 0
+        menuHam.layer.shadowColor = UIColor.black.cgColor
+        menuHam.layer.shadowOpacity = 1
+        menuHam.layer.shadowOffset = .zero
+        menuHam.layer.shadowRadius = 10
+        
+        //Linea para que no se haga render de la sombra cada vez
+        menuHam.layer.shadowPath = UIBezierPath(rect: menuHam.bounds).cgPath
+        manageAdminButton()
+        
+        let user = Auth.auth().currentUser?.uid
+        let db = Firestore.firestore()
+        
+        db.collection("usuarios").whereField("uid", isEqualTo: user!).getDocuments{(snapshot, error) in
+        
+            if error == nil && snapshot != nil {
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    let nombre = documentData["nombre"] as? String ?? ""
+                    self.lbNombre.text = nombre
+                }
+            }
+        }
+    }
     
     //boton hamburguesa, que despliega un mini menu donde el usuario puede editar su perfil, o terminar sesion
     @IBAction func hambutton(_ sender: UIBarButtonItem) {
@@ -110,20 +141,6 @@ class MainMenu: UIViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //Lineas para esconder, y dar sombra a la view de hamburguesa
-        menuHam.isHidden = true
-        menuHam.alpha = 0
-        menuHam.layer.shadowColor = UIColor.black.cgColor
-        menuHam.layer.shadowOpacity = 1
-        menuHam.layer.shadowOffset = .zero
-        menuHam.layer.shadowRadius = 10
-        //Linea para que no se haga render de la sombra cada vez
-        menuHam.layer.shadowPath = UIBezierPath(rect: menuHam.bounds).cgPath
-        manageAdminButton()
     }
     
     /*
