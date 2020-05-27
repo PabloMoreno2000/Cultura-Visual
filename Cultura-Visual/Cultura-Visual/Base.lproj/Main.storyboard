@@ -856,12 +856,20 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="cargando..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzo-vU-U4i">
+                                <rect key="frame" x="129" y="95" width="116" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hbM-dD-Cpp"/>
                     </view>
                     <navigationItem key="navigationItem" id="RdJ-Xe-QnF"/>
                     <connections>
+                        <outlet property="lbFaltan" destination="fzo-vU-U4i" id="mRg-vl-xYk"/>
                         <outletCollection property="lbSubjects" destination="3qh-dU-aSY" collectionClass="NSMutableArray" id="yDT-vW-FVn"/>
                         <outletCollection property="lbSubjects" destination="ymJ-Zg-5XI" collectionClass="NSMutableArray" id="5T6-PS-AJn"/>
                         <outletCollection property="lbSubjects" destination="Kls-7J-HWh" collectionClass="NSMutableArray" id="IA5-dE-p5a"/>
@@ -874,7 +882,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UO9-0b-cig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="1383"/>
+            <point key="canvasLocation" x="1533.5999999999999" y="1382.1589205397302"/>
         </scene>
         <!--Cuestionarios-->
         <scene sceneID="Eja-Ga-1Uv">
