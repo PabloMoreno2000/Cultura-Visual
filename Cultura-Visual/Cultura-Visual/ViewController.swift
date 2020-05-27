@@ -17,20 +17,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var bEntrar: UIButton!
     
     override func viewDidLoad() {
-           super.viewDidLoad()
-           
-           UIGraphicsBeginImageContext(self.view.frame.size)
-           UIImage(named: "Unknown")?.draw(in: self.view.bounds)
-           let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-           UIGraphicsEndImageContext()
-           self.view.backgroundColor = UIColor(patternImage: image)
-           
-           tfCorreo.text = "a00823402@itesm.mx"
-           tfContrasena.text = "123456"
-           // Do any additional setup after loading the view.
+        super.viewDidLoad()
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "Unknown")?.draw(in: self.view.bounds)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        self.view.backgroundColor = UIColor(patternImage: image)
+        
+        tfCorreo.text = "a00823402@itesm.mx"
+        tfContrasena.text = "123456"
+        // Do any additional setup after loading the view.
     }
     
     @IBAction func iniciarSesion(_ sender: Any) {
+        logIn()
+    }
+    
+    func logIn(){
         
         //If there is text
         if let correo = tfCorreo.text, let contrasena = tfContrasena.text {
@@ -47,10 +51,10 @@ class ViewController: UIViewController {
                         //print error
                         self.showAlertMessage(title: "Cuenta no encontrada", message: "Intente de nuevo")
                     }
-
+                    
                 }
                 else {
-
+                    
                     //go to main menu
                     let navigationMenu = self.storyboard?.instantiateViewController(identifier: "navigationMenu") as? NavController
                     
@@ -60,7 +64,7 @@ class ViewController: UIViewController {
                 }
             }
         }
-        //si no hay texto
+            //si no hay texto
         else {
             self.showAlertMessage(title: "Faltan datos", message: "Favor de llenar correo y contraseña")
         }
