@@ -19,10 +19,14 @@ class contrasenaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         cargarDatos()
-
-        // Do any additional setup after loading the view.
+        
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.black
     }
+
+    
     @IBAction func btGuardar(_ sender: UIButton) {
         if (passwordCurrent != tfActual.text){
             let alert = UIAlertController(title: "Error!", message: "Contrasena actual incorrecta", preferredStyle: UIAlertController.Style.alert)

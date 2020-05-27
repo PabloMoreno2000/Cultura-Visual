@@ -52,6 +52,7 @@ class MainMenu: UIViewController {
     
     //boton hamburguesa, que despliega un mini menu donde el usuario puede editar su perfil, o terminar sesion
     @IBAction func hambutton(_ sender: UIBarButtonItem) {
+        
         if(menuHam.isHidden){
             abrirMenuHam()
         }
@@ -74,6 +75,7 @@ class MainMenu: UIViewController {
         UIView.animate(withDuration: 0.2, delay : 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()})
          */
     }
+    
     //funcion para abrir el menu
     func abrirMenuHam(){
         menuHam.isHidden = false
@@ -142,15 +144,4 @@ class MainMenu: UIViewController {
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
