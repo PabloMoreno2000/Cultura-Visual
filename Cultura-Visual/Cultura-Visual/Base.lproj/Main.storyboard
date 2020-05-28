@@ -1580,23 +1580,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tema" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUf-O9-AVs">
-                                <rect key="frame" x="65" y="64" width="244" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tema" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUf-O9-AVs">
+                                <rect key="frame" x="66" y="64" width="243" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Dy0-iu-jea"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tiempo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzE-aY-MFv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiempo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzE-aY-MFv">
                                 <rect key="frame" x="158" y="110" width="58" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Bos-bL-nZO"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PreguntaTexto" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJR-or-78a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PreguntaTexto" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJR-or-78a">
                                 <rect key="frame" x="41" y="136" width="292" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="gQK-ij-J1i"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1654,6 +1660,17 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aif-OC-Ewi" firstAttribute="trailing" secondItem="RUf-O9-AVs" secondAttribute="trailing" constant="66" id="5zQ-rv-ZrB"/>
+                            <constraint firstItem="PJR-or-78a" firstAttribute="leading" secondItem="aif-OC-Ewi" secondAttribute="leading" constant="41" id="IsW-iQ-bZ7"/>
+                            <constraint firstItem="aif-OC-Ewi" firstAttribute="trailing" secondItem="bzE-aY-MFv" secondAttribute="trailing" constant="159" id="KFH-Qf-fDb"/>
+                            <constraint firstItem="PJR-or-78a" firstAttribute="top" secondItem="bzE-aY-MFv" secondAttribute="bottom" constant="5" id="KaQ-rm-V8x"/>
+                            <constraint firstItem="RUf-O9-AVs" firstAttribute="leading" secondItem="aif-OC-Ewi" secondAttribute="leading" constant="66" id="VI4-uG-68I"/>
+                            <constraint firstItem="RUf-O9-AVs" firstAttribute="top" secondItem="aif-OC-Ewi" secondAttribute="top" constant="20" id="f75-8H-aeB"/>
+                            <constraint firstItem="bzE-aY-MFv" firstAttribute="leading" secondItem="aif-OC-Ewi" secondAttribute="leading" constant="158" id="gdm-he-4SW"/>
+                            <constraint firstItem="aif-OC-Ewi" firstAttribute="trailing" secondItem="PJR-or-78a" secondAttribute="trailing" constant="42" id="qaJ-wm-9Gz"/>
+                            <constraint firstItem="bzE-aY-MFv" firstAttribute="top" secondItem="RUf-O9-AVs" secondAttribute="bottom" id="y6V-cW-Cru"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aif-OC-Ewi"/>
                     </view>
                     <navigationItem key="navigationItem" id="Q20-o8-VHp">
