@@ -93,6 +93,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func registerTapped(_ sender: Any) {
         
+        view.endEditing(true)
+
         //validate the fields
         let error = validateFields()
         

@@ -19,29 +19,35 @@ class contrasenaViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.barTintColor = Utilities.culturalOrange
         cargarDatos()
-
-        // Do any additional setup after loading the view.
+        
     }
+
+    
     @IBAction func btGuardar(_ sender: UIButton) {
-        if (passwordCurrent != tfActual.text){
+        
+        if (passwordCurrent != tfActual.text) {
             let alert = UIAlertController(title: "Error!", message: "Contrasena actual incorrecta", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
         }
-        else if(isPasswordValide(password: tfNueva.text!) == false){
+            
+        else if(isPasswordValide(password: tfNueva.text!) == false) {
             let alert = UIAlertController(title: "Error!", message: "Tu contraseña debe tener 8 caracteres incluyendo un caracter especial y un número", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        else if(tfNueva.text != tfConfirma.text){
+            
+        else if(tfNueva.text != tfConfirma.text) {
             let alert = UIAlertController(title: "Error!", message: "No coincide la contrasena nueva", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
 
-        else{
+        else {
                 let user = Auth.auth().currentUser?.uid
                 let db = Firestore.firestore()
                 
@@ -65,10 +71,10 @@ class contrasenaViewController: UIViewController {
                                     self.present(alert, animated: true, completion: nil)
                                     self.passwordCurrent = self.tfNueva.text
                                 }
-                            }                }
+                            }
+                        }
                     }
                 }
-
             }
     }
     
@@ -102,14 +108,11 @@ class contrasenaViewController: UIViewController {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func quitKeyboard(_ sender: UITapGestureRecognizer) {
+        
+        view.endEditing(true)
     }
-    */
+    
 
 }

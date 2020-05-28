@@ -11,13 +11,47 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    static var storyBoardName: String = ""
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        setStoryboard()
+    }
+    
+    //Returns a storyboard regriding current size
+    func grabStoryboard() -> UIStoryboard {
+        let screenHeight = max(Int(UIScreen.main.bounds.size.height), Int(UIScreen.main.bounds.size.width))
+        print(screenHeight)
+        
+        var storyboard: UIStoryboard
+        //Size of iPhone 11 Pro Max
+        let iPhoneMaxSize = 896
+        
+        if screenHeight <= iPhoneMaxSize {
+            storyboard = UIStoryboard(name: "Main iPhone", bundle: nil)
+            SceneDelegate.storyBoardName = "Main iPhone"
+        }
+        else{
+            storyboard = UIStoryboard(name: "Main iPad", bundle: nil)
+            SceneDelegate.storyBoardName = "Main iPad"
+        }
+        return storyboard
+    }
+    
+    func setStoryboard(){
+        let storyboard : UIStoryboard = grabStoryboard()
+        setInitialScreen(storyboard)
+    }
+    
+    func setInitialScreen(_ storyboard : UIStoryboard){
+        var initViewController : UIViewController
+        initViewController = storyboard.instantiateViewController(withIdentifier: "signIn")
+        window?.rootViewController = initViewController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

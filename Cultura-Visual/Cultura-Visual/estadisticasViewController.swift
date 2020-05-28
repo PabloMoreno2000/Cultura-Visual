@@ -13,7 +13,18 @@ class estadisticasViewController: UIViewController {
 
     var subjects = Cuestionario.themes
     
-    @IBOutlet var lbSubjects: [UILabel]!
+    
+    
+    @IBOutlet weak var lbTema1: UILabel!
+    
+    @IBOutlet weak var lbTema2: UILabel!
+    
+    @IBOutlet weak var lbTema3: UILabel!
+    
+    @IBOutlet weak var lbTema4: UILabel!
+    
+    var lbSubjects: [UILabel] = []
+    
     
     @IBOutlet var vwBarritas: [UIView]!
     
@@ -26,10 +37,13 @@ class estadisticasViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbSubjects = [lbTema1, lbTema2, lbTema3, lbTema4]
         for i in 0...subjects.count - 1{
             lbSubjects[i].text = subjects[i]
         }
+        lbFaltan.text = ""
         cargarDatos()
+        
         
     }
     

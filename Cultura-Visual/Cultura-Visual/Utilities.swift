@@ -9,6 +9,8 @@
 import UIKit
 
 class Utilities: NSObject {
+    
+    static let culturalOrange: UIColor = UIColor(red: 250/255, green: 165/255, blue: 45/255, alpha: 1.00)
 
     static func cleanString(s: String) -> String {
         return s.trimmingCharacters(in: .whitespacesAndNewlines)

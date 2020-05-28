@@ -13,19 +13,31 @@ class editaPerfilViewController: UIViewController {
 
     @IBOutlet weak var tfNombre: UITextField!
     @IBOutlet weak var tfApellido: UITextField!
+    @IBOutlet weak var lbCorreo: UILabel!
+    
     var nombreCurrent: String!
     var apellidoCurrent: String!
-
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.barTintColor = Utilities.culturalOrange
+        /*let viewController = navigationController?.viewControllers.first as! MainMenu
+        viewController.navigationController?.navigationBar.barTintColor = UIColor.white*/
+        
         cargarDatos()
     }
     
+    //Change the color of last view navbar to white
+    override func viewWillDisappear(_ animated: Bool) {
+        let viewController = navigationController?.viewControllers.first as! MainMenu
+        viewController.navigationController?.navigationBar.barTintColor = UIColor.white
+    }
+    
     @IBAction func btEditar(_ sender: UIButton) {
-        if (nombreCurrent != tfNombre.text || apellidoCurrent != tfApellido.text){
+        
+        if (nombreCurrent != tfNombre.text || apellidoCurrent != tfApellido.text) {
+            
             let user = Auth.auth().currentUser?.uid
             let db = Firestore.firestore()
             
@@ -42,30 +54,32 @@ class editaPerfilViewController: UIViewController {
                                 
                                 self.showError(title: "Error", message: "El nombre no pudo actualizarse.")
                             }
-                            else{
+                            else {
                                 let alert = UIAlertController(title: "Hecho!", message: "Se han guardado los cambios", preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                 self.present(alert, animated: true, completion: nil)
                                 self.nombreCurrent = self.tfNombre.text
                                 self.apellidoCurrent = self.tfApellido.text
                             }
-                        }                }
+                        }
+                    }
                 }
             }
-
         }
-        else{
+        else {
+            
             let alert = UIAlertController(title: "Sin cambios", message: "No hay cambios que registrar", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         
     }
+    
     @IBAction func btContra(_ sender: UIButton) {
     }
     
-    
-    func cargarDatos(){
+    func cargarDatos() {
+        
         let user = Auth.auth().currentUser?.uid
         let db = Firestore.firestore()
         
@@ -76,8 +90,10 @@ class editaPerfilViewController: UIViewController {
                     let documentData = document.data()
                     let nombre = documentData["nombre"] as? String ?? ""
                     let apellido = documentData["apellido"] as? String ?? ""
+                    let correo = documentData["correo"] as? String ?? ""
                     self.tfNombre.text = nombre
                     self.tfApellido.text = apellido
+                    self.lbCorreo.text = correo
                     self.nombreCurrent = nombre
                     self.apellidoCurrent = apellido
                 }
@@ -92,14 +108,10 @@ class editaPerfilViewController: UIViewController {
         self.present(alert, animated: true)
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func quitKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
-    */
+    
 
 }
