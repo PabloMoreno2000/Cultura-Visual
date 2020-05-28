@@ -1429,13 +1429,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RFW-yF-GwP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFW-yF-GwP">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiX-bo-2HC">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiX-bo-2HC">
                                         <rect key="frame" x="0.0" y="-9" width="375" height="1019"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selecciona un tema:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dR-la-9aE">
                                                 <rect key="frame" x="110" y="8" width="155" height="21"/>
@@ -1559,16 +1557,32 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1019" id="KQw-L8-tUz"/>
+                                        </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="tOc-b9-Q27" appends="YES" id="Poc-Dx-vke"/>
                                         </connections>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="xiX-bo-2HC" secondAttribute="bottom" constant="-387" id="6V3-LH-MT4"/>
+                                    <constraint firstItem="xiX-bo-2HC" firstAttribute="centerX" secondItem="RFW-yF-GwP" secondAttribute="centerX" id="T5N-TX-PZx"/>
+                                    <constraint firstItem="xiX-bo-2HC" firstAttribute="top" secondItem="RFW-yF-GwP" secondAttribute="top" constant="-9" id="lfr-mR-jQY"/>
+                                    <constraint firstAttribute="trailing" secondItem="xiX-bo-2HC" secondAttribute="trailing" id="qZh-ud-Os7"/>
+                                    <constraint firstItem="xiX-bo-2HC" firstAttribute="leading" secondItem="7Kx-kO-xZS" secondAttribute="leading" id="wfu-Mn-uDu"/>
+                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Fc0-wo-Ihp"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="7Kx-kO-xZS"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RFW-yF-GwP" firstAttribute="centerX" secondItem="wYn-Fx-4cW" secondAttribute="centerX" id="75I-QM-Wke"/>
+                            <constraint firstItem="RFW-yF-GwP" firstAttribute="top" secondItem="L3v-aj-pDo" secondAttribute="top" id="Gw0-HN-8pU"/>
+                            <constraint firstItem="RFW-yF-GwP" firstAttribute="leading" secondItem="L3v-aj-pDo" secondAttribute="leading" id="RFn-pS-3HH"/>
+                            <constraint firstItem="RFW-yF-GwP" firstAttribute="bottom" secondItem="L3v-aj-pDo" secondAttribute="bottom" id="l63-sY-xX8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="L3v-aj-pDo"/>
                     </view>
                     <navigationItem key="navigationItem" id="H3C-jX-8yH"/>
