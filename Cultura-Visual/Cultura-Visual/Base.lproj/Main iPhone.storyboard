@@ -882,7 +882,7 @@
             </objects>
             <point key="canvasLocation" x="2823" y="-1007"/>
         </scene>
-        <!--Estadisticas View Controller-->
+        <!--Estadisticas-->
         <scene sceneID="SaS-ej-vD5">
             <objects>
                 <viewController id="hTM-ve-oto" customClass="estadisticasViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
@@ -1055,7 +1055,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hbM-dD-Cpp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RdJ-Xe-QnF"/>
+                    <navigationItem key="navigationItem" title="Estadisticas" id="RdJ-Xe-QnF"/>
                     <connections>
                         <outlet property="lbFaltan" destination="fzo-vU-U4i" id="mRg-vl-xYk"/>
                         <outlet property="lbTema1" destination="ymJ-Zg-5XI" id="Rof-62-4g0"/>
