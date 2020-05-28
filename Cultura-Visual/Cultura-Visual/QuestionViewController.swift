@@ -195,8 +195,12 @@ class QuestionViewController: UIViewController {
             let accion =  UIAlertAction(title: "OK", style: .default, handler: {(action) in
             
                 let mainMenu = self.storyboard?.instantiateViewController(identifier: "mainMenu") as? MainMenu
-                self.view.window?.rootViewController = mainMenu
-                self.view.window?.makeKeyAndVisible()
+                //self.view.window?.rootViewController = mainMenu
+                //push it with a navigation bar in full screen
+                let navigationController = UINavigationController(rootViewController: mainMenu!)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true, completion: nil)
+                //self.view.window?.makeKeyAndVisible()
                 
             })
             

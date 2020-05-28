@@ -36,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             SceneDelegate.storyBoardName = "Main iPhone"
         }
         else{
-            storyboard = UIStoryboard(name: "Main iPad", bundle: nil)
+            storyboard = UIStoryboard(name: "Main iPhone", bundle: nil)
             SceneDelegate.storyBoardName = "Main iPad"
         }
         return storyboard
