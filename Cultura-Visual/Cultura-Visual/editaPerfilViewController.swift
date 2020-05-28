@@ -22,17 +22,17 @@ class editaPerfilViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.barTintColor = Utilities.culturalOrange
-        let viewController = navigationController?.viewControllers.first as! MainMenu
-        viewController.navigationController?.navigationBar.barTintColor = UIColor.white
+        /*let viewController = navigationController?.viewControllers.first as! MainMenu
+        viewController.navigationController?.navigationBar.barTintColor = UIColor.white*/
         
         cargarDatos()
     }
     
     //Change the color of last view navbar to white
-    /*override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         let viewController = navigationController?.viewControllers.first as! MainMenu
         viewController.navigationController?.navigationBar.barTintColor = UIColor.white
-    }*/
+    }
     
     @IBAction func btEditar(_ sender: UIButton) {
         

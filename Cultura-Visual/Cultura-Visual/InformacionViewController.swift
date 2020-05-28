@@ -70,6 +70,12 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    //Change the color of last view navbar to white
+    override func viewWillDisappear(_ animated: Bool) {
+        let viewController = navigationController?.viewControllers.first as! MainMenu
+        viewController.navigationController?.navigationBar.barTintColor = UIColor.white
+    }
+    
     //MARK: - Table View
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
