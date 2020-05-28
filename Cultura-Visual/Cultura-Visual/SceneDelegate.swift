@@ -11,7 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    static var storyBoardName: String = ""
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -33,9 +33,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if screenHeight <= iPhoneMaxSize {
             storyboard = UIStoryboard(name: "Main iPhone", bundle: nil)
+            SceneDelegate.storyBoardName = "Main iPhone"
         }
         else{
             storyboard = UIStoryboard(name: "Main iPad", bundle: nil)
+            SceneDelegate.storyBoardName = "Main iPad"
         }
         return storyboard
     }

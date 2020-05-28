@@ -131,7 +131,12 @@ class QuestionTableViewController: UITableViewController {
     
     //return height of the cell
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 148
+        if SceneDelegate.storyBoardName == "Main iPhone"{
+            return 148
+        }
+        else {
+            return 310
+        }
     }
     
 
