@@ -731,6 +731,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="EKK-yq-V7t" firstAttribute="centerX" secondItem="nRu-KX-pTn" secondAttribute="centerX" id="PZS-Pj-czh"/>
                             <constraint firstItem="EKK-yq-V7t" firstAttribute="width" secondItem="nRu-KX-pTn" secondAttribute="width" id="SfQ-s6-VZ9"/>
                             <constraint firstItem="MuY-KO-nUG" firstAttribute="trailing" secondItem="nRu-KX-pTn" secondAttribute="trailing" id="V3r-0f-WCt"/>
                             <constraint firstItem="MuY-KO-nUG" firstAttribute="top" secondItem="nRu-KX-pTn" secondAttribute="top" id="bwB-CK-7OX"/>
