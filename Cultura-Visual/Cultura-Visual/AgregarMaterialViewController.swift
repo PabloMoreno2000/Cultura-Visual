@@ -29,6 +29,13 @@ class AgregarMaterialViewController: UIViewController {
     var mat : Materiales!
     var acceder = true
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

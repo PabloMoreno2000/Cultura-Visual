@@ -16,6 +16,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var tfContrasena: UITextField!
     @IBOutlet weak var bEntrar: UIButton!
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

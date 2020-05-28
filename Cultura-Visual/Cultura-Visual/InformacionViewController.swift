@@ -28,6 +28,13 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
     var celdaMod : Int!
     var admin : Bool!
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

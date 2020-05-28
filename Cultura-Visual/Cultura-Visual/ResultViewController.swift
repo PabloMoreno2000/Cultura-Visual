@@ -29,6 +29,13 @@ class ResultViewController: UIViewController {
     let succedTestText = "¡FELICIDADES!"
     let failTestText = "Casi lo logras"
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         respCorrectas = Double(Utilities.sum(arr: StorageLoc.respCorrectas))

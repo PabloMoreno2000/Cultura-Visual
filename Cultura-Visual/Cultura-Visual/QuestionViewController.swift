@@ -44,6 +44,13 @@ class QuestionViewController: UIViewController {
     var correctCounters: [Int]! //counter of right answered questions per theme
     var incorrectCounters: [Int]! //counter of wrong answered questions per theme
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

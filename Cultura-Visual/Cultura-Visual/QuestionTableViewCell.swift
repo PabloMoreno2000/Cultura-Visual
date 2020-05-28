@@ -14,6 +14,7 @@ class QuestionTableViewCell: UITableViewCell {
     @IBOutlet weak var ivQuestionImage: UIImageView!
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

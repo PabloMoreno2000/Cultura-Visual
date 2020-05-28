@@ -23,6 +23,13 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
         
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     @IBAction func startCuestionario(_ sender: UIButton) {
         
         var questions = [Pregunta]()
