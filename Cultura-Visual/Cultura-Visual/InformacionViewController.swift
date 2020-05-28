@@ -31,6 +31,7 @@ class InformacionViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.barTintColor = Utilities.culturalOrange
         scrollView.contentSize = vistaInfo.frame.size
         llenarTabla()
         
