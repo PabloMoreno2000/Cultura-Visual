@@ -20,11 +20,9 @@ class contrasenaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.barTintColor = Utilities.culturalOrange
         cargarDatos()
         
     }
-
     
     @IBAction func btGuardar(_ sender: UIButton) {
         
