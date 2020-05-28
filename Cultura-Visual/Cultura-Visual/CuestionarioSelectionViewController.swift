@@ -89,13 +89,16 @@ class CuestionarioSelectionViewController: UIViewController, UITableViewDelegate
                     //user default settearlos en cero
                     var temaSinTerminar = defaults.value(forKey: "temasCuestionario") as! [String]
                     var respDadas = defaults.value(forKey: "respuestasContestadas") as! [Int]
-                               
-                    for i in 0...respDadas.count-1 {
-                        respDadas[i] = 0
-                    }
-                               
-                    for i in 0...temasContinuar.count-1 {
-                        temaSinTerminar[i] = ""
+                             
+                    if respDadas.count-1 > 0 {
+                    
+                        for i in 0...respDadas.count-1 {
+                            respDadas[i] = 0
+                        }
+                                   
+                        for i in 0...temasContinuar.count-1 {
+                            temaSinTerminar[i] = ""
+                        }
                     }
                                
                     defaults.set(0, forKey: "time")
