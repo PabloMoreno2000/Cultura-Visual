@@ -1723,29 +1723,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Resultado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chu-Qg-XuN">
-                                <rect key="frame" x="133" y="64" width="108" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resultado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chu-Qg-XuN">
+                                <rect key="frame" x="20" y="64" width="728" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsi-nK-9Wk" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="54" y="189" width="267" height="323"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PASAS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHw-8h-xZi">
-                                <rect key="frame" x="16" y="141" width="343" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PASAS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHw-8h-xZi">
+                                <rect key="frame" x="16" y="141" width="732" height="93"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgw-mH-r2p" customClass="RoundButton" customModule="Cultura_Visual" customModuleProvider="target">
-                                <rect key="frame" x="94" y="543" width="186" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgw-mH-r2p" customClass="RoundButton" customModule="Cultura_Visual" customModuleProvider="target">
+                                <rect key="frame" x="269" y="907" width="230" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.71764705880000002" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="2xr-iu-ivA"/>
-                                    <constraint firstAttribute="width" constant="186" id="O9K-w7-fNS"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Menú">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1765,22 +1760,13 @@
                                     <action selector="goToMenu:" destination="czw-rq-ESe" eventType="touchUpInside" id="B42-69-Ghw"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dsi-nK-9Wk" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="271" width="728" height="628"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="PHw-8h-xZi" firstAttribute="top" secondItem="Chu-Qg-XuN" secondAttribute="bottom" constant="48" id="9n2-lL-1hX"/>
-                            <constraint firstItem="Chu-Qg-XuN" firstAttribute="top" secondItem="Hya-oT-m45" secondAttribute="top" constant="56" id="Gdx-sd-V5h"/>
-                            <constraint firstItem="Hya-oT-m45" firstAttribute="bottom" secondItem="Hgw-mH-r2p" secondAttribute="bottom" constant="92" id="Qqs-L2-E1Y"/>
-                            <constraint firstItem="Hgw-mH-r2p" firstAttribute="top" secondItem="dsi-nK-9Wk" secondAttribute="bottom" constant="31" id="TKa-Go-vja"/>
-                            <constraint firstItem="Hya-oT-m45" firstAttribute="trailing" secondItem="Hgw-mH-r2p" secondAttribute="trailing" constant="95" id="USQ-I6-Okq"/>
-                            <constraint firstItem="dsi-nK-9Wk" firstAttribute="leading" secondItem="Hya-oT-m45" secondAttribute="leading" constant="54" id="b4h-h1-IWw"/>
-                            <constraint firstItem="PHw-8h-xZi" firstAttribute="leading" secondItem="Hya-oT-m45" secondAttribute="leading" constant="16" id="iHI-Sv-fJF"/>
-                            <constraint firstItem="Hya-oT-m45" firstAttribute="trailing" secondItem="PHw-8h-xZi" secondAttribute="trailing" constant="16" id="jW3-6o-MuY"/>
-                            <constraint firstItem="dsi-nK-9Wk" firstAttribute="top" secondItem="PHw-8h-xZi" secondAttribute="bottom" constant="21.5" id="kS4-5o-5WV"/>
-                            <constraint firstItem="Hgw-mH-r2p" firstAttribute="leading" secondItem="Hya-oT-m45" secondAttribute="leading" constant="94" id="nIQ-5e-qhh"/>
-                            <constraint firstItem="Hya-oT-m45" firstAttribute="trailing" secondItem="dsi-nK-9Wk" secondAttribute="trailing" constant="54" id="ry9-rj-V9d"/>
-                            <constraint firstItem="Chu-Qg-XuN" firstAttribute="centerX" secondItem="HZM-pj-3Y9" secondAttribute="centerX" id="zRS-9a-MNR"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Hya-oT-m45"/>
                     </view>
                     <connections>
@@ -1790,7 +1776,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0iS-oH-kzU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="813" y="2013"/>
+            <point key="canvasLocation" x="1086.71875" y="2017.9687499999998"/>
         </scene>
         <!--Nav Controller-->
         <scene sceneID="Czu-ko-I5l">
