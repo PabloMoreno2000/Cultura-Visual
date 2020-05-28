@@ -436,10 +436,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0d-5L-kVj">
-                                                <rect key="frame" x="284" y="8" width="190" height="166"/>
+                                                <rect key="frame" x="299" y="8" width="190" height="166"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <state key="normal" backgroundImage="cuestionarios">
+                                                <state key="normal" backgroundImage="cuestverde">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="titleShadowColor" red="0.7156862745" green="0.78014407679999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -464,7 +464,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUR-Gx-2eA">
                                                 <rect key="frame" x="269" y="8" width="214" height="166"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="." image="estadisticas"/>
+                                                <state key="normal" title="." image="graphred"/>
                                                 <connections>
                                                     <segue destination="hTM-ve-oto" kind="show" id="QeI-DZ-FII"/>
                                                 </connections>
@@ -1823,10 +1823,10 @@
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="book.circle.fill" catalog="system" width="128" height="121"/>
         <image name="checkmark.seal.fill" catalog="system" width="128" height="122"/>
-        <image name="cuestionarios" width="256" height="256"/>
+        <image name="cuestverde" width="662" height="662"/>
         <image name="cut logo" width="226" height="230"/>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
-        <image name="estadisticas" width="256" height="256"/>
+        <image name="graphred" width="763" height="761"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
