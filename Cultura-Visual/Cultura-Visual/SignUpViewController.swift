@@ -22,6 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btnRegister: UIButton!
     
     var activeField : UITextField!
+    let backgroundImageView = UIImageView()
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
@@ -42,9 +43,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         UIGraphicsEndImageContext()
         self.vistaRegistro.backgroundColor = UIColor(patternImage: image)
         
-        /*let tap = UITapGestureRecognizer(target: self, action: #selector(quitKeyboard))
-        self.view.addGestureRecognizer(tap)
-        self.registrarseParaNotificacionesDeTeclado()*/
+       /* view.addSubview(backgroundImageView)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        backgroundImageView.image = UIImage(named: "Unkown")
+        view.sendSubviewToBack(backgroundImageView)*/
+        
     }
     
     @IBAction func regresarInicio(_ sender: UIButton) {
