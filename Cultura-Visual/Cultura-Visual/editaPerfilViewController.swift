@@ -24,6 +24,12 @@ class editaPerfilViewController: UIViewController {
         cargarDatos()
     }
     
+    //Change the color of last view navbar to white
+    override func viewWillDisappear(_ animated: Bool) {
+        let viewController = navigationController?.viewControllers.first as! MainMenu
+        viewController.navigationController?.navigationBar.barTintColor = UIColor.white
+    }
+    
     @IBAction func btEditar(_ sender: UIButton) {
         
         if (nombreCurrent != tfNombre.text || apellidoCurrent != tfApellido.text) {

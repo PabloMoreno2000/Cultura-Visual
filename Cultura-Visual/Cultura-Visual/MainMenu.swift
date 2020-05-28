@@ -22,7 +22,6 @@ class MainMenu: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Lineas para esconder, y dar sombra a la view de hamburguesa
         menuHam.isHidden = true
         menuHam.alpha = 0
