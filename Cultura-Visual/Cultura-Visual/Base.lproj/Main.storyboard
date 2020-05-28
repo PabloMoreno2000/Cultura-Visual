@@ -364,7 +364,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2190" y="-231"/>
+            <point key="canvasLocation" x="-1140" y="-330"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="HZO-CG-ATF">
@@ -576,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOv-dA-M1I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1638" y="515"/>
+            <point key="canvasLocation" x="-1692" y="418"/>
         </scene>
         <!--Información-->
         <scene sceneID="gaT-Ec-hci">
@@ -589,46 +589,32 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MuY-KO-nUG">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKK-yq-V7t">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="811"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKK-yq-V7t">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="878"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profesor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAH-cc-ue5">
-                                                <rect key="frame" x="36" y="99" width="77" height="26"/>
+                                                <rect key="frame" x="45" y="135" width="77" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Arq. Edmundo Reyes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZD-ep-obu">
-                                                <rect key="frame" x="112" y="147" width="160" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="correo electronico" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhr-IE-gU3">
-                                                <rect key="frame" x="112" y="193" width="140" height="21"/>
+                                                <rect key="frame" x="121" y="225" width="140" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Materia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agu-cI-JFE">
-                                                <rect key="frame" x="112" y="242" width="186" height="21"/>
+                                                <rect key="frame" x="121" y="273" width="186" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Material para estudiar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyh-KM-cdg">
-                                                <rect key="frame" x="46" y="295" width="233" height="26"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A8T-KM-9Zl">
-                                                <rect key="frame" x="46" y="341" width="281" height="225"/>
+                                                <rect key="frame" x="46" y="377" width="281" height="241"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
@@ -672,52 +658,90 @@
                                                 </prototypes>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Aplicación creada por" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW5-df-1rs">
-                                                <rect key="frame" x="36" y="595" width="197" height="26"/>
+                                                <rect key="frame" x="41" y="649" width="197" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.    Pablo Moreno Tamez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7M-Sy-HoF">
-                                                <rect key="frame" x="46" y="675" width="192" height="21"/>
+                                                <rect key="frame" x="43" y="737" width="192" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.     Alvaro Santana Martínez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggD-92-XRV">
-                                                <rect key="frame" x="46" y="640" width="221" height="21"/>
+                                                <rect key="frame" x="43" y="696" width="221" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fw6-ek-cP0">
-                                                <rect key="frame" x="43" y="142.5" width="82" height="28"/>
+                                                <rect key="frame" x="52" y="177" width="82" height="28"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="envelope.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2dc-gS-2DM">
-                                                <rect key="frame" x="60" y="194.5" width="49" height="23"/>
+                                                <rect key="frame" x="69" y="224" width="49" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="book.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uNl-vv-kCX">
-                                                <rect key="frame" x="32" y="236.5" width="105" height="34"/>
+                                                <rect key="frame" x="41" y="266" width="105" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3.    Paola Villarreal García" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGe-wC-6Kx">
-                                                <rect key="frame" x="46" y="713" width="198" height="21"/>
+                                                <rect key="frame" x="43" y="777" width="198" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JBb-5I-Fqf">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="f0f-ff-HuS">
+                                                        <rect key="frame" x="143" y="48" width="87" height="61"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.98039215690000003" green="0.64705882349999999" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Arq. Edmundo Reyes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZD-ep-obu">
+                                                <rect key="frame" x="121" y="181" width="160" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Material para estudiar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyh-KM-cdg">
+                                                <rect key="frame" x="46" y="327" width="233" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B8a-3T-BSw" customClass="RoundView" customModule="Cultura_Visual" customModuleProvider="target">
+                                                <rect key="frame" x="-2" y="84" width="377" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6DT-3L-f9K">
+                                                        <rect key="frame" x="145" y="-33.5" width="87" height="61"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="811" id="5FS-x4-mvS"/>
+                                            <constraint firstAttribute="height" constant="878" id="PdQ-zw-0UV"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -755,7 +779,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BCg-Y1-lMf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3118" y="100"/>
+            <point key="canvasLocation" x="-212" y="0.44977511244377816"/>
         </scene>
         <!--Agregar Material View Controller-->
         <scene sceneID="GFb-4m-Jfg">
@@ -844,7 +868,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3846" y="100"/>
+            <point key="canvasLocation" x="516" y="1"/>
         </scene>
         <!--Estadisticas View Controller-->
         <scene sceneID="SaS-ej-vD5">
@@ -958,12 +982,20 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="cargando..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzo-vU-U4i">
+                                <rect key="frame" x="129" y="95" width="116" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hbM-dD-Cpp"/>
                     </view>
                     <navigationItem key="navigationItem" id="RdJ-Xe-QnF"/>
                     <connections>
+                        <outlet property="lbFaltan" destination="fzo-vU-U4i" id="mRg-vl-xYk"/>
                         <outletCollection property="lbSubjects" destination="3qh-dU-aSY" collectionClass="NSMutableArray" id="yDT-vW-FVn"/>
                         <outletCollection property="lbSubjects" destination="ymJ-Zg-5XI" collectionClass="NSMutableArray" id="5T6-PS-AJn"/>
                         <outletCollection property="lbSubjects" destination="Kls-7J-HWh" collectionClass="NSMutableArray" id="IA5-dE-p5a"/>
@@ -976,7 +1008,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UO9-0b-cig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="1383"/>
+            <point key="canvasLocation" x="-1796" y="1285"/>
         </scene>
         <!--Cuestionarios-->
         <scene sceneID="Eja-Ga-1Uv">
@@ -1057,7 +1089,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Afb-jC-xO0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="1324"/>
+            <point key="canvasLocation" x="-2692" y="1226"/>
         </scene>
         <!--Perfil-->
         <scene sceneID="S3U-Ev-6uq">
@@ -1191,7 +1223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMA-2N-m5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2742" y="823"/>
+            <point key="canvasLocation" x="-588" y="725"/>
         </scene>
         <!--Reestablecer Contraseña-->
         <scene sceneID="sSP-EW-jTt">
@@ -1301,7 +1333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKW-oj-E5o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3622" y="822"/>
+            <point key="canvasLocation" x="292" y="724"/>
         </scene>
         <!--Administrar preguntas-->
         <scene sceneID="sfW-90-Z5a">
@@ -1369,7 +1401,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0W-gK-5a1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3574" y="1694"/>
+            <point key="canvasLocation" x="244" y="1595"/>
         </scene>
         <!--Add Question View Controller-->
         <scene sceneID="5xz-LU-90O">
@@ -1553,7 +1585,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4422" y="1721"/>
+            <point key="canvasLocation" x="1092" y="1622"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OK9-1s-B8t">
@@ -1570,7 +1602,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tNp-bI-RmH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="1695"/>
+            <point key="canvasLocation" x="-668" y="1597"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="Kxi-uf-ndR">
@@ -1694,7 +1726,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0S-Pj-zKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="566" y="2035"/>
+            <point key="canvasLocation" x="-2764" y="1937"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="WTe-uH-hLh">
@@ -1757,7 +1789,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0iS-oH-kzU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1462" y="2104"/>
+            <point key="canvasLocation" x="-1868" y="2006"/>
         </scene>
         <!--Nav Controller-->
         <scene sceneID="Czu-ko-I5l">
@@ -1775,7 +1807,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chO-dr-wAg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="515"/>
+            <point key="canvasLocation" x="-2428" y="418"/>
         </scene>
         <!--Question Navigation Controller-->
         <scene sceneID="Udt-B8-2vK">
@@ -1793,7 +1825,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s41-j0-lfZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-386" y="1998"/>
+            <point key="canvasLocation" x="-3716" y="1899"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1808,6 +1840,7 @@
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="estadisticas" width="256" height="256"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="lock.circle.fill" catalog="system" width="128" height="121"/>
         <image name="logo3" width="301" height="457"/>
