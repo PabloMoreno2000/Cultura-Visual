@@ -157,7 +157,7 @@
         <scene sceneID="O7E-0Z-URw">
             <objects>
                 <viewController storyboardIdentifier="signUp" id="Vgq-m8-bpc" customClass="SignUpViewController" customModule="Cultura_Visual" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pGL-BL-LoE">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="pGL-BL-LoE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -165,7 +165,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p1e-ux-RHg">
-                                        <rect key="frame" x="0.0" y="0.0" width="380" height="789"/>
+                                        <rect key="frame" x="-2.5" y="0.0" width="380" height="789"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dXh-Wy-Qgk" customClass="RoundView" customModule="Cultura_Visual" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="200" width="318" height="567"/>
@@ -197,7 +197,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¿Ya tienes cuenta?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEQ-5o-isO">
-                                                <rect key="frame" x="80" y="738" width="113" height="16"/>
+                                                <rect key="frame" x="80" y="730" width="113" height="16"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="textColor"/>
@@ -247,7 +247,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSP-wp-Kh3">
-                                                <rect key="frame" x="201" y="732" width="104" height="28"/>
+                                                <rect key="frame" x="201" y="724" width="104" height="28"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Inicia sesión aquí"/>
@@ -323,6 +323,8 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="SOA-F4-SF9" firstAttribute="top" secondItem="sMV-on-Q0o" secondAttribute="top" id="2NC-7N-3T9"/>
+                            <constraint firstItem="SOA-F4-SF9" firstAttribute="centerX" secondItem="sMV-on-Q0o" secondAttribute="centerX" id="Aev-0T-jLA"/>
+                            <constraint firstItem="p1e-ux-RHg" firstAttribute="centerX" secondItem="sMV-on-Q0o" secondAttribute="centerX" id="Da8-xv-nNt"/>
                             <constraint firstItem="SOA-F4-SF9" firstAttribute="leading" secondItem="sMV-on-Q0o" secondAttribute="leading" id="REP-Xw-vXI"/>
                             <constraint firstItem="p1e-ux-RHg" firstAttribute="width" secondItem="sMV-on-Q0o" secondAttribute="width" multiplier="1.01333" id="Rfh-ro-7Ud"/>
                             <constraint firstItem="SOA-F4-SF9" firstAttribute="bottom" secondItem="sMV-on-Q0o" secondAttribute="bottom" id="T09-b7-C2b"/>
