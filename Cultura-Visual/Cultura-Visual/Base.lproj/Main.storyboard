@@ -986,9 +986,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pi7-oJ-zI4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pi7-oJ-zI4">
                                 <rect key="frame" x="16" y="127" width="343" height="344"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idCell" id="qWq-vX-5dY" customClass="ThemeTableViewCell" customModule="Cultura_Visual" customModuleProvider="target">
@@ -1013,10 +1012,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utn-Cr-Ozy" customClass="RoundButton" customModule="Cultura_Visual" customModuleProvider="target">
-                                <rect key="frame" x="94" y="539" width="186" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utn-Cr-Ozy" customClass="RoundButton" customModule="Cultura_Visual" customModuleProvider="target">
+                                <rect key="frame" x="94.5" y="539" width="186" height="40"/>
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.71764705880000002" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dd9-WO-MoB"/>
+                                    <constraint firstAttribute="width" constant="186" id="q2r-rt-zBX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Iniciar">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1038,6 +1040,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Pi7-oJ-zI4" firstAttribute="top" secondItem="LLH-G3-ElT" secondAttribute="top" constant="83" id="4Jr-Wj-1aj"/>
+                            <constraint firstItem="utn-Cr-Ozy" firstAttribute="centerX" secondItem="R03-Pv-cjJ" secondAttribute="centerX" id="Byo-4M-Xxb"/>
+                            <constraint firstItem="utn-Cr-Ozy" firstAttribute="top" secondItem="Pi7-oJ-zI4" secondAttribute="bottom" constant="68" id="CL0-xS-rTM"/>
+                            <constraint firstItem="LLH-G3-ElT" firstAttribute="trailing" secondItem="Pi7-oJ-zI4" secondAttribute="trailing" constant="16" id="LMq-oB-wbj"/>
+                            <constraint firstItem="LLH-G3-ElT" firstAttribute="bottom" secondItem="utn-Cr-Ozy" secondAttribute="bottom" constant="39" id="TII-12-rEd"/>
+                            <constraint firstItem="Pi7-oJ-zI4" firstAttribute="leading" secondItem="LLH-G3-ElT" secondAttribute="leading" constant="16" id="i1i-pW-Oca"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LLH-G3-ElT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Cuestionarios" id="aa9-qy-e7N"/>
