@@ -33,6 +33,7 @@ class QuestionViewController: UIViewController {
     var ultimaPregunta: Int! = 0
     var temaSinTerminar: [String] = []
     var idx: Int! = 0
+    var k: Int! = 1
     
     //Variables para contestar cuestionario
     var cuestionario: Cuestionario!
@@ -352,7 +353,16 @@ class QuestionViewController: UIViewController {
 
     func loadNextQuestion(n: Int) {
         
-        lbNumPregunta.text = String(cuestionario.preguntaActual + 2) + "/" + String(cuestionario.preguntas.count)
+        let finish = defaults.value(forKey: "terminoCuestionario") as? Bool ?? true
+        
+        if finish {
+            lbNumPregunta.text = String(cuestionario.preguntaActual + 2) + "/" + String(cuestionario.preguntas.count)
+        }
+        else {
+            let respConts = defaults.value(forKey: "respuestasContestadas") as! [Int]
+            lbNumPregunta.text = String(respConts.count + k) + "/" + String(cuestionario.preguntas.count)
+            k += 1
+        }
         
         //If the previus answered question was not the last one
         if(cuestionario.preguntaActual != size - 1) {
