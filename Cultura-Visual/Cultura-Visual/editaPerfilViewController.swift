@@ -98,5 +98,10 @@ class editaPerfilViewController: UIViewController {
         self.present(alert, animated: true)
         
     }
+    
+    @IBAction func quitKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
 
 }
