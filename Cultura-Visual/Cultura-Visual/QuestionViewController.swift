@@ -116,10 +116,16 @@ class QuestionViewController: UIViewController {
         if finish {
             
             if cuestionario.preguntas.count < 10 {
-                totalTime = 90
+                totalTime = 120
             }
             else if cuestionario.preguntas.count >= 10 && cuestionario.preguntas.count < 20  {
-                totalTime = 120
+                totalTime = 300
+            }
+            else if cuestionario.preguntas.count >= 20 && cuestionario.preguntas.count < 30  {
+                totalTime = 480
+            }
+            else {
+                totalTime = 720
             }
         }
         else {

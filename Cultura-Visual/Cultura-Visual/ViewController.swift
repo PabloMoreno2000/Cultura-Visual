@@ -32,8 +32,6 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
         self.view.backgroundColor = UIColor(patternImage: image)
         
-        tfCorreo.text = "a00823402@itesm.mx"
-        tfContrasena.text = "123456"
         // Do any additional setup after loading the view.
     }
     
